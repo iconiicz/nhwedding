@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Natali & Honza — 29. 8. 2025</title>
+<title>Natali & Honza â 29. 8. 2025</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -30,13 +30,13 @@
     overflow-x: hidden;
   }
 
-  /* ─── LAYOUT: sticky left + scrolling right ─────────────── */
+  /* âââ LAYOUT: sticky left + scrolling right âââââââââââââââ */
   .site-wrapper {
     display: flex;
     min-height: 100vh;
   }
 
-  /* LEFT PANEL — sticky, 65% */
+  /* LEFT PANEL â sticky, 65% */
   .left-panel {
     position: sticky;
     top: 0;
@@ -48,7 +48,7 @@
     z-index: 1;
   }
 
-  /* RIGHT PANEL — scrollable, 35% */
+  /* RIGHT PANEL â scrollable, 35% */
   .right-panel {
     width: 35%;
     flex-shrink: 0;
@@ -59,7 +59,7 @@
     z-index: 2;
   }
 
-  /* ─── MEDIA SLIDES ───────────────────────────────────────── */
+  /* âââ MEDIA SLIDES âââââââââââââââââââââââââââââââââââââââââ */
   .media-slide {
     position: absolute;
     inset: 0;
@@ -77,9 +77,9 @@
     inset: 0;
   }
   .slide-hero    .slide-bg { background-image: url('1.webp'); background-size: cover; background-position: center; }
-  .slide-info    .slide-bg { background: #b0b8b2; }
-  .slide-program .slide-bg { background: #909890; }
-  .slide-rsvp    .slide-bg { background: #c0c8c2; }
+  .slide-info    .slide-bg { background-image: url('2.webp'); background-size: cover; background-position: center; }
+  .slide-program .slide-bg { background-image: url('3.webp'); background-size: cover; background-position: center; }
+  .slide-rsvp    .slide-bg { background-image: url('4.webp'); background-size: cover; background-position: center; }
 
   .slide-content {
     position: relative;
@@ -226,7 +226,7 @@
     letter-spacing: 0.1em;
   }
 
-  /* ─── NAV ────────────────────────────────────────────────── */
+  /* âââ NAV ââââââââââââââââââââââââââââââââââââââââââââââââââ */
   nav {
     position: fixed;
     top: 0;
@@ -269,7 +269,7 @@
 
   @media (max-width: 560px) { .nav-links { display: none; } }
 
-  /* ─── RIGHT PANEL SECTIONS ───────────────────────────────── */
+  /* âââ RIGHT PANEL SECTIONS âââââââââââââââââââââââââââââââââ */
 
   /* Hero section inside right panel */
   .rp-hero {
@@ -374,7 +374,7 @@
     margin-top: .25rem;
   }
 
-  /* ─── CONTENT SECTIONS (right panel) ────────────────────── */
+  /* âââ CONTENT SECTIONS (right panel) ââââââââââââââââââââââ */
   .rp-section {
     padding: 5rem 2.5rem;
   }
@@ -419,7 +419,7 @@
     margin-bottom: 2rem;
   }
 
-  /* ─── INFO CARDS ────────────────────────────────────────── */
+  /* âââ INFO CARDS ââââââââââââââââââââââââââââââââââââââââââ */
   .info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -451,7 +451,7 @@
     color: #6a7060;
   }
 
-  /* ─── TIMELINE ──────────────────────────────────────────── */
+  /* âââ TIMELINE ââââââââââââââââââââââââââââââââââââââââââââ */
   .timeline {
     list-style: none;
     margin-top: 2rem;
@@ -497,7 +497,7 @@
     margin-top: .2rem;
   }
 
-  /* ─── RSVP FORM ─────────────────────────────────────────── */
+  /* âââ RSVP FORM âââââââââââââââââââââââââââââââââââââââââââ */
   .rsvp-form {
     margin-top: 2rem;
     display: grid;
@@ -597,7 +597,7 @@
   }
   .rsvp-success p { color: var(--sage); font-size: .85rem; line-height: 1.7; }
 
-  /* ─── FOOTER ────────────────────────────────────────────── */
+  /* âââ FOOTER ââââââââââââââââââââââââââââââââââââââââââââââ */
   footer {
     background: var(--dark);
     text-align: center;
@@ -618,7 +618,7 @@
     color: rgba(255,255,255,.25);
   }
 
-  /* ─── ANIMATIONS ────────────────────────────────────────── */
+  /* âââ ANIMATIONS ââââââââââââââââââââââââââââââââââââââââââ */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -630,7 +630,7 @@
   }
   .reveal.visible { opacity: 1; transform: none; }
 
-  /* ─── MOBILE ────────────────────────────────────────────── */
+  /* âââ MOBILE ââââââââââââââââââââââââââââââââââââââââââââââ */
   @media (max-width: 768px) {
     .site-wrapper {
       flex-direction: column;
@@ -668,7 +668,7 @@
 
     nav { padding: .9rem 1.5rem; }
 
-    /* On mobile hide left panel slide changes — just show one */
+    /* On mobile hide left panel slide changes â just show one */
     .media-slide.active { opacity: 1; }
   }
 </style>
@@ -681,7 +681,7 @@
   <ul class="nav-links">
     <li><a href="#info">Informace</a></li>
     <li><a href="#program">Program</a></li>
-    <li><a href="#rsvp">Formulář</a></li>
+    <li><a href="#rsvp">FormulÃ¡Å</a></li>
   </ul>
 </nav>
 
@@ -696,7 +696,7 @@
       <div class="slide-bg"></div>
       <div class="slide-content" style="justify-content: flex-end; padding-bottom: 12rem;">
         <h1 class="slide-main-name">Natali &amp; Honza</h1>
-        <p class="slide-tagline">btw…budeme se brát</p>
+        <p class="slide-tagline">btwâ¦budeme se brÃ¡t</p>
       </div>
     </div>
 
@@ -704,19 +704,19 @@
     <div class="media-slide slide-info" id="slide-info">
       <div class="slide-bg"></div>
       <div class="slide-content">
-        <p class="slide-label">Místo a čas</p>
-        <h2 class="slide-main-name" style="font-size: clamp(2.5rem,5vw,4.5rem)">Mlýn<br>Propast</h2>
+        <p class="slide-label">MÃ­sto a Äas</p>
+        <h2 class="slide-main-name" style="font-size: clamp(2.5rem,5vw,4.5rem)">MlÃ½n<br>Propast</h2>
         <div class="slide-icon-row">
           <div class="slide-icon-item">
-            <span class="icon">📍</span>
-            <span>Místo</span>
+            <span class="icon">ð</span>
+            <span>MÃ­sto</span>
           </div>
           <div class="slide-icon-item">
-            <span class="icon">📅</span>
+            <span class="icon">ð</span>
             <span>29. 8. 2025</span>
           </div>
           <div class="slide-icon-item">
-            <span class="icon">👗</span>
+            <span class="icon">ð</span>
             <span>Smart casual</span>
           </div>
         </div>
@@ -729,11 +729,11 @@
       <div class="slide-bg"></div>
       <div class="slide-content">
         <p class="slide-label">Harmonogram dne</p>
-        <h2 class="slide-main-name" style="font-size:clamp(2rem,4vw,3.5rem); margin-bottom:0">Program<br><em style="color:var(--sage)">slavnostního dne</em></h2>
+        <h2 class="slide-main-name" style="font-size:clamp(2rem,4vw,3.5rem); margin-bottom:0">Program<br><em style="color:var(--sage)">slavnostnÃ­ho dne</em></h2>
         <div class="slide-tl">
-          <div class="slide-tl-item"><span class="slide-tl-time">13:30</span><span class="slide-tl-name">Příjezd hostů</span></div>
-          <div class="slide-tl-item"><span class="slide-tl-time">14:00</span><span class="slide-tl-name">Obřad</span></div>
-          <div class="slide-tl-item"><span class="slide-tl-time">15:00</span><span class="slide-tl-name">Focení</span></div>
+          <div class="slide-tl-item"><span class="slide-tl-time">13:30</span><span class="slide-tl-name">PÅÃ­jezd hostÅ¯</span></div>
+          <div class="slide-tl-item"><span class="slide-tl-time">14:00</span><span class="slide-tl-name">ObÅad</span></div>
+          <div class="slide-tl-item"><span class="slide-tl-time">15:00</span><span class="slide-tl-name">FocenÃ­</span></div>
           <div class="slide-tl-item"><span class="slide-tl-time">16:00</span><span class="slide-tl-name">Hostina</span></div>
           <div class="slide-tl-item"><span class="slide-tl-time">19:00</span><span class="slide-tl-name">Tanec &amp; dort</span></div>
         </div>
@@ -744,11 +744,11 @@
     <div class="media-slide slide-rsvp" id="slide-rsvp">
       <div class="slide-bg"></div>
       <div class="slide-content">
-        <p class="slide-label">Potvrzení účasti</p>
+        <p class="slide-label">PotvrzenÃ­ ÃºÄasti</p>
         <div class="slide-rsvp-visual">
-          <span class="slide-heart">🌿</span>
-          <h2 class="slide-main-name" style="font-size:clamp(2.5rem,5vw,4rem)">Přijdete?</h2>
-          <p class="slide-deadline">Deadline: 30. června 2025</p>
+          <span class="slide-heart">ð¿</span>
+          <h2 class="slide-main-name" style="font-size:clamp(2.5rem,5vw,4rem)">PÅijdete?</h2>
+          <p class="slide-deadline">Deadline: 30. Äervna 2025</p>
         </div>
       </div>
       <div class="slide-ornament" style="font-size:5rem">RSVP</div>
@@ -763,44 +763,44 @@
     <section class="rp-hero" id="rp-hero" data-slide="hero">
       <p class="rp-hero-day">Sobota</p>
       <p class="rp-hero-date">29. srpna 2026</p>
-      <p class="rp-hero-location">Mlýn Propast</p>
+      <p class="rp-hero-location">MlÃ½n Propast</p>
       <div class="rp-divider"></div>
-      <a href="#rsvp" class="rp-cta">VYPLNIT FORMULÁŘ</a>
-      <a href="#info" class="rp-cta-sec">Zobrazit detaily ↓</a>
+      <a href="#rsvp" class="rp-cta">VYPLNIT FORMULÃÅ</a>
+      <a href="#info" class="rp-cta-sec">Zobrazit detaily â</a>
       <div class="countdown" id="countdown">
-        <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-label">Dní</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-hours">—</div><div class="cd-label">Hodin</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-min">—</div><div class="cd-label">Minut</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-sec">—</div><div class="cd-label">Sekund</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-days">â</div><div class="cd-label">DnÃ­</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-hours">â</div><div class="cd-label">Hodin</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-min">â</div><div class="cd-label">Minut</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-sec">â</div><div class="cd-label">Sekund</div></div>
       </div>
     </section>
 
     <!-- INFO -->
     <section id="info" class="rp-section bg-sand" data-slide="info">
       <div class="reveal">
-        <p class="section-label">Praktické informace</p>
-        <h2 class="section-title">Vše, co <em>potřebujete vědět</em></h2>
-        <p class="section-body">Jsme nadšeni, že vás přivítáme na naší svatbě. Níže najdete vše důležité pro tento den.</p>
+        <p class="section-label">PraktickÃ© informace</p>
+        <h2 class="section-title">VÅ¡e, co <em>potÅebujete vÄdÄt</em></h2>
+        <p class="section-body">Jsme nadÅ¡eni, Å¾e vÃ¡s pÅivÃ­tÃ¡me na naÅ¡Ã­ svatbÄ. NÃ­Å¾e najdete vÅ¡e dÅ¯leÅ¾itÃ© pro tento den.</p>
         <div class="info-grid">
           <div class="info-card">
-            <div class="info-card-icon">📍</div>
-            <h3>Místo konání</h3>
-            <p>Mlýn Propast<br>Přesná adresa bude zaslána potvrzeným hostům emailem.</p>
+            <div class="info-card-icon">ð</div>
+            <h3>MÃ­sto konÃ¡nÃ­</h3>
+            <p>MlÃ½n Propast<br>PÅesnÃ¡ adresa bude zaslÃ¡na potvrzenÃ½m hostÅ¯m emailem.</p>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">📅</div>
-            <h3>Datum & čas</h3>
-            <p>29. srpna 2025<br>Obřad začíná ve 14:00 hod.<br>Prosíme přijďte s předstihem.</p>
+            <div class="info-card-icon">ð</div>
+            <h3>Datum & Äas</h3>
+            <p>29. srpna 2025<br>ObÅad zaÄÃ­nÃ¡ ve 14:00 hod.<br>ProsÃ­me pÅijÄte s pÅedstihem.</p>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">👗</div>
+            <div class="info-card-icon">ð</div>
             <h3>Dress code</h3>
-            <p>Smart casual / elegantní.<br>Doporučujeme boty vhodné pro venkovní prostředí.</p>
+            <p>Smart casual / elegantnÃ­.<br>DoporuÄujeme boty vhodnÃ© pro venkovnÃ­ prostÅedÃ­.</p>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">🌿</div>
-            <h3>Poznámka</h3>
-            <p>Prosíme o potvrzení účasti do 30. června 2025 přes formulář níže.</p>
+            <div class="info-card-icon">ð¿</div>
+            <h3>PoznÃ¡mka</h3>
+            <p>ProsÃ­me o potvrzenÃ­ ÃºÄasti do 30. Äervna 2025 pÅes formulÃ¡Å nÃ­Å¾e.</p>
           </div>
         </div>
       </div>
@@ -810,32 +810,32 @@
     <section id="program" class="rp-section bg-cream" data-slide="program">
       <div class="reveal">
         <p class="section-label">Harmonogram dne</p>
-        <h2 class="section-title">Program <em>slavnostního dne</em></h2>
+        <h2 class="section-title">Program <em>slavnostnÃ­ho dne</em></h2>
         <ul class="timeline">
           <li>
             <p class="tl-time">13:30</p>
-            <p class="tl-event">Příjezd hostů</p>
-            <p class="tl-note">Uvítací prosecco a přivítání</p>
+            <p class="tl-event">PÅÃ­jezd hostÅ¯</p>
+            <p class="tl-note">UvÃ­tacÃ­ prosecco a pÅivÃ­tÃ¡nÃ­</p>
           </li>
           <li>
             <p class="tl-time">14:00</p>
-            <p class="tl-event">Svatební obřad</p>
-            <p class="tl-note">Venkovní obřad na louce Mlýna Propast</p>
+            <p class="tl-event">SvatebnÃ­ obÅad</p>
+            <p class="tl-note">VenkovnÃ­ obÅad na louce MlÃ½na Propast</p>
           </li>
           <li>
             <p class="tl-time">15:00</p>
-            <p class="tl-event">Focení & gratulace</p>
-            <p class="tl-note">Společné fotografie s novomanželi</p>
+            <p class="tl-event">FocenÃ­ & gratulace</p>
+            <p class="tl-note">SpoleÄnÃ© fotografie s novomanÅ¾eli</p>
           </li>
           <li>
             <p class="tl-time">16:00</p>
-            <p class="tl-event">Svatební hostina</p>
-            <p class="tl-note">Slavnostní večeře a přípitky</p>
+            <p class="tl-event">SvatebnÃ­ hostina</p>
+            <p class="tl-note">SlavnostnÃ­ veÄeÅe a pÅÃ­pitky</p>
           </li>
           <li>
             <p class="tl-time">19:00</p>
-            <p class="tl-event">Krájení dortu & tanec</p>
-            <p class="tl-note">Hudba a zábava do ranních hodin</p>
+            <p class="tl-event">KrÃ¡jenÃ­ dortu & tanec</p>
+            <p class="tl-note">Hudba a zÃ¡bava do rannÃ­ch hodin</p>
           </li>
         </ul>
       </div>
@@ -844,15 +844,15 @@
     <!-- RSVP -->
     <section id="rsvp" class="rp-section bg-green" data-slide="rsvp">
       <div class="reveal">
-        <p class="section-label">Potvrzení účasti</p>
-        <h2 class="section-title">Přijmete naše <em>pozvání?</em></h2>
-        <p class="section-body">Prosíme potvrďte svou účast do 30. června 2025. Těšíme se na vás!</p>
+        <p class="section-label">PotvrzenÃ­ ÃºÄasti</p>
+        <h2 class="section-title">PÅijmete naÅ¡e <em>pozvÃ¡nÃ­?</em></h2>
+        <p class="section-body">ProsÃ­me potvrÄte svou ÃºÄast do 30. Äervna 2025. TÄÅ¡Ã­me se na vÃ¡s!</p>
 
         <form class="rsvp-form" id="rsvpForm">
           <div class="form-row">
             <div class="form-group">
-              <label>Jméno a příjmení *</label>
-              <input type="text" placeholder="Jana Nováková" required>
+              <label>JmÃ©no a pÅÃ­jmenÃ­ *</label>
+              <input type="text" placeholder="Jana NovÃ¡kovÃ¡" required>
             </div>
             <div class="form-group">
               <label>E-mail *</label>
@@ -861,55 +861,55 @@
           </div>
 
           <div class="form-group">
-            <label>Přijdete na svatbu? *</label>
+            <label>PÅijdete na svatbu? *</label>
             <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="attendance" value="ano" required> Ano, přijdu s radostí</label>
-              <label class="radio-opt"><input type="radio" name="attendance" value="ne"> Bohužel se nemohu zúčastnit</label>
+              <label class="radio-opt"><input type="radio" name="attendance" value="ano" required> Ano, pÅijdu s radostÃ­</label>
+              <label class="radio-opt"><input type="radio" name="attendance" value="ne"> BohuÅ¾el se nemohu zÃºÄastnit</label>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label>Počet osob (včetně vás)</label>
+              <label>PoÄet osob (vÄetnÄ vÃ¡s)</label>
               <select id="personCount" onchange="toggleCompanion(this.value)">
                 <option value="1">1 osoba</option>
                 <option value="2">2 osoby</option>
               </select>
             </div>
             <div class="form-group">
-              <label>Stravovací preference</label>
+              <label>StravovacÃ­ preference</label>
               <select>
-                <option value="">Bez omezení</option>
-                <option value="vegetarian">Vegetarián/ka</option>
+                <option value="">Bez omezenÃ­</option>
+                <option value="vegetarian">VegetariÃ¡n/ka</option>
                 <option value="vegan">Vegan/ka</option>
               </select>
             </div>
           </div>
 
           <div class="form-group" id="companionField" style="display:none">
-            <label>Jméno doprovodu</label>
-            <input type="text" placeholder="Jméno a příjmení doprovodu">
+            <label>JmÃ©no doprovodu</label>
+            <input type="text" placeholder="JmÃ©no a pÅÃ­jmenÃ­ doprovodu">
           </div>
 
           <div class="form-group">
-            <label>Ubytování — zůstanete přes noc?</label>
+            <label>UbytovÃ¡nÃ­ â zÅ¯stanete pÅes noc?</label>
             <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="accommodation" value="ano"> Ano, budu potřebovat ubytování</label>
-              <label class="radio-opt"><input type="radio" name="accommodation" value="ne"> Ne, ubytování nepotřebuji</label>
+              <label class="radio-opt"><input type="radio" name="accommodation" value="ano"> Ano, budu potÅebovat ubytovÃ¡nÃ­</label>
+              <label class="radio-opt"><input type="radio" name="accommodation" value="ne"> Ne, ubytovÃ¡nÃ­ nepotÅebuji</label>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Vzkaz pro novomanžele</label>
-            <textarea placeholder="Těšíme se na vás!..."></textarea>
+            <label>Vzkaz pro novomanÅ¾ele</label>
+            <textarea placeholder="TÄÅ¡Ã­me se na vÃ¡s!..."></textarea>
           </div>
 
-          <button type="submit" class="btn-submit">Odeslat potvrzení</button>
+          <button type="submit" class="btn-submit">Odeslat potvrzenÃ­</button>
         </form>
 
         <div class="rsvp-success" id="rsvpSuccess">
-          <h3>Děkujeme! 🌿</h3>
-          <p>Vaše odpověď byla přijata.<br>Brzy vám zašleme detaily na uvedený e-mail.</p>
+          <h3>DÄkujeme! ð¿</h3>
+          <p>VaÅ¡e odpovÄÄ byla pÅijata.<br>Brzy vÃ¡m zaÅ¡leme detaily na uvedenÃ½ e-mail.</p>
         </div>
       </div>
     </section>
@@ -917,19 +917,19 @@
     <!-- FOOTER -->
     <footer>
       <p class="footer-names">Natali & Honza</p>
-      <p>29. srpna 2025 · Mlýn Propast</p>
+      <p>29. srpna 2025 Â· MlÃ½n Propast</p>
     </footer>
 
   </div><!-- /right-panel -->
 </div><!-- /site-wrapper -->
 
 <script>
-  // ─── Companion field toggle ──────────────────────────────
+  // âââ Companion field toggle ââââââââââââââââââââââââââââââ
   function toggleCompanion(val) {
     document.getElementById('companionField').style.display = val === '2' ? 'flex' : 'none';
   }
 
-  // ─── Countdown ───────────────────────────────────────────
+  // âââ Countdown âââââââââââââââââââââââââââââââââââââââââââ
   const wedding = new Date('2026-08-29T14:00:00');
   function updateCountdown() {
     const diff = wedding - new Date();
@@ -949,12 +949,12 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // ─── Nav scroll ──────────────────────────────────────────
+  // âââ Nav scroll ââââââââââââââââââââââââââââââââââââââââââ
   window.addEventListener('scroll', () => {
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ─── Scroll-driven media slide switching ─────────────────
+  // âââ Scroll-driven media slide switching âââââââââââââââââ
   const slides = {
     hero:    document.getElementById('slide-hero'),
     info:    document.getElementById('slide-info'),
@@ -983,7 +983,7 @@
 
   sections.forEach(s => sectionObserver.observe(s));
 
-  // ─── Reveal on scroll ────────────────────────────────────
+  // âââ Reveal on scroll ââââââââââââââââââââââââââââââââââââ
   const reveals = document.querySelectorAll('.reveal');
   const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -992,7 +992,7 @@
   }, { threshold: 0.1 });
   reveals.forEach(r => revealObs.observe(r));
 
-  // ─── RSVP form ───────────────────────────────────────────
+  // âââ RSVP form âââââââââââââââââââââââââââââââââââââââââââ
   document.getElementById('rsvpForm').addEventListener('submit', function(e) {
     e.preventDefault();
     this.style.display = 'none';
