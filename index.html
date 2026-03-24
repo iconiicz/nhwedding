@@ -2,26 +2,37 @@
 <html lang="cs">
 <head>
 <script>
-// Okamžitý fix pro mobil – spustí se před načtením stránky
+// Mobile hero fix - spustí se co nejdříve
 (function() {
   function fixMobileHero() {
-    if (window.innerWidth <= 768) {
-      var hero = document.getElementById('rp-hero');
-      if (hero) {
-        hero.style.setProperty('background-image', 'none', 'important');
-        hero.style.setProperty('background', '#707e74', 'important');
-      }
+    // Použij matchMedia - spolehlivější než innerWidth při načtení
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    var hero = document.getElementById('rp-hero');
+    if (!hero) return;
+    if (isMobile) {
+      hero.style.setProperty('background-image', 'none', 'important');
+      hero.style.setProperty('background', '#707e74', 'important');
+    } else {
+      hero.style.removeProperty('background-image');
+      hero.style.removeProperty('background');
     }
   }
-  // Spustit okamžitě při DOMContentLoaded
-  document.addEventListener('DOMContentLoaded', fixMobileHero);
-  // Spustit znovu po plném načtení (pro jistotu)
-  window.addEventListener('load', fixMobileHero);
-  // Spustit každých 100ms prvních 2 sekund (pokud JS přepíše background)
-  var interval = setInterval(function() {
+  // Spustit co nejdříve
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fixMobileHero);
+  } else {
     fixMobileHero();
-  }, 100);
-  setTimeout(function() { clearInterval(interval); }, 2000);
+  }
+  window.addEventListener('load', fixMobileHero);
+  // Sleduj změny velikosti okna
+  window.matchMedia('(max-width: 768px)').addEventListener('change', fixMobileHero);
+  // Spustit každých 50ms první sekundu jako pojistka
+  var t = 0;
+  var iv = setInterval(function() {
+    fixMobileHero();
+    t += 50;
+    if (t >= 1000) clearInterval(iv);
+  }, 50);
 })();
 </script>
 <meta charset="UTF-8">
