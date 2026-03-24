@@ -961,5 +961,37 @@
     document.getElementById('rsvpSuccess').style.display = 'block';
   });
 </script>
+
+<script>
+(function() {
+  var form = document.getElementById('rsvpForm');
+  if (!form) return;
+  
+  // Remove all existing submit listeners by cloning the form
+  var newForm = form.cloneNode(true);
+  form.parentNode.replaceChild(newForm, form);
+  
+  newForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var data = new FormData(newForm);
+    fetch('https://formspree.io/f/meeryvpn', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res) {
+      if (res.ok) {
+        newForm.style.display = 'none';
+        var success = document.querySelector('.rsvp-success');
+        if (success) success.style.display = 'block';
+        else newForm.insertAdjacentHTML('afterend', '<div style="color:white;padding:2rem;text-align:center"><h3>Děkujeme!</h3><p>Vaše odpověď byla přijata.</p></div>');
+      } else {
+        alert('Něco se pokazilo. Zkuste to prosím znovu.');
+      }
+    }).catch(function() {
+      alert('Chyba připojení. Zkuste to prosím znovu.');
+    });
+  });
+})();
+</script>
 </body>
 </html>
