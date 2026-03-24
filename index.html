@@ -274,25 +274,54 @@
     .left-panel { display: none; }
     .right-panel { width: 100%; }
 
-    /* HERO: fotka + text */
-    .rp-hero {
-      min-height: 85vw;
-      background: url('1.webp') center top / cover no-repeat !important;
+    /* Mobile hero fotka – nový blok nad zeleným barem */
+    .mobile-hero-photo {
+      display: block;
       position: relative;
-      justify-content: flex-end;
-      padding-bottom: 2.5rem;
+      width: 100%;
+      height: 100vw;
+      background: url('1.webp') center top / cover no-repeat;
+      overflow: hidden;
     }
-    .rp-hero::after {
+    .mobile-hero-photo::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
-      z-index: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.55) 100%);
     }
-    .rp-hero > * { position: relative; z-index: 1; }
-    .rp-hero .countdown { display: none; }
+    .mobile-hero-names {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 2;
+    }
+    .mobile-hero-names h1 {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(2.8rem, 12vw, 5rem);
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      margin: 0 0 0.5rem;
+    }
+    .mobile-hero-names p {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
 
-    /* SEKCE: fotka přes celou šířku bez rámečku */
+    /* Skrýt původní rp-hero pozadí, jen zelený bar */
+    .rp-hero {
+      background: var(--green) !important;
+      min-height: auto;
+      padding: 2.5rem 1.5rem;
+    }
+    .rp-hero::after { display: none; }
+
+    /* Sekce – fotka přes celou šířku */
     .rp-section {
       padding-top: 0 !important;
       padding-left: 0 !important;
@@ -300,10 +329,7 @@
       display: flex;
       flex-direction: column;
     }
-    /* Obsah sekce dostane padding zpět */
-    .rp-section .reveal {
-      padding: 2.5rem 2rem;
-    }
+    .rp-section .reveal { padding: 2.5rem 2rem; }
     .rp-section[data-slide="info"]::before,
     .rp-section[data-slide="program"]::before,
     .rp-section[data-slide="rsvp"]::before {
@@ -320,6 +346,8 @@
     .rp-section[data-slide="program"]::before { background-image: url('3.webp'); }
     .rp-section[data-slide="rsvp"]::before    { background-image: url('4.webp'); }
   }
+  /* Skrýt mobile-hero-photo na desktopu */
+  .mobile-hero-photo { display: none; }
   @media (max-width: 560px) { .nav-links { display: none; } }
 
   @media (max-width: 768px) {
@@ -833,6 +861,14 @@
   </div><!-- /left-panel -->
 
   <!-- RIGHT: Scrollable content -->
+  <!-- Mobile hero photo -->
+  <div class="mobile-hero-photo">
+    <div class="mobile-hero-names">
+      <h1>Natali &amp; Honza</h1>
+      <p>BTW…budeme se brát</p>
+    </div>
+  </div>
+
   <div class="right-panel">
 
     <!-- Hero info pane -->
