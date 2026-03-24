@@ -1168,5 +1168,25 @@
       nav.classList.remove('scrolled');
     }
   });
+
+  // Mobile: remove background image from rp-hero green bar
+  if (window.innerWidth <= 768) {
+    var hero = document.querySelector('.rp-hero');
+    if (hero) {
+      hero.style.backgroundImage = 'none';
+      hero.style.background = 'var(--green)';
+    }
+  }
+  window.addEventListener('resize', function() {
+    var hero = document.querySelector('.rp-hero');
+    if (!hero) return;
+    if (window.innerWidth <= 768) {
+      hero.style.backgroundImage = 'none';
+      hero.style.background = 'var(--green)';
+    } else {
+      hero.style.backgroundImage = '';
+      hero.style.background = '';
+    }
+  });
 </script></body>
 </html>
