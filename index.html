@@ -233,8 +233,8 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(112,126,116,.97);
-    padding: 0.9rem 1.875rem;
+    background: transparent;
+    padding: 0.55rem 1.4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1017,5 +1017,15 @@
     }, true); // capture phase - runs before other handlers
   });
 })();
+
+  // Nav transparent -> green on scroll
+  window.addEventListener('scroll', function() {
+    var nav = document.querySelector('nav');
+    if (window.scrollY > 10) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
 </script></body>
 </html>
