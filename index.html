@@ -857,7 +857,7 @@
 
     <!-- Hero info pane -->
     <div class="mobile-hero-photo"><div class="mobile-hero-names"><h1>Natali &amp; Honza</h1><p>BTW…budeme se brát</p></div></div>
-    <section class="rp-hero" id="rp-hero" data-slide="hero">
+    <section class="rp-hero" id="rp-hero" data-slide="hero" style="">
       <p class="rp-hero-day">Sobota</p>
       <p class="rp-hero-date">29. srpna 2026</p>
       <p class="rp-hero-location">Mlýn Propast</p>
@@ -1138,6 +1138,10 @@
 <script>
 (function() {
   window.addEventListener('load', function() {
+  if (window.innerWidth <= 768) {
+    var rpHero = document.getElementById('rp-hero');
+    if (rpHero) rpHero.style.cssText = 'background: #707e74 !important; background-image: none !important;';
+  }
     var form = document.getElementById('rsvpForm');
     if (!form) return;
     form.addEventListener('submit', function(e) {
@@ -1162,6 +1166,11 @@
   // Nav transparent -> green on scroll
   window.addEventListener('scroll', function() {
     var nav = document.querySelector('nav');
+  // Mobile: ensure rp-hero has no background image
+  if (window.innerWidth <= 768) {
+    var rpHero = document.getElementById('rp-hero');
+    if (rpHero) rpHero.style.cssText = 'background: #707e74 !important; background-image: none !important;';
+  }
     if (window.scrollY > 10) {
       nav.classList.add('scrolled');
     } else {
