@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+<script>
+// Okamžitý fix pro mobil – spustí se před načtením stránky
+(function() {
+  function fixMobileHero() {
+    if (window.innerWidth <= 768) {
+      var hero = document.getElementById('rp-hero');
+      if (hero) {
+        hero.style.setProperty('background-image', 'none', 'important');
+        hero.style.setProperty('background', '#707e74', 'important');
+      }
+    }
+  }
+  // Spustit okamžitě při DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', fixMobileHero);
+  // Spustit znovu po plném načtení (pro jistotu)
+  window.addEventListener('load', fixMobileHero);
+  // Spustit každých 100ms prvních 2 sekund (pokud JS přepíše background)
+  var interval = setInterval(function() {
+    fixMobileHero();
+  }, 100);
+  setTimeout(function() { clearInterval(interval); }, 2000);
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Natali & Honza — 29. 8. 2025</title>
