@@ -274,7 +274,7 @@
     .left-panel { display: none; }
     .right-panel { width: 100%; }
 
-    /* Mobile hero fotka s jmény */
+    /* Mobile hero foto blok */
     .mobile-hero-photo {
       display: block !important;
       position: relative;
@@ -292,8 +292,7 @@
     .mobile-hero-names {
       position: absolute;
       bottom: 2.5rem;
-      left: 0;
-      right: 0;
+      left: 0; right: 0;
       text-align: center;
       z-index: 2;
     }
@@ -312,7 +311,7 @@
       color: rgba(255,255,255,0.65);
     }
 
-    /* Zelený rp-hero bar – jen info, bez fotky */
+    /* Zelený bar – bez fotky pozadí */
     .rp-hero {
       background: var(--green) !important;
       min-height: auto !important;
@@ -320,7 +319,7 @@
     }
     .rp-hero::after { display: none !important; }
 
-    /* Sekce – fotka přes celou šířku */
+    /* Sekce – fotky přes celou šířku */
     .rp-section {
       padding-top: 0 !important;
       padding-left: 0 !important;
@@ -345,6 +344,7 @@
     .rp-section[data-slide="program"]::before { background-image: url('3.webp'); }
     .rp-section[data-slide="rsvp"]::before    { background-image: url('4.webp'); }
   }
+  .mobile-hero-photo { display: none; }
   .mobile-hero-photo { display: none; }
   /* Skrýt mobile-hero-photo na desktopu */
   .mobile-hero-photo { display: none; }
@@ -861,25 +861,20 @@
   </div><!-- /left-panel -->
 
   <!-- RIGHT: Scrollable content -->
-  <!-- Mobile hero photo -->
-  <div class="mobile-hero-photo">
-    <div class="mobile-hero-names">
-      <h1>Natali &amp; Honza</h1>
-      <p>BTW…budeme se brát</p>
     </div>
-  </div>
 
   <div class="right-panel">
 
     <!-- Hero info pane -->
-    <!-- Mobile hero photo with names -->
+    </div>
+
+    <!-- Mobile hero photo -->
     <div class="mobile-hero-photo">
       <div class="mobile-hero-names">
         <h1>Natali &amp; Honza</h1>
         <p>BTW…budeme se brát</p>
       </div>
     </div>
-
     <section class="rp-hero" id="rp-hero" data-slide="hero">
       <p class="rp-hero-day">Sobota</p>
       <p class="rp-hero-date">29. srpna 2026</p>
