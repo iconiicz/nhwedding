@@ -268,6 +268,8 @@
   }
   .nav-links a:hover { color: var(--cream); }
 
+  .d-mobile { display: none; }
+  @media (max-width: 768px) { .d-mobile { display: block; } }
   @media (max-width: 560px) { .nav-links { display: none; } }
 
   @media (max-width: 768px) {
@@ -275,22 +277,36 @@
     .left-panel { display: none; }
     .right-panel { width: 100%; }
 
-    /* Hero – fotka jako pozadí s překryvem, text nad ní */
+    /* ── HERO: fotka na celou výšku s textem, zelený bar pod ní ── */
     .rp-hero {
-      min-height: 100vw;
+      min-height: 85vw;
       background: url('1.webp') center top / cover no-repeat !important;
       position: relative;
+      justify-content: flex-end;
+      padding-bottom: 2.5rem;
     }
     .rp-hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.3);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 100%);
       z-index: 0;
     }
     .rp-hero > * { position: relative; z-index: 1; }
 
-    /* Sekce – fotka nahoře, obsah dole */
+    /* Countdown bar – zelený blok pod fotkou jako na desktopu */
+    .rp-hero .countdown {
+      display: none;
+    }
+    /* Přidat zelený info bar pod hero – pomocí pseudo na wrapperu */
+    .rp-hero-bar {
+      background: var(--green);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--cream);
+    }
+
+    /* ── SEKCE: padding pryč, fotka přes celou šířku ── */
     .rp-section {
       padding-top: 0 !important;
       display: flex;
@@ -302,21 +318,19 @@
       content: '';
       display: block;
       width: 100%;
-      height: 60vw;
+      height: 65vw;
       min-height: 220px;
       background-size: cover;
       background-position: center;
       flex-shrink: 0;
+      margin: 0;
+      padding: 0;
     }
     .rp-section[data-slide="info"]::before    { background-image: url('2.webp'); }
     .rp-section[data-slide="program"]::before { background-image: url('3.webp'); }
     .rp-section[data-slide="rsvp"]::before    { background-image: url('4.webp'); }
 
-    .rp-section .reveal {
-      padding-top: 2.5rem;
-      position: relative;
-      z-index: 1;
-    }
+    .rp-section .reveal { padding-top: 2.5rem; }
   }
 
   /* ─── RIGHT PANEL SECTIONS ───────────────────────────────── */
@@ -786,6 +800,13 @@
         <div class="cd-unit"><div class="cd-num" id="cd-sec">—</div><div class="cd-label">Sekund</div></div>
       </div>
     </section>
+    <!-- Mobile green info bar -->
+    <div class="rp-hero-bar d-mobile">
+      <p style="font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;opacity:.6;margin-bottom:.8rem">Sobota · 29. srpna 2026</p>
+      <p style="font-size:1.1rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500">Mlýn Propast</p>
+      <div style="width:1px;height:2rem;background:rgba(255,255,255,.3);margin:1.2rem auto"></div>
+      <a href="#rsvp" style="display:inline-block;border:1px solid rgba(255,255,255,.6);padding:.65rem 2rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);text-decoration:none">Vyplnit formulář</a>
+    </div>
 
     <!-- INFO -->
     <section id="info" class="rp-section bg-sand" data-slide="info">
