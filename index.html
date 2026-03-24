@@ -814,11 +814,11 @@
           <div class="form-row">
             <div class="form-group">
               <label>Jméno a příjmení *</label>
-              <input type="text" name="jmeno" placeholder="Jana Nováková" required>
+              <input type="text" name="jmeno" name="jmeno" placeholder="Jana Nováková" required>
             </div>
             <div class="form-group">
               <label>E-mail *</label>
-              <input type="email" name="email" placeholder="jana@email.cz" required>
+              <input type="email" name="email" name="email" placeholder="jana@email.cz" required>
             </div>
           </div>
 
@@ -850,7 +850,7 @@
 
           <div class="form-group" id="companionField" style="display:none">
             <label>Jméno doprovodu</label>
-            <input type="text" name="doprovod" placeholder="Jméno a příjmení doprovodu">
+            <input type="text" name="doprovod" name="doprovod" placeholder="Jméno a příjmení doprovodu">
           </div>
 
           <div class="form-group">
@@ -863,7 +863,7 @@
 
           <div class="form-group">
             <label>Vzkaz pro novomanžele</label>
-            <textarea name="vzkaz" placeholder="Těšíme se na vás!..."></textarea>
+            <textarea name="vzkaz" name="vzkaz" placeholder="Těšíme se na vás!..."></textarea>
           </div>
 
           <button type="submit" class="btn-submit">Odeslat potvrzení</button>
@@ -993,5 +993,28 @@
   });
 })();
 </script>
-</body>
+<script>
+(function() {
+  window.addEventListener('load', function() {
+    var form = document.getElementById('rsvpForm');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var formData = new FormData(form);
+      fetch('https://formspree.io/f/meeryvpn', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(r) {
+        if (r.ok) {
+          form.style.display = 'none';
+          var s = document.querySelector('.rsvp-success');
+          if (s) { s.style.display = 'block'; }
+        } else { alert('Chyba. Zkuste to znovu.'); }
+      }).catch(function() { alert('Chyba připojení.'); });
+    }, true); // capture phase - runs before other handlers
+  });
+})();
+</script></body>
 </html>
