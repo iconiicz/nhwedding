@@ -271,78 +271,38 @@
   @media (max-width: 560px) { .nav-links { display: none; } }
 
   @media (max-width: 768px) {
-    /* Skrýt celou nav lištu */
+    /* Skrýt nav lištu */
     nav { display: none; }
 
-    /* Nápis posunout dolů - pod ruce */
-    .slide-main-name,
-    .slide-hero .slide-main-name {
-      position: absolute;
-      bottom: 6rem;
-      left: 0;
-      right: 0;
-      text-align: center;
-    }
-    .slide-hero .slide-content {
-      justify-content: flex-end;
-      padding-bottom: 5rem;
-    }
-
-    /* ── Mobilní sekce: fotka nahoře, obsah dole ── */
-    /* Skrýt left panel (slidshow) úplně */
+    /* Skrýt left panel slideshow */
     .left-panel { display: none; }
 
     /* Right panel přes celou šířku */
     .right-panel { width: 100%; }
 
-    /* Každá sekce dostane fotku jako header */
-    #info { background-image: url('2.webp'); background-size: cover; background-position: center; }
-    #info::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 45vw;
-      background: inherit;
-      background-size: cover;
-      background-position: center;
-      margin-bottom: 2rem;
+    /* Sekce – odstranit padding nahoře, fotka bude jako první blok */
+    .rp-section {
+      padding-top: 0 !important;
     }
 
-    /* Info sekce fotka */
-    .rp-section[data-slide="info"] {
-      background-image: none;
-      padding-top: 0;
-    }
-    .rp-section[data-slide="info"]::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 55vw;
-      background-image: url('2.webp');
-      background-size: cover;
-      background-position: center;
-    }
-
-    /* Program sekce fotka */
-    .rp-section[data-slide="program"]::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 55vw;
-      background-image: url('3.webp');
-      background-size: cover;
-      background-position: center;
-    }
-
-    /* RSVP sekce fotka */
+    /* Fotka nahoře v každé sekci přes ::before pseudo-element */
+    .rp-section[data-slide="info"]::before,
+    .rp-section[data-slide="program"]::before,
     .rp-section[data-slide="rsvp"]::before {
       content: '';
       display: block;
       width: 100%;
-      height: 55vw;
-      background-image: url('4.webp');
+      height: 60vw;
       background-size: cover;
       background-position: center;
+    }
+    .rp-section[data-slide="info"]::before    { background-image: url('2.webp'); }
+    .rp-section[data-slide="program"]::before { background-image: url('3.webp'); }
+    .rp-section[data-slide="rsvp"]::before    { background-image: url('4.webp'); }
+
+    /* Obsah sekce začíná pod fotkou */
+    .rp-section .reveal {
+      padding-top: 2.5rem;
     }
   }
 
