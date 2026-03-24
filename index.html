@@ -273,8 +273,6 @@
     nav { display: none; }
     .left-panel { display: none; }
     .right-panel { width: 100%; }
-
-    /* Mobile hero foto blok s jmény */
     .mobile-hero-photo {
       display: block !important;
       position: relative;
@@ -310,16 +308,12 @@
       text-transform: uppercase;
       color: rgba(255,255,255,0.65);
     }
-
-    /* Zelený bar bez fotky */
     .rp-hero {
       background: var(--green) !important;
       min-height: auto !important;
       padding: 2.5rem 1.5rem !important;
     }
     .rp-hero::after { display: none !important; }
-
-    /* Sekce – fotky přes celou šířku */
     .rp-section {
       padding-top: 0 !important;
       padding-left: 0 !important;
@@ -344,9 +338,6 @@
     .rp-section[data-slide="program"]::before { background-image: url('3.webp'); }
     .rp-section[data-slide="rsvp"]::before    { background-image: url('4.webp'); }
   }
-  .mobile-hero-photo { display: none; }
-  .mobile-hero-photo { display: none; }
-  /* Skrýt mobile-hero-photo na desktopu */
   .mobile-hero-photo { display: none; }
   @media (max-width: 560px) { .nav-links { display: none; } }
 
@@ -861,15 +852,10 @@
   </div><!-- /left-panel -->
 
   <!-- RIGHT: Scrollable content -->
-  </div>
+  <div class="right-panel">
 
-    <!-- Mobile hero photo -->
-    <div class="mobile-hero-photo">
-      <div class="mobile-hero-names">
-        <h1>Natali &amp; Honza</h1>
-        <p>BTW…budeme se brát</p>
-      </div>
-    </div>
+    <!-- Hero info pane -->
+    <div class="mobile-hero-photo"><div class="mobile-hero-names"><h1>Natali &amp; Honza</h1><p>BTW…budeme se brát</p></div></div>
     <section class="rp-hero" id="rp-hero" data-slide="hero">
       <p class="rp-hero-day">Sobota</p>
       <p class="rp-hero-date">29. srpna 2026</p>
