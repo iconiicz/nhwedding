@@ -810,15 +810,15 @@
         <h2 class="section-title">Přijmete naše <em>pozvání?</em></h2>
         <p class="section-body">Prosíme potvrďte svou účast do 30. června 2025. Těšíme se na vás!</p>
 
-        <form class="rsvp-form" id="rsvpForm">
+        <form class="rsvp-form" id="rsvpForm" action="https://formspree.io/f/meeryvpn" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label>Jméno a příjmení *</label>
-              <input type="text" placeholder="Jana Nováková" required>
+              <input type="text" name="jmeno" placeholder="Jana Nováková" required>
             </div>
             <div class="form-group">
               <label>E-mail *</label>
-              <input type="email" placeholder="jana@email.cz" required>
+              <input type="email" name="email" placeholder="jana@email.cz" required>
             </div>
           </div>
 
@@ -833,14 +833,14 @@
           <div class="form-row">
             <div class="form-group">
               <label>Počet osob (včetně vás)</label>
-              <select id="personCount" onchange="toggleCompanion(this.value)">
+              <select id="personCount" name="pocet_osob" onchange="toggleCompanion(this.value)">
                 <option value="1">1 osoba</option>
                 <option value="2">2 osoby</option>
               </select>
             </div>
             <div class="form-group">
               <label>Stravovací preference</label>
-              <select>
+              <select name="stravovani">
                 <option value="">Bez omezení</option>
                 <option value="vegetarian">Vegetarián/ka</option>
                 <option value="vegan">Vegan/ka</option>
@@ -850,7 +850,7 @@
 
           <div class="form-group" id="companionField" style="display:none">
             <label>Jméno doprovodu</label>
-            <input type="text" placeholder="Jméno a příjmení doprovodu">
+            <input type="text" name="doprovod" placeholder="Jméno a příjmení doprovodu">
           </div>
 
           <div class="form-group">
@@ -863,7 +863,7 @@
 
           <div class="form-group">
             <label>Vzkaz pro novomanžele</label>
-            <textarea placeholder="Těšíme se na vás!..."></textarea>
+            <textarea name="vzkaz" placeholder="Těšíme se na vás!..."></textarea>
           </div>
 
           <button type="submit" class="btn-submit">Odeslat potvrzení</button>
