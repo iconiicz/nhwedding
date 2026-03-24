@@ -275,30 +275,51 @@
     .left-panel { display: none; }
     .right-panel { width: 100%; }
 
-    /* Fotka nahoře jako blok, text čistě pod ní */
+    /* Hero sekce – vrátit fotku 1.webp jako pozadí s textem */
+    .rp-hero {
+      position: relative;
+      min-height: 100vw;
+      background-image: url('1.webp');
+      background-size: cover;
+      background-position: center top;
+    }
+    .rp-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+    }
+    .rp-hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Sekce – bez padding nahoře, fotka jako první blok */
     .rp-section {
       padding-top: 0 !important;
       display: flex;
       flex-direction: column;
     }
+
+    /* Fotky přes celou šířku */
     .rp-section[data-slide="info"]::before,
     .rp-section[data-slide="program"]::before,
     .rp-section[data-slide="rsvp"]::before {
       content: '';
       display: block;
-      width: 100%;
+      width: 100vw;
+      margin-left: calc(-1 * var(--section-padding, 0px));
       height: 60vw;
-      min-height: 200px;
+      min-height: 220px;
       background-size: cover;
       background-position: center;
       flex-shrink: 0;
-      order: -1;
     }
     .rp-section[data-slide="info"]::before    { background-image: url('2.webp'); }
     .rp-section[data-slide="program"]::before { background-image: url('3.webp'); }
     .rp-section[data-slide="rsvp"]::before    { background-image: url('4.webp'); }
 
-    /* Obsah sekce pod fotkou s paddingem */
+    /* Obsah pod fotkou */
     .rp-section .reveal {
       padding-top: 2.5rem;
       position: relative;
