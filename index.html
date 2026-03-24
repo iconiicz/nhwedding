@@ -271,21 +271,16 @@
   @media (max-width: 560px) { .nav-links { display: none; } }
 
   @media (max-width: 768px) {
-    /* Skrýt nav lištu */
     nav { display: none; }
-
-    /* Skrýt left panel slideshow */
     .left-panel { display: none; }
-
-    /* Right panel přes celou šířku */
     .right-panel { width: 100%; }
 
-    /* Sekce – odstranit padding nahoře, fotka bude jako první blok */
+    /* Fotka nahoře jako blok, text čistě pod ní */
     .rp-section {
       padding-top: 0 !important;
+      display: flex;
+      flex-direction: column;
     }
-
-    /* Fotka nahoře v každé sekci přes ::before pseudo-element */
     .rp-section[data-slide="info"]::before,
     .rp-section[data-slide="program"]::before,
     .rp-section[data-slide="rsvp"]::before {
@@ -293,16 +288,21 @@
       display: block;
       width: 100%;
       height: 60vw;
+      min-height: 200px;
       background-size: cover;
       background-position: center;
+      flex-shrink: 0;
+      order: -1;
     }
     .rp-section[data-slide="info"]::before    { background-image: url('2.webp'); }
     .rp-section[data-slide="program"]::before { background-image: url('3.webp'); }
     .rp-section[data-slide="rsvp"]::before    { background-image: url('4.webp'); }
 
-    /* Obsah sekce začíná pod fotkou */
+    /* Obsah sekce pod fotkou s paddingem */
     .rp-section .reveal {
       padding-top: 2.5rem;
+      position: relative;
+      z-index: 1;
     }
   }
 
