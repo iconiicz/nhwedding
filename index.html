@@ -780,7 +780,12 @@
     /* On mobile hide left panel slide changes — just show one */
     .media-slide.active { opacity: 1; }
   }
-</style>
+
+  .info-card--full {
+    grid-column: 1 / -1;
+    margin-bottom: 1.2rem;
+  }
+  </style>
 </head>
 <body>
 
@@ -851,15 +856,17 @@
       <p style="font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;opacity:.6;margin-bottom:.8rem">Sobota · 29. srpna 2026</p>
       <p style="font-size:1.1rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500">Mlýn Propast</p>
       <div style="width:1px;height:2rem;background:rgba(255,255,255,.3);margin:1.2rem auto"></div>
-      <a href="#rsvp" style="display:inline-block;border:1px solid rgba(255,255,255,.6);padding:.65rem 2rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);text-decoration:none">Vyplnit formulář</a>
-    </div>
-
-    <!-- INFO -->
-    <section id="info" class="rp-section bg-sand" data-slide="info">
+      <a href="#rsvp" style="display:inline-block;border:1px solid rgba(255,255,255,.6);padding:.65rem 2rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--crea<section id="info" class="rp-section bg-sand" data-slide="info">
       <div class="reveal">
-        <p class="section-label">Praktické informace</p>
-        <h2 class="section-title">Vše, co <em>potřebujete vědět</em></h2>
-        <p class="section-body">Jsme nadšeni, že vás přivítáme na naší svatbě. Níže najdete vše důležité pro tento den.</p>
+        <p class="section-label">Informace</p>
+        <h2 class="section-title">Kdy, kde, co <em>a jak...</em></h2>
+
+        <!-- Čtvereček přes celou šířku -->
+        <div class="info-card info-card--full">
+          <h3>Budeme se brát. ale...</h3>
+          <p>Na svatbě už budeme svoji. Jelikož nás bude oddávat Martin Mikyska, tak se musíme vzít před tím, ale dokud to neposvětí Mikýř, tak to neplatí.</p>
+        </div>
+
         <div class="info-grid">
           <div class="info-card">
             <div class="info-card-icon">📍</div>
@@ -869,7 +876,7 @@
           <div class="info-card">
             <div class="info-card-icon">📅</div>
             <h3>Datum & čas</h3>
-            <p>29. srpna 2025<br>Obřad začíná ve 14:00 hod.<br>Prosíme přijďte s předstihem.</p>
+            <p>29. srpna 2026<br>Obřad začíná ve 12:30 hod.<br>Prosíme přijďte s předstihem.</p>
           </div>
           <div class="info-card">
             <div class="info-card-icon">👗</div>
@@ -880,6 +887,10 @@
             <div class="info-card-icon">🌿</div>
             <h3>Poznámka</h3>
             <p>Prosíme o potvrzení účasti do 30. června 2025 přes formulář níže.</p>
+          </div>
+        </div>
+      </div>
+    </section>s formulář níže.</p>
           </div>
         </div>
       </div>
