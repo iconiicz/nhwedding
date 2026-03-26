@@ -536,6 +536,7 @@
     margin-top: 2rem;
   }
 
+  .info-card--full { grid-column: 1 / -1; }
   .info-card {
     background: var(--cream);
     padding: 1.8rem 1.4rem;
@@ -857,9 +858,12 @@
     <!-- INFO -->
     <section id="info" class="rp-section bg-sand" data-slide="info">
       <div class="reveal">
-        <p class="section-label">Praktické informace</p>
-        <h2 class="section-title">Vše, co <em>potřebujete vědět</em></h2>
-        <p class="section-body">Jsme nadšeni, že vás přivítáme na naší svatbě. Níže najdete vše důležité pro tento den.</p>
+        <p class="section-label">Informace</p>
+        <h2 class="section-title">Kdy, kde, co <em>a jak...</em></h2>
+        <div class="info-card" style="grid-column:1/-1;margin-bottom:1.5rem;">
+          <h3>Budeme se brát. ale...</h3>
+          <p>Na svatbě už budeme svoji. Jelikož nás bude oddávat Martin Mikyska, tak se musíme vzít před tím, ale dokud to neposvětí Mikýř, tak to neplatí.</p>
+        </div>
         <div class="info-grid">
           <div class="info-card">
             <div class="info-card-icon">📍</div>
