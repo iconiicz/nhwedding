@@ -780,12 +780,7 @@
     /* On mobile hide left panel slide changes — just show one */
     .media-slide.active { opacity: 1; }
   }
-
-  .info-card--full {
-    grid-column: 1 / -1;
-    margin-bottom: 1.2rem;
-  }
-  </style>
+</style>
 </head>
 <body>
 
@@ -855,18 +850,16 @@
     <div class="rp-hero-bar d-mobile">
       <p style="font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;opacity:.6;margin-bottom:.8rem">Sobota · 29. srpna 2026</p>
       <p style="font-size:1.1rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500">Mlýn Propast</p>
-      <div style="width:1px;height:2rem;background:rgba(255,255,255,.3);margin:1.2rem auto"></a></div>
-    </div></div>
+      <div style="width:1px;height:2rem;background:rgba(255,255,255,.3);margin:1.2rem auto"></div>
+      <a href="#rsvp" style="display:inline-block;border:1px solid rgba(255,255,255,.6);padding:.65rem 2rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);text-decoration:none">Vyplnit formulář</a>
+    </div>
+
+    <!-- INFO -->
     <section id="info" class="rp-section bg-sand" data-slide="info">
       <div class="reveal">
-        <p class="section-label">Informace</p>
-        <h2 class="section-title">Kdy, kde, co <em>a jak...</em></h2>
-
-        <div class="info-card" style="grid-column: 1 / -1; margin-bottom: 1.5rem;">
-          <h3>Budeme se brát. ale...</h3>
-          <p>Na svatbě už budeme svoji. Jelikož nás bude oddávat Martin Mikyska, tak se musíme vzít před tím, ale dokud to neposvětí Mikýř, tak to neplatí.</p>
-        </div>
-
+        <p class="section-label">Praktické informace</p>
+        <h2 class="section-title">Vše, co <em>potřebujete vědět</em></h2>
+        <p class="section-body">Jsme nadšeni, že vás přivítáme na naší svatbě. Níže najdete vše důležité pro tento den.</p>
         <div class="info-grid">
           <div class="info-card">
             <div class="info-card-icon">📍</div>
@@ -876,7 +869,7 @@
           <div class="info-card">
             <div class="info-card-icon">📅</div>
             <h3>Datum & čas</h3>
-            <p>29. srpna 2026<br>Obřad začíná ve 12:30 hod.<br>Prosíme přijďte s předstihem.</p>
+            <p>29. srpna 2025<br>Obřad začíná ve 14:00 hod.<br>Prosíme přijďte s předstihem.</p>
           </div>
           <div class="info-card">
             <div class="info-card-icon">👗</div>
@@ -890,10 +883,6 @@
           </div>
         </div>
       </div>
-    </section>s formulář níže.</p>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- PROGRAM -->
@@ -901,34 +890,151 @@
       <div class="reveal">
         <p class="section-label">Harmonogram dne</p>
         <h2 class="section-title">Program <em>slavnostního dne</em></h2>
-        <ul class="timeline">
-          <li>
-            <p class="tl-time">11:30</p>
-            <p class="tl-event">Příjezd hostů</p>
-          </li>
-          <li>
-            <p class="tl-time">12:30</p>
-            <p class="tl-event">Obřad</p>
-          </li>
-          <li>
-            <p class="tl-time">13:30</p>
-            <p class="tl-event">Oběd + dort</p>
-          </li>
-          <li>
-            <p class="tl-time">17:30</p>
-            <p class="tl-event">Focení</p>
-            <p class="tl-note">Kapela hraje</p>
-          </li>
-          <li>
-            <p class="tl-time">19:30</p>
-            <p class="tl-event">První tanec</p>
-          </li>
-          <li>
-            <p class="tl-time">20:00</p>
-            <p class="tl-event">We Party</p>
-            <p class="tl-note">DJ</p>
-          </li>
-        </ul>
+
+        <!-- Timeline diagram -->
+        <div class="prog-timeline">
+          <!-- Hlavní osa -->
+          <div class="prog-main">
+            <div class="prog-item">
+              <div class="prog-time">11:30</div>
+              <div class="prog-box">Příjezd</div>
+            </div>
+            <div class="prog-item">
+              <div class="prog-time">12:30</div>
+              <div class="prog-box">Obřad</div>
+            </div>
+            <div class="prog-item">
+              <div class="prog-time">13:30</div>
+              <div class="prog-box">Oběd<span class="prog-note">+dort</span></div>
+            </div>
+            <div class="prog-item">
+              <div class="prog-time">17:30</div>
+              <div class="prog-box">Focení</div>
+              <div class="prog-branch">
+                <div class="prog-box prog-box--sub">Kapela</div>
+              </div>
+            </div>
+            <div class="prog-item">
+              <div class="prog-time">19:30</div>
+              <div class="prog-box">První tanec</div>
+            </div>
+            <div class="prog-item">
+              <div class="prog-time">20:00</div>
+              <div class="prog-box">We Party</div>
+              <div class="prog-branch">
+                <div class="prog-box prog-box--sub">DJ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <style>
+          .prog-timeline { margin-top: 2.5rem; overflow-x: auto; padding-bottom: 1rem; }
+          .prog-main {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+            min-width: 600px;
+            position: relative;
+          }
+          .prog-main::before {
+            content: '';
+            position: absolute;
+            top: 2.8rem;
+            left: 2rem;
+            right: 2rem;
+            height: 1px;
+            background: var(--olive-lt);
+            z-index: 0;
+          }
+          .prog-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+          }
+          .prog-time {
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            color: var(--olive);
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+          }
+          .prog-box {
+            background: var(--green);
+            color: var(--cream);
+            padding: 0.6rem 0.9rem;
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 500;
+            border-radius: 4px;
+            text-align: center;
+            white-space: nowrap;
+            position: relative;
+          }
+          .prog-note {
+            display: block;
+            font-size: 0.55rem;
+            opacity: 0.75;
+            text-transform: lowercase;
+            letter-spacing: 0.05em;
+          }
+          .prog-branch {
+            margin-top: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .prog-branch::before {
+            content: '';
+            width: 1px;
+            height: 1rem;
+            background: var(--olive-lt);
+            display: block;
+          }
+          .prog-box--sub {
+            background: transparent;
+            border: 1px solid var(--olive-lt);
+            color: var(--text);
+            font-size: 0.58rem;
+          }
+
+          /* Mobil */
+          @media (max-width: 768px) {
+            .prog-main {
+              flex-direction: column;
+              align-items: stretch;
+              min-width: unset;
+              gap: 0;
+            }
+            .prog-main::before { display: none; }
+            .prog-item {
+              flex-direction: row;
+              align-items: flex-start;
+              gap: 1rem;
+              padding: 0.7rem 0;
+              border-bottom: 1px solid rgba(0,0,0,0.06);
+            }
+            .prog-time {
+              min-width: 3rem;
+              margin-bottom: 0;
+              padding-top: 0.5rem;
+            }
+            .prog-branch {
+              flex-direction: row;
+              margin-top: 0;
+              margin-left: 0.5rem;
+            }
+            .prog-branch::before {
+              width: 1rem;
+              height: 1px;
+              margin-top: 0.7rem;
+            }
+          }
+        </style>
       </div>
     </section>
 
