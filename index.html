@@ -2,10 +2,8 @@
 <html lang="cs">
 <head>
 <script>
-// Mobile hero fix - spustÃ­ se co nejdÅÃ­ve
 (function() {
   function fixMobileHero() {
-    // PouÅ¾ij matchMedia - spolehlivÄjÅ¡Ã­ neÅ¾ innerWidth pÅi naÄtenÃ­
     var isMobile = window.matchMedia('(max-width: 768px)').matches;
     var hero = document.getElementById('rp-hero');
     if (!hero) return;
@@ -17,1165 +15,347 @@
       hero.style.removeProperty('background');
     }
   }
-  // Spustit co nejdÅÃ­ve
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fixMobileHero);
-  } else {
-    fixMobileHero();
-  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', fixMobileHero); } else { fixMobileHero(); }
   window.addEventListener('load', fixMobileHero);
-  // Sleduj zmÄny velikosti okna
   window.matchMedia('(max-width: 768px)').addEventListener('change', fixMobileHero);
-  // Spustit kaÅ¾dÃ½ch 50ms prvnÃ­ sekundu jako pojistka
-  var t = 0;
-  var iv = setInterval(function() {
-    fixMobileHero();
-    t += 50;
-    if (t >= 1000) clearInterval(iv);
-  }, 50);
+  var t = 0; var iv = setInterval(function() { fixMobileHero(); t += 50; if (t >= 1000) clearInterval(iv); }, 50);
 })();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Natali & Honza â 29. 8. 2026</title>
+<title>Natali &amp; Honza — 29. 8. 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --olive:     #717E74;
-    --olive-mid: #717E74;
-    --olive-lt:  #a1aba5;
-    --sage:      #cdd4d0;
-    --cream:     #f5f2ec;
-    --sand:      #e8e3d8;
-    --dark:      #2b2e26;
-    --green:     #707E74;
-    --text:      #3d4035;
-    --gold:      #a8935a;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    font-weight: 400;
-    overflow-x: hidden;
-  }
-
-  /* âââ LAYOUT: sticky left + scrolling right âââââââââââââââ */
-  .site-wrapper {
-    display: flex;
-    min-height: 100vh;
-  }
-
-  /* LEFT PANEL â sticky, 65% */
-  .left-panel {
-    position: sticky;
-    top: 0;
-    width: 65%;
-    height: 100vh;
-    flex-shrink: 0;
-    overflow: hidden;
-    background: var(--green);
-    z-index: 1;
-  }
-
-  /* RIGHT PANEL â scrollable, 35% */
-  .right-panel {
-    width: 35%;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    background: var(--cream);
-    position: relative;
-    z-index: 2;
-  }
-
-  /* âââ MEDIA SLIDES âââââââââââââââââââââââââââââââââââââââââ */
-  .media-slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 1s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .media-slide.active { opacity: 1; }
-
-  /* Placeholder visuals */
-  .media-slide .slide-bg {
-    position: absolute;
-    inset: 0;
-  }
-  .slide-hero    .slide-bg { background-image: url('1.webp'); background-size: cover; background-position: center; }
-  .slide-info    .slide-bg { background-image: url('2.webp'); background-size: cover; background-position: center; }
-  .slide-program .slide-bg { background-image: url('3.webp'); background-size: cover; background-position: center; }
-  .slide-rsvp    .slide-bg { background-image: url('4.webp'); background-size: cover; background-position: center; }
-
-  .slide-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-  }
-
-  .slide-ornament {
-    font-family: 'Bodoni Moda', serif;
-    color: rgba(255,255,255,0.12);
-    font-size: clamp(6rem, 14vw, 14rem);
-    line-height: 1;
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    font-weight: 400;
-    letter-spacing: -0.05em;
-    user-select: none;
-  }
-
-  .slide-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.45em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 1.8rem;
-  }
-
-  .slide-main-name {
-    font-family: 'Bodoni Moda', serif;
-    font-size: clamp(3.5rem, 7vw, 6.5rem);
-    font-weight: 400;
-    color: var(--cream);
-    line-height: 1.05;
-    letter-spacing: 0.02em;
-    font-variant: small-caps;
-  }
-
-  .slide-tagline {
-    margin-top: 1rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.28em;
-    color: rgba(255,255,255,0.55);
-    text-transform: uppercase;
-    font-style: italic;
-  }
-
-  /* Geometric line decoration */
-  .slide-geo {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-  .slide-geo::before {
-    content: '';
-    position: absolute;
-    top: 3rem; left: 3rem; right: 3rem; bottom: 3rem;
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-  .slide-geo::after {
-    content: '';
-    position: absolute;
-    top: 4.5rem; left: 4.5rem; right: 4.5rem; bottom: 4.5rem;
-    border: 1px solid rgba(255,255,255,0.04);
-  }
-
-  /* Info-slide icons */
-  .slide-icon-row {
-    display: flex;
-    gap: 2.5rem;
-    margin-top: 2rem;
-  }
-  .slide-icon-item {
-    text-align: center;
-  }
-  .slide-icon-item .icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-  .slide-icon-item span {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-  }
-
-  /* Timeline dots for program slide */
-  .slide-tl {
-    text-align: left;
-    width: 100%;
-    max-width: 320px;
-    margin-top: 2rem;
-  }
-  .slide-tl-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .slide-tl-item:last-child { border-bottom: none; }
-  .slide-tl-time {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    color: rgba(255,255,255,0.45);
-    width: 3rem;
-    flex-shrink: 0;
-  }
-  .slide-tl-name {
-    font-family: 'Bodoni Moda', serif;
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.85);
-    letter-spacing: 0.04em;
-  }
-
-  /* RSVP slide */
-  .slide-rsvp-visual {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  .slide-heart {
-    font-size: 4rem;
-    opacity: 0.8;
-    animation: pulse 2.5s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.08); opacity: 1; }
-  }
-  .slide-deadline {
-    font-family: 'Bodoni Moda', serif;
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.7);
-    letter-spacing: 0.1em;
-  }
-
-  /* âââ NAV ââââââââââââââââââââââââââââââââââââââââââââââââââ */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: transparent;
-    padding: 0.55rem 1.4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background .3s;
-  }
-  nav.scrolled { background: rgba(112,126,116,.50); backdrop-filter: blur(8px); }
-
-  .nav-logo {
-    font-family: 'Bodoni Moda', serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    font-style: normal;
-    color: var(--cream);
-    text-decoration: none;
-    letter-spacing: 0.06em;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: .68rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--olive-lt);
-    text-decoration: none;
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--cream); }
-
-  .d-mobile { display: none; }
-  @media (max-width: 768px) {
-    nav { display: none; }
-    .left-panel { display: none; }
-    .right-panel { width: 100%; }
-    .mobile-hero-photo {
-      display: block !important;
-      position: relative;
-      width: 100%;
-      height: 100vw;
-      background: url('1.webp') center top / cover no-repeat;
-      overflow: hidden;
-    }
-    .mobile-hero-photo::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.6) 100%);
-    }
-    .mobile-hero-names {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 0; right: 0;
-      text-align: center;
-      z-index: 2;
-    }
-    .mobile-hero-names h1 {
-      font-family: 'Bodoni Moda', serif;
-      font-size: clamp(2.8rem, 11vw, 4.5rem);
-      font-weight: 400;
-      color: #fff;
-      line-height: 1;
-      margin: 0 0 0.6rem;
-    }
-    .mobile-hero-names p {
-      font-size: 0.58rem;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
-    }
-    .rp-hero {
-      background: var(--green) !important;
-      background-image: none !important;
-      min-height: auto !important;
-      padding: 2.5rem 1.5rem !important;
-    }
-    .rp-hero::after { display: none !important; }
-    .rp-section {
-      padding-top: 0 !important;
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-      display: flex;
-      flex-direction: column;
-    }
-    .rp-section .reveal { padding: 2.5rem 2rem; }
-    .rp-section[data-slide="info"]::before,
-    .rp-section[data-slide="program"]::before,
-    .rp-section[data-slide="rsvp"]::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 65vw;
-      min-height: 220px;
-      background-size: cover;
-      background-position: center;
-      flex-shrink: 0;
-    }
-    .rp-section[data-slide="info"]::before    { background-image: url('2.webp'); }
-    .rp-section[data-slide="program"]::before { background-image: url('3.webp'); }
-    .rp-section[data-slide="rsvp"]::before    { background-image: url('4.webp'); }
-  }
-  .mobile-hero-photo { display: none; }
-  @media (max-width: 560px) { .nav-links { display: none; } }
-
-  
-
-  /* âââ RIGHT PANEL SECTIONS âââââââââââââââââââââââââââââââââ */
-
-  /* Hero section inside right panel */
-  .rp-hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 6rem 2.5rem 3rem;
-    background: var(--green);
-    gap: 0;
-  }
-
-  .rp-hero-eyebrow {
-    font-size: .62rem;
-    letter-spacing: .42em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.5);
-    margin-bottom: 2.2rem;
-  }
-
-  .rp-hero-day {
-    font-family: 'Bodoni Moda', serif;
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    font-style: italic;
-    color: rgba(255,255,255,.65);
-    letter-spacing: .06em;
-  }
-
-  .rp-hero-date {
-    font-family: 'Bodoni Moda', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 400;
-    color: var(--cream);
-    line-height: 1.15;
-    margin-bottom: .4rem;
-    letter-spacing: 0.03em;
-  }
-
-  .rp-hero-location {
-    font-size: .7rem;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.5);
-    margin-bottom: 2.8rem;
-  }
-
-  .rp-divider {
-    width: 1px;
-    height: 36px;
-    background: rgba(255,255,255,.18);
-    margin: 0 auto 2.8rem;
-  }
-
-  .rp-cta {
-    display: inline-block;
-    padding: .8rem 2rem;
-    border: 1px solid rgba(255,255,255,.42);
-    color: var(--cream);
-    font-size: .66rem;
-    letter-spacing: .32em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 100px;
-    transition: background .25s, border-color .25s;
-    margin-bottom: 1.4rem;
-  }
-  .rp-cta:hover { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.7); }
-
-  .rp-cta-sec {
-    display: block;
-    font-size: .66rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.45);
-    text-decoration: none;
-    transition: color .2s;
-  }
-  .rp-cta-sec:hover { color: var(--cream); }
-
-  /* Countdown */
-  .countdown {
-    display: flex;
-    gap: 1.4rem;
-    margin-top: 2.8rem;
-  }
-  .cd-unit { text-align: center; }
-  .cd-num {
-    font-family: 'Bodoni Moda', serif;
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--cream);
-    line-height: 1;
-    letter-spacing: 0.05em;
-  }
-  .cd-label {
-    font-size: .56rem;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.4);
-    margin-top: .25rem;
-  }
-
-  /* âââ CONTENT SECTIONS (right panel) ââââââââââââââââââââââ */
-  .rp-section {
-    padding: 5rem 2.5rem;
-  }
-
-  .rp-section.bg-sand { background: var(--sand); }
-  .rp-section.bg-cream { background: var(--cream); }
-  .rp-section.bg-green {
-    background: var(--green);
-  }
-
-  .section-label {
-    font-size: .62rem;
-    font-weight: 500;
-    letter-spacing: .4em;
-    text-transform: uppercase;
-    color: var(--olive-mid);
-    margin-bottom: 1rem;
-  }
-
-  .rp-section.bg-green .section-label { color: rgba(255,255,255,.55); }
-  .rp-section.bg-green .section-title { color: #fff; }
-  .rp-section.bg-green .section-body { color: rgba(255,255,255,.75); }
-
-  .section-title {
-    font-family: 'Bodoni Moda', serif;
-    font-size: clamp(1.9rem, 4vw, 2.8rem);
-    font-weight: 400;
-    color: var(--dark);
-    line-height: 1.15;
-    margin-bottom: 1.6rem;
-    letter-spacing: 0.02em;
-  }
-  .section-title em { font-style: italic; color: var(--olive); }
-  .rp-section.bg-green .section-title em { color: var(--sage); }
-
-  .section-body {
-    font-size: .88rem;
-    font-weight: 300;
-    line-height: 1.9;
-    letter-spacing: .02em;
-    color: #5a5f50;
-    margin-bottom: 2rem;
-  }
-
-  /* âââ INFO CARDS ââââââââââââââââââââââââââââââââââââââââââ */
-  .info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.2rem;
-    margin-top: 2rem;
-  }
-
-  .info-card--full { grid-column: 1 / -1; }
-  .info-card {
-    background: var(--cream);
-    padding: 1.8rem 1.4rem;
-    border-top: 2px solid var(--olive-lt);
-  }
-
-  .info-card-icon { font-size: 1.3rem; margin-bottom: .8rem; }
-
-  .info-card h3 {
-    font-family: 'Bodoni Moda', serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: var(--dark);
-    margin-bottom: .5rem;
-    letter-spacing: 0.02em;
-  }
-
-  .info-card p {
-    font-size: .8rem;
-    font-weight: 300;
-    line-height: 1.75;
-    color: #6a7060;
-  }
-
-  /* âââ TIMELINE ââââââââââââââââââââââââââââââââââââââââââââ */
-  .timeline {
-    list-style: none;
-    margin-top: 2rem;
-    position: relative;
-    padding-left: 2rem;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: .5rem; bottom: .5rem;
-    width: 1px;
-    background: var(--olive-lt);
-  }
-  .timeline li {
-    position: relative;
-    padding: 0 0 2rem 1.6rem;
-  }
-  .timeline li::before {
-    content: '';
-    position: absolute;
-    left: -4px; top: .45rem;
-    width: 9px; height: 9px;
-    border-radius: 50%;
-    background: var(--olive);
-  }
-  .tl-time {
-    font-size: .68rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--olive-mid);
-    margin-bottom: .2rem;
-  }
-  .tl-event {
-    font-family: 'Bodoni Moda', serif;
-    font-size: 1.1rem;
-    color: var(--dark);
-    letter-spacing: 0.03em;
-  }
-  .tl-note {
-    font-size: .78rem;
-    font-weight: 300;
-    color: #6a7060;
-    margin-top: .2rem;
-  }
-
-  /* âââ RSVP FORM âââââââââââââââââââââââââââââââââââââââââââ */
-  .rsvp-form {
-    margin-top: 2rem;
-    display: grid;
-    gap: 1.2rem;
-  }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
-
-  .form-group { display: flex; flex-direction: column; gap: .45rem; }
-
-  .form-group label {
-    font-size: .62rem;
-    font-weight: 500;
-    letter-spacing: .32em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.65);
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.3);
-    color: #fff;
-    padding: .8rem .9rem;
-    font-family: 'Montserrat', sans-serif;
-    font-size: .85rem;
-    font-weight: 300;
-    outline: none;
-    transition: border-color .2s, background .2s;
-    width: 100%;
-  }
-  .form-group input::placeholder,
-  .form-group textarea::placeholder { color: rgba(255,255,255,.38); }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: rgba(255,255,255,.7);
-    background: rgba(255,255,255,.18);
-  }
-  .form-group select option { background: var(--green); color: #fff; }
-  .form-group textarea { resize: vertical; min-height: 80px; }
-
-  .radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: .6rem;
-    margin-top: .2rem;
-  }
-  .radio-opt {
-    display: flex;
-    align-items: center;
-    gap: .6rem;
-    cursor: pointer;
-    font-size: .78rem;
-    letter-spacing: .06em;
-    color: rgba(255,255,255,.75);
-    border: 1px solid rgba(255,255,255,.28);
-    padding: .65rem 1rem;
-    transition: border-color .2s, background .2s;
-  }
-  .radio-opt:hover { border-color: rgba(255,255,255,.65); background: rgba(255,255,255,.08); }
-  .radio-opt input[type="radio"] { accent-color: #fff; width: 13px; height: 13px; flex-shrink: 0; cursor: pointer; }
-  .radio-opt:has(input:checked) { border-color: #fff; background: rgba(255,255,255,.16); }
-
-  .btn-submit {
-    margin-top: .4rem;
-    padding: .9rem 2.4rem;
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.55);
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    font-size: .66rem;
-    font-weight: 500;
-    letter-spacing: .32em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background .25s, border-color .25s;
-    align-self: flex-start;
-  }
-  .btn-submit:hover { background: rgba(255,255,255,.25); border-color: #fff; }
-
-  .rsvp-success {
-    display: none;
-    text-align: center;
-    padding: 2.5rem 1.5rem;
-    border: 1px solid var(--olive-lt);
-    margin-top: 1.5rem;
-  }
-  .rsvp-success h3 {
-    font-family: 'Bodoni Moda', serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: var(--cream);
-    margin-bottom: .7rem;
-    letter-spacing: 0.04em;
-  }
-  .rsvp-success p { color: var(--sage); font-size: .85rem; line-height: 1.7; }
-
-  /* âââ FOOTER ââââââââââââââââââââââââââââââââââââââââââââââ */
-  footer {
-    background: var(--dark);
-    text-align: center;
-    padding: 2.5rem 1.5rem;
-  }
-  .footer-names {
-    font-family: 'Bodoni Moda', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--olive-lt);
-    margin-bottom: .4rem;
-    letter-spacing: 0.04em;
-  }
-  footer p {
-    font-size: .68rem;
-    letter-spacing: .2em;
-    color: rgba(255,255,255,.25);
-  }
-
-  /* âââ ANIMATIONS ââââââââââââââââââââââââââââââââââââââââââ */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity .7s ease, transform .7s ease;
-  }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* âââ MOBILE ââââââââââââââââââââââââââââââââââââââââââââââ */
-  @media (max-width: 768px) {
-    .site-wrapper {
-      flex-direction: column;
-    }
-
-    .left-panel {
-      position: relative;
-      width: 100%;
-      height: 65vw;
-      min-height: 280px;
-      max-height: 420px;
-      flex-shrink: 0;
-      top: auto;
-    }
-
-    .right-panel {
-      width: 100%;
-    }
-
-    .rp-hero {
-      min-height: auto;
-      padding: 3rem 1.8rem;
-    }
-
-    .info-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .form-row { grid-template-columns: 1fr; }
-
-    .rp-section { padding: 3.5rem 1.8rem; }
-
-    .slide-main-name { font-size: clamp(2.5rem, 10vw, 4rem); }
-    .slide-ornament { font-size: 5rem; }
-
-    nav { padding: .9rem 1.5rem; }
-
-    /* On mobile hide left panel slide changes â just show one */
-    .media-slide.active { opacity: 1; }
-  }
+:root{--olive:#717E74;--olive-mid:#717E74;--olive-lt:#a1aba5;--sage:#cdd4d0;--cream:#f5f2ec;--sand:#e8e3d8;--dark:#2b2e26;--green:#707E74;--text:#3d4035;--gold:#a8935a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text);font-weight:400;overflow-x:hidden;}
+.site-wrapper{display:flex;min-height:100vh;}
+.left-panel{position:sticky;top:0;width:65%;height:100vh;flex-shrink:0;overflow:hidden;background:var(--green);z-index:1;}
+.right-panel{width:35%;flex-shrink:0;display:flex;flex-direction:column;background:var(--cream);position:relative;z-index:2;}
+.media-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;display:flex;align-items:center;justify-content:center;}
+.media-slide.active{opacity:1;}
+.media-slide .slide-bg{position:absolute;inset:0;}
+.slide-hero .slide-bg{background-image:url('1.webp');background-size:cover;background-position:center;}
+.slide-info .slide-bg{background-image:url('2.webp');background-size:cover;background-position:center;}
+.slide-program .slide-bg{background-image:url('3.webp');background-size:cover;background-position:center;}
+.slide-rsvp .slide-bg{background-image:url('4.webp');background-size:cover;background-position:center;}
+.slide-content{position:relative;z-index:2;text-align:center;padding:3rem;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%;}
+.slide-ornament{font-family:'Bodoni Moda',serif;color:rgba(255,255,255,0.12);font-size:clamp(6rem,14vw,14rem);line-height:1;position:absolute;bottom:2rem;right:2rem;font-weight:400;letter-spacing:-0.05em;user-select:none;}
+.slide-main-name{font-family:'Bodoni Moda',serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:400;color:var(--cream);line-height:1.05;letter-spacing:0.02em;font-variant:small-caps;}
+.slide-tagline{margin-top:1rem;font-size:0.72rem;letter-spacing:0.28em;color:rgba(255,255,255,0.55);text-transform:uppercase;font-style:italic;}
+.slide-geo{position:absolute;inset:0;pointer-events:none;}
+.slide-geo::before{content:'';position:absolute;top:3rem;left:3rem;right:3rem;bottom:3rem;border:1px solid rgba(255,255,255,0.06);}
+.slide-geo::after{content:'';position:absolute;top:4.5rem;left:4.5rem;right:4.5rem;bottom:4.5rem;border:1px solid rgba(255,255,255,0.04);}
+.slide-heart{font-size:4rem;opacity:0.8;animation:pulse 2.5s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:0.8;}50%{transform:scale(1.08);opacity:1;}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;padding:0.55rem 1.4rem;display:flex;justify-content:space-between;align-items:center;transition:background .3s;}
+nav.scrolled{background:rgba(112,126,116,.50);backdrop-filter:blur(8px);}
+.nav-logo{font-family:'Bodoni Moda',serif;font-size:1.2rem;font-weight:400;font-style:normal;color:var(--cream);text-decoration:none;letter-spacing:0.06em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--olive-lt);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--cream);}
+.d-mobile{display:none;}
+@media(max-width:768px){
+  nav{display:none;}
+  .left-panel{display:none;}
+  .right-panel{width:100%;}
+  .mobile-hero-photo{display:block!important;position:relative;width:100%;height:100vw;background:url('1.webp') center top/cover no-repeat;overflow:hidden;}
+  .mobile-hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.05) 40%,rgba(0,0,0,0.6) 100%);}
+  .mobile-hero-names{position:absolute;bottom:2.5rem;left:0;right:0;text-align:center;z-index:2;}
+  .mobile-hero-names h1{font-family:'Bodoni Moda',serif;font-size:clamp(2.8rem,11vw,4.5rem);font-weight:400;color:#fff;line-height:1;margin:0 0 0.6rem;}
+  .mobile-hero-names p{font-size:0.58rem;letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,255,255,0.65);}
+  .rp-hero{background:var(--green)!important;background-image:none!important;min-height:auto!important;padding:2.5rem 1.5rem!important;}
+  .rp-hero::after{display:none!important;}
+  .rp-section{padding-top:0!important;padding-left:0!important;padding-right:0!important;display:flex;flex-direction:column;}
+  .rp-section .reveal{padding:2.5rem 2rem;}
+  .rp-section[data-slide="info"]::before,.rp-section[data-slide="program"]::before,.rp-section[data-slide="rsvp"]::before{content:'';display:block;width:100%;height:65vw;min-height:220px;background-size:cover;background-position:center;flex-shrink:0;}
+  .rp-section[data-slide="info"]::before{background-image:url('2.webp');}
+  .rp-section[data-slide="program"]::before{background-image:url('3.webp');}
+  .rp-section[data-slide="rsvp"]::before{background-image:url('4.webp');}
+}
+.mobile-hero-photo{display:none;}
+@media(max-width:560px){.nav-links{display:none;}}
+.rp-hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2.5rem 3rem;background:var(--green);gap:0;}
+.rp-hero-day{font-family:'Bodoni Moda',serif;font-size:clamp(1rem,2vw,1.2rem);font-style:italic;color:rgba(255,255,255,.65);letter-spacing:.06em;}
+.rp-hero-date{font-family:'Bodoni Moda',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;color:var(--cream);line-height:1.15;margin-bottom:.4rem;letter-spacing:0.03em;}
+.rp-hero-location{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:2.8rem;}
+.rp-divider{width:1px;height:36px;background:rgba(255,255,255,.18);margin:0 auto 2.8rem;}
+.rp-cta{display:inline-block;padding:.8rem 2rem;border:1px solid rgba(255,255,255,.42);color:var(--cream);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;text-decoration:none;border-radius:100px;transition:background .25s,border-color .25s;margin-bottom:1.4rem;}
+.rp-cta:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.7);}
+.rp-cta-sec{display:block;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.rp-cta-sec:hover{color:var(--cream);}
+.countdown{display:flex;gap:1.4rem;margin-top:2.8rem;}
+.cd-unit{text-align:center;}
+.cd-num{font-family:'Bodoni Moda',serif;font-size:2rem;font-weight:400;color:var(--cream);line-height:1;letter-spacing:0.05em;}
+.cd-label{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.25rem;}
+.rp-section{padding:5rem 2.5rem;}
+.rp-section.bg-sand{background:var(--sand);}
+.rp-section.bg-cream{background:var(--cream);}
+.rp-section.bg-green{background:var(--green);}
+.section-label{font-size:.62rem;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:var(--olive-mid);margin-bottom:1rem;}
+.rp-section.bg-green .section-label{color:rgba(255,255,255,.55);}
+.rp-section.bg-green .section-title{color:#fff;}
+.rp-section.bg-green .section-body{color:rgba(255,255,255,.75);}
+.section-title{font-family:'Bodoni Moda',serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:400;color:var(--dark);line-height:1.15;margin-bottom:1.6rem;letter-spacing:0.02em;}
+.section-title em{font-style:italic;color:var(--olive);}
+.rp-section.bg-green .section-title em{color:var(--sage);}
+.section-body{font-size:.88rem;font-weight:300;line-height:1.9;letter-spacing:.02em;color:#5a5f50;margin-bottom:2rem;}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem;}
+.info-card{background:var(--cream);padding:1.8rem 1.4rem;border-top:2px solid var(--olive-lt);}
+.info-card-icon{font-size:1.3rem;margin-bottom:.8rem;}
+.info-card h3{font-family:'Bodoni Moda',serif;font-size:1.2rem;font-weight:400;color:var(--dark);margin-bottom:.5rem;letter-spacing:0.02em;}
+.info-card p{font-size:.8rem;font-weight:300;line-height:1.75;color:#6a7060;}
+.timeline{list-style:none;margin-top:2rem;position:relative;padding-left:2rem;}
+.timeline::before{content:'';position:absolute;left:0;top:.5rem;bottom:.5rem;width:1px;background:var(--olive-lt);}
+.timeline li{position:relative;padding:0 0 2rem 1.6rem;}
+.timeline li::before{content:'';position:absolute;left:-4px;top:.45rem;width:9px;height:9px;border-radius:50%;background:var(--olive);}
+.tl-time{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--olive-mid);margin-bottom:.2rem;}
+.tl-event{font-family:'Bodoni Moda',serif;font-size:1.1rem;color:var(--dark);letter-spacing:0.03em;}
+.tl-note{font-size:.78rem;font-weight:300;color:#6a7060;margin-top:.2rem;}
+.rsvp-form{margin-top:2rem;display:grid;gap:1.2rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+@media(max-width:560px){.form-row{grid-template-columns:1fr;}}
+.form-group{display:flex;flex-direction:column;gap:.45rem;}
+.form-group label{font-size:.62rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.65);}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;padding:.8rem .9rem;font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:300;outline:none;transition:border-color .2s,background .2s;width:100%;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.38);}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.18);}
+.form-group select option{background:var(--green);color:#fff;}
+.form-group textarea{resize:vertical;min-height:80px;}
+.radio-group{display:flex;flex-direction:column;gap:.6rem;margin-top:.2rem;}
+.radio-opt{display:flex;align-items:center;gap:.6rem;cursor:pointer;font-size:.78rem;letter-spacing:.06em;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.28);padding:.65rem 1rem;transition:border-color .2s,background .2s;}
+.radio-opt:hover{border-color:rgba(255,255,255,.65);background:rgba(255,255,255,.08);}
+.radio-opt input[type="radio"]{accent-color:#fff;width:13px;height:13px;flex-shrink:0;cursor:pointer;}
+.radio-opt:has(input:checked){border-color:#fff;background:rgba(255,255,255,.16);}
+.btn-submit{margin-top:.4rem;padding:.9rem 2.4rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.55);color:#fff;font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;cursor:pointer;transition:background .25s,border-color .25s;align-self:flex-start;}
+.btn-submit:hover{background:rgba(255,255,255,.25);border-color:#fff;}
+.rsvp-success{display:none;text-align:center;padding:2.5rem 1.5rem;border:1px solid var(--olive-lt);margin-top:1.5rem;}
+.rsvp-success h3{font-family:'Bodoni Moda',serif;font-size:1.8rem;font-weight:400;color:var(--cream);margin-bottom:.7rem;letter-spacing:0.04em;}
+.rsvp-success p{color:var(--sage);font-size:.85rem;line-height:1.7;}
+footer{background:var(--dark);text-align:center;padding:2.5rem 1.5rem;}
+.footer-names{font-family:'Bodoni Moda',serif;font-size:1.5rem;font-weight:400;font-style:italic;color:var(--olive-lt);margin-bottom:.4rem;letter-spacing:0.04em;}
+footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+@media(max-width:768px){
+  .site-wrapper{flex-direction:column;}
+  .left-panel{position:relative;width:100%;height:65vw;min-height:280px;max-height:420px;flex-shrink:0;top:auto;}
+  .right-panel{width:100%;}
+  .rp-hero{min-height:auto;padding:3rem 1.8rem;}
+  .info-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .rp-section{padding:3.5rem 1.8rem;}
+  .slide-main-name{font-size:clamp(2.5rem,10vw,4rem);}
+  .slide-ornament{font-size:5rem;}
+  nav{padding:.9rem 1.5rem;}
+}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo">Natali & Honza</a>
+  <a href="#" class="nav-logo">Natali &amp; Honza</a>
   <ul class="nav-links">
     <li><a href="#info">Informace</a></li>
     <li><a href="#program">Program</a></li>
-    <li><a href="#rsvp">FormulÃ¡Å</a></li>
+    <li><a href="#rsvp">Formulář</a></li>
   </ul>
 </nav>
-
-<!-- SITE WRAPPER: left sticky + right scrollable -->
 <div class="site-wrapper">
-
-  <!-- LEFT: Sticky media panel -->
   <div class="left-panel" id="leftPanel">
-
-    <!-- SLIDE 1: Hero -->
     <div class="media-slide slide-hero active" id="slide-hero">
       <div class="slide-bg"></div>
-      <div class="slide-content" style="justify-content: flex-end; padding-bottom: 12rem;">
+      <div class="slide-content" style="justify-content:flex-end;padding-bottom:12rem;">
         <h1 class="slide-main-name">Natali &amp; Honza</h1>
-        <p class="slide-tagline">btwâ¦budeme se brÃ¡t</p>
+        <p class="slide-tagline">btw…budeme se brát</p>
       </div>
     </div>
-
-    <!-- SLIDE 2: Info -->
     <div class="media-slide slide-info" id="slide-info">
       <div class="slide-bg"></div>
       <div class="slide-ornament" style="font-size:6rem;bottom:1.5rem;right:1.5rem">29.8</div>
     </div>
-
-    <!-- SLIDE 3: Program -->
-    <div class="media-slide slide-program" id="slide-program">
-      <div class="slide-bg"></div>
-      </div>
-
-    <!-- SLIDE 4: RSVP -->
-    <div class="media-slide slide-rsvp" id="slide-rsvp">
-      <div class="slide-bg"></div>
-      </div>
-
-  </div><!-- /left-panel -->
-
-  <!-- RIGHT: Scrollable content -->
+    <div class="media-slide slide-program" id="slide-program"><div class="slide-bg"></div></div>
+    <div class="media-slide slide-rsvp" id="slide-rsvp"><div class="slide-bg"></div></div>
+  </div>
   <div class="right-panel">
-
-    <!-- Hero info pane -->
-    <div class="mobile-hero-photo"><div class="mobile-hero-names"><h1>Natali &amp; Honza</h1><p>BTWâ¦budeme se brÃ¡t</p></div></div>
-    <section class="rp-hero" id="rp-hero" data-slide="hero" style="">
+    <div class="mobile-hero-photo"><div class="mobile-hero-names"><h1>Natali &amp; Honza</h1><p>BTW…budeme se brát</p></div></div>
+    <section class="rp-hero" id="rp-hero" data-slide="hero">
       <p class="rp-hero-day">Sobota</p>
       <p class="rp-hero-date">29. srpna 2026</p>
-      <p class="rp-hero-location">MlÃ½n Propast</p>
+      <p class="rp-hero-location">Mlýn Propast</p>
       <div class="rp-divider"></div>
-      <a href="#rsvp" class="rp-cta">VYPLNIT FORMULÃÅ</a>
-      <a href="#info" class="rp-cta-sec">Zobrazit detaily â</a>
+      <a href="#rsvp" class="rp-cta">VYPLNIT FORMULÁŘ</a>
+      <a href="#info" class="rp-cta-sec">Zobrazit detaily ↓</a>
       <div class="countdown" id="countdown">
-        <div class="cd-unit"><div class="cd-num" id="cd-days">â</div><div class="cd-label">DnÃ­</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-hours">â</div><div class="cd-label">Hodin</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-min">â</div><div class="cd-label">Minut</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-sec">â</div><div class="cd-label">Sekund</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-label">Dní</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-hours">—</div><div class="cd-label">Hodin</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-min">—</div><div class="cd-label">Minut</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-sec">—</div><div class="cd-label">Sekund</div></div>
       </div>
     </section>
-    <!-- Mobile green info bar -->
     <div class="rp-hero-bar d-mobile">
-      <p style="font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;opacity:.6;margin-bottom:.8rem">Sobota Â· 29. srpna 2026</p>
-      <p style="font-size:1.1rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500">MlÃ½n Propast</p>
+      <p style="font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;opacity:.6;margin-bottom:.8rem">Sobota · 29. srpna 2026</p>
+      <p style="font-size:1.1rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500">Mlýn Propast</p>
       <div style="width:1px;height:2rem;background:rgba(255,255,255,.3);margin:1.2rem auto"></div>
-      <a href="#rsvp" style="display:inline-block;border:1px solid rgba(255,255,255,.6);padding:.65rem 2rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);text-decoration:none">Vyplnit formulÃ¡Å</a>
+      <a href="#rsvp" style="display:inline-block;border:1px solid rgba(255,255,255,.6);padding:.65rem 2rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);text-decoration:none">Vyplnit formulář</a>
     </div>
-
-    <!-- INFO -->
     <section id="info" class="rp-section bg-sand" data-slide="info">
       <div class="reveal">
         <p class="section-label">Informace</p>
         <h2 class="section-title">Kdy, kde, co <em>a jak...</em></h2>
-        <div class="info-card" style="grid-column:1/-1;margin-bottom:1.5rem;">
-          <h3>Budeme se brÃ¡t. ale...</h3>
-          <p>Na svatbÄ uÅ¾ budeme svoji. JelikoÅ¾ nÃ¡s bude oddÃ¡vat Martin Mikyska, tak se musÃ­me vzÃ­t pÅed tÃ­m, ale dokud to neposvÄtÃ­ MikÃ½Å, tak to neplatÃ­.</p>
+        <div class="info-card" style="margin-bottom:1.5rem;">
+          <h3>Budeme se brát. ale...</h3>
+          <p>Na svatbě už budeme svoji. Jelikož nás bude oddávat Martin Mikyska, tak se musíme vzít před tím, ale dokud to neposvětí Mikýř, tak to neplatí.</p>
         </div>
         <div class="info-grid">
           <div class="info-card">
-            <div class="info-card-icon">ð</div>
-            <h3>MÃ­sto konÃ¡nÃ­</h3>
-            <p>MlÃ½n Propast<br>PÅesnÃ¡ adresa bude zaslÃ¡na potvrzenÃ½m hostÅ¯m emailem.</p>
+            <div class="info-card-icon">📍</div>
+            <h3>Místo konání</h3>
+            <p>Mlýn Propast<br>Přesná adresa bude zaslána potvrzeným hostům emailem.</p>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">ð</div>
-            <h3>Datum & Äas</h3>
-            <p>29. srpna 2026<br>ObÅad zaÄÃ­nÃ¡ ve 14:00 hod.<br>ProsÃ­me pÅijÄte s pÅedstihem.</p>
+            <div class="info-card-icon">📅</div>
+            <h3>Datum &amp; čas</h3>
+            <p>29. srpna 2026<br>Obřad začíná ve 14:00 hod.<br>Prosíme přijďte s předstihem.</p>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">ð</div>
+            <div class="info-card-icon">👗</div>
             <h3>Dress code</h3>
-            <p>Smart casual / elegantnÃ­.<br>DoporuÄujeme boty vhodnÃ© pro venkovnÃ­ prostÅedÃ­.</p>
+            <p>Smart casual / elegantní.<br>Doporučujeme boty vhodné pro venkovní prostředí.</p>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">ð¿</div>
-            <h3>PoznÃ¡mka</h3>
-            <p>ProsÃ­me o potvrzenÃ­ ÃºÄasti do 30. Äervna 2026 pÅes formulÃ¡Å nÃ­Å¾e.</p>
+            <div class="info-card-icon">🌿</div>
+            <h3>Poznámka</h3>
+            <p>Prosíme o potvrzení účasti do 30. června 2026 přes formulář níže.</p>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- PROGRAM -->
     <section id="program" class="rp-section bg-cream" data-slide="program">
       <div class="reveal">
         <p class="section-label">Harmonogram dne</p>
-        <h2 class="section-title">Program <em>slavnostnÃ­ho dne</em></h2>
+        <h2 class="section-title">Program <em>slavnostního dne</em></h2>
         <ul class="timeline">
-          <li>
-            <p class="tl-time">11:30</p>
-            <p class="tl-event">PÅÃ­jezd hostÅ¯</p>
-          </li>
-          <li>
-            <p class="tl-time">12:30</p>
-            <p class="tl-event">ObÅad</p>
-          </li>
-          <li>
-            <p class="tl-time">13:30</p>
-            <p class="tl-event">ObÄd + dort</p>
-          </li>
-          <li>
-            <p class="tl-time">17:30</p>
-            <p class="tl-event">FocenÃ­</p>
-            <p class="tl-note">Kapela hraje</p>
-          </li>
-          <li>
-            <p class="tl-time">19:30</p>
-            <p class="tl-event">PrvnÃ­ tanec</p>
-          </li>
-          <li>
-            <p class="tl-time">20:00</p>
-            <p class="tl-event">We Party</p>
-            <p class="tl-note">DJ</p>
-          </li>
+          <li><p class="tl-time">11:30</p><p class="tl-event">Příjezd hostů</p></li>
+          <li><p class="tl-time">12:30</p><p class="tl-event">Obřad</p></li>
+          <li><p class="tl-time">13:30</p><p class="tl-event">Oběd + dort</p></li>
+          <li><p class="tl-time">17:30</p><p class="tl-event">Focení</p><p class="tl-note">Kapela hrá</p></li>
+          <li><p class="tl-time">19:30</p><p class="tl-event">První tanec</p></li>
+          <li><p class="tl-time">20:00</p><p class="tl-event">We Party</p><p class="tl-note">DJ</p></li>
         </ul>
       </div>
     </section>
-
-    <!-- RSVP -->
     <section id="rsvp" class="rp-section bg-green" data-slide="rsvp">
       <div class="reveal">
-        <p class="section-label">PotvrzenÃ­ ÃºÄasti</p>
-        <h2 class="section-title">PÅijmete naÅ¡e <em>pozvÃ¡nÃ­?</em></h2>
-        <p class="section-body">ProsÃ­me potvrÄte svou ÃºÄast do 30. Äervna 2026. TÄÅ¡Ã­me se na vÃ¡s!</p>
-
+        <p class="section-label">Potvrzení účasti</p>
+        <h2 class="section-title">Přijmete naše <em>pozvání?</em></h2>
+        <p class="section-body">Prosíme potvrďte svou účast do 30. června 2026. Těšíme se na vás!</p>
         <form class="rsvp-form" id="rsvpForm" action="https://formspree.io/f/meeryvpn" method="POST">
           <div class="form-row">
             <div class="form-group">
-              <label>JmÃ©no a pÅÃ­jmenÃ­ *</label>
-              <input type="text" name="jmeno" name="jmeno" placeholder="Jana NovÃ¡kovÃ¡" required>
+              <label>Jméno a příjmení *</label>
+              <input type="text" name="jmeno" placeholder="Jana Nováková" required>
             </div>
             <div class="form-group">
               <label>E-mail *</label>
-              <input type="email" name="email" name="email" placeholder="jana@email.cz" required>
+              <input type="email" name="email" placeholder="jana@email.cz" required>
             </div>
           </div>
-
           <div class="form-group">
-            <label>PÅijdete na svatbu? *</label>
+            <label>Přijdete na svatbu? *</label>
             <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="attendance" value="ano" required> Ano, pÅijdu s radostÃ­</label>
-              <label class="radio-opt"><input type="radio" name="attendance" value="ne"> BohuÅ¾el se nemohu zÃºÄastnit</label>
+              <label class="radio-opt"><input type="radio" name="attendance" value="ano" required> Ano, přijdu s radosťí</label>
+              <label class="radio-opt"><input type="radio" name="attendance" value="ne"> Bohužel se nemohu zúčastnit</label>
             </div>
           </div>
-
           <div class="form-row">
             <div class="form-group">
-              <label>PoÄet osob (vÄetnÄ vÃ¡s)</label>
+              <label>Počet osob (včetně vás)</label>
               <select id="personCount" name="pocet_osob" onchange="toggleCompanion(this.value)">
                 <option value="1">1 osoba</option>
                 <option value="2">2 osoby</option>
               </select>
             </div>
             <div class="form-group">
-              <label>StravovacÃ­ preference</label>
+              <label>Stravovací preference</label>
               <select name="stravovani">
-                <option value="">Bez omezenÃ­</option>
-                <option value="vegetarian">VegetariÃ¡n/ka</option>
+                <option value="">Bez omezení</option>
+                <option value="vegetarian">Vegetarián/ka</option>
                 <option value="vegan">Vegan/ka</option>
               </select>
             </div>
           </div>
-
           <div class="form-group" id="companionField" style="display:none">
-            <label>JmÃ©no doprovodu</label>
-            <input type="text" name="doprovod" name="doprovod" placeholder="JmÃ©no a pÅÃ­jmenÃ­ doprovodu">
+            <label>Jméno doprovodu</label>
+            <input type="text" name="doprovod" placeholder="Jméno a příjmení doprovodu">
           </div>
-
           <div class="form-group">
-            <label>UbytovÃ¡nÃ­ â zÅ¯stanete pÅes noc?</label>
+            <label>Ubytování — zůstánete přes noc?</label>
             <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="accommodation" value="ano"> Ano, budu potÅebovat ubytovÃ¡nÃ­</label>
-              <label class="radio-opt"><input type="radio" name="accommodation" value="ne"> Ne, ubytovÃ¡nÃ­ nepotÅebuji</label>
+              <label class="radio-opt"><input type="radio" name="accommodation" value="ano"> Ano, budu potřebovat ubytování</label>
+              <label class="radio-opt"><input type="radio" name="accommodation" value="ne"> Ne, ubytování nepotřebuji</label>
             </div>
           </div>
-
           <div class="form-group">
-            <label>Vzkaz pro novomanÅ¾ele</label>
-            <textarea name="vzkaz" name="vzkaz" placeholder="TÄÅ¡Ã­me se na vÃ¡s!..."></textarea>
+            <label>Vzkaz pro novomanelře</label>
+            <textarea name="vzkaz" placeholder="Těšíme se na vás!..."></textarea>
           </div>
-
-          <button type="submit" class="btn-submit">Odeslat potvrzenÃ­</button>
+          <button type="submit" class="btn-submit">Odeslat potvrzení</button>
         </form>
-
         <div class="rsvp-success" id="rsvpSuccess">
-          <h3>DÄkujeme! ð¿</h3>
-          <p>VaÅ¡e odpovÄÄ byla pÅijata.<br>Brzy vÃ¡m zaÅ¡leme detaily na uvedenÃ½ e-mail.</p>
+          <h3>Děkujeme! 🌿</h3>
+          <p>Vaše odpověď byla přijata.<br>Brzy vám zašleme detaily na uvedený e-mail.</p>
         </div>
       </div>
     </section>
-
-    <!-- FOOTER -->
     <footer>
-      <p class="footer-names">Natali & Honza</p>
-      <p>29. srpna 2026 Â· MlÃ½n Propast</p>
+      <p class="footer-names">Natali &amp; Honza</p>
+      <p>29. srpna 2026 · Mlýn Propast</p>
     </footer>
-
-  </div><!-- /right-panel -->
-</div><!-- /site-wrapper -->
-
+  </div>
+</div>
 <script>
-  // âââ Companion field toggle ââââââââââââââââââââââââââââââ
-  function toggleCompanion(val) {
-    document.getElementById('companionField').style.display = val === '2' ? 'flex' : 'none';
-  }
-
-  // âââ Countdown âââââââââââââââââââââââââââââââââââââââââââ
-  const wedding = new Date('2026-08-29T14:00:00');
-  function updateCountdown() {
-    const diff = wedding - new Date();
-    if (diff <= 0) {
-      document.getElementById('countdown').innerHTML = '';
-      return;
-    }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-    document.getElementById('cd-min').textContent   = String(m).padStart(2,'0');
-    document.getElementById('cd-sec').textContent   = String(s).padStart(2,'0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
-  // âââ Nav scroll ââââââââââââââââââââââââââââââââââââââââââ
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  // âââ Scroll-driven media slide switching âââââââââââââââââ
-  const slides = {
-    hero:    document.getElementById('slide-hero'),
-    info:    document.getElementById('slide-info'),
-    program: document.getElementById('slide-program'),
-    rsvp:    document.getElementById('slide-rsvp'),
-  };
-
-  const sections = document.querySelectorAll('[data-slide]');
-
-  function setSlide(id) {
-    Object.values(slides).forEach(s => s.classList.remove('active'));
-    if (slides[id]) slides[id].classList.add('active');
-  }
-
-  // IntersectionObserver on the right panel sections
-  const sectionObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        setSlide(e.target.dataset.slide);
-      }
-    });
-  }, {
-    threshold: 0.35,
-    rootMargin: '0px 0px -10% 0px'
-  });
-
-  sections.forEach(s => sectionObserver.observe(s));
-
-  // âââ Reveal on scroll ââââââââââââââââââââââââââââââââââââ
-  const reveals = document.querySelectorAll('.reveal');
-  const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(r => revealObs.observe(r));
-
-  // âââ RSVP form âââââââââââââââââââââââââââââââââââââââââââ
-  document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    this.style.display = 'none';
-    document.getElementById('rsvpSuccess').style.display = 'block';
-  });
-</script>
-
-<script>
-(function() {
-  var form = document.getElementById('rsvpForm');
-  if (!form) return;
-  
-  // Remove all existing submit listeners by cloning the form
-  var newForm = form.cloneNode(true);
-  form.parentNode.replaceChild(newForm, form);
-  
-  newForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var data = new FormData(newForm);
-    fetch('https://formspree.io/f/meeryvpn', {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    }).then(function(res) {
-      if (res.ok) {
-        newForm.style.display = 'none';
-        var success = document.querySelector('.rsvp-success');
-        if (success) success.style.display = 'block';
-        else newForm.insertAdjacentHTML('afterend', '<div style="color:white;padding:2rem;text-align:center"><h3>DÄkujeme!</h3><p>VaÅ¡e odpovÄÄ byla pÅijata.</p></div>');
-      } else {
-        alert('NÄco se pokazilo. Zkuste to prosÃ­m znovu.');
-      }
-    }).catch(function() {
-      alert('Chyba pÅipojenÃ­. Zkuste to prosÃ­m znovu.');
-    });
-  });
-})();
-</script>
-<script>
-(function() {
-  window.addEventListener('load', function() {
-  if (window.innerWidth <= 768) {
-    var rpHero = document.getElementById('rp-hero');
-    if (rpHero) rpHero.style.cssText = 'background: #707e74 !important; background-image: none !important;';
-  }
-    var form = document.getElementById('rsvpForm');
-    if (!form) return;
-    form.addEventListener('submit', function(e) {
+function toggleCompanion(val){document.getElementById('companionField').style.display=val==='2'?'flex':'none';}
+const wedding=new Date('2026-08-29T14:00:00');
+function updateCountdown(){
+  const diff=wedding-new Date();
+  if(diff<=0){document.getElementById('countdown').innerHTML='';return;}
+  const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-min').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-sec').textContent=String(s).padStart(2,'0');
+}
+updateCountdown();setInterval(updateCountdown,1000);
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
+const slides={hero:document.getElementById('slide-hero'),info:document.getElementById('slide-info'),program:document.getElementById('slide-program'),rsvp:document.getElementById('slide-rsvp')};
+const sections=document.querySelectorAll('[data-slide]');
+function setSlide(id){Object.values(slides).forEach(s=>s.classList.remove('active'));if(slides[id])slides[id].classList.add('active');}
+const sectionObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)setSlide(e.target.dataset.slide);});},{threshold:0.35,rootMargin:'0px 0px -10% 0px'});
+sections.forEach(s=>sectionObserver.observe(s));
+const reveals=document.querySelectorAll('.reveal');
+const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});},{threshold:0.1});
+reveals.forEach(r=>revealObs.observe(r));
+(function(){
+  window.addEventListener('load',function(){
+    if(window.innerWidth<=768){var rpHero=document.getElementById('rp-hero');if(rpHero)rpHero.style.cssText='background:#707e74!important;background-image:none!important;';}
+    var form=document.getElementById('rsvpForm');
+    if(!form)return;
+    form.addEventListener('submit',function(e){
       e.preventDefault();
-      e.stopImmediatePropagation();
-      var formData = new FormData(form);
-      fetch('https://formspree.io/f/meeryvpn', {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      }).then(function(r) {
-        if (r.ok) {
-          form.style.display = 'none';
-          var s = document.querySelector('.rsvp-success');
-          if (s) { s.style.display = 'block'; }
-        } else { alert('Chyba. Zkuste to znovu.'); }
-      }).catch(function() { alert('Chyba pÅipojenÃ­.'); });
-    }, true); // capture phase - runs before other handlers
+      fetch('https://formspree.io/f/meeryvpn',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(function(r){if(r.ok){form.style.display='none';var s=document.querySelector('.rsvp-success');if(s)s.style.display='block';}else{alert('Chyba. Zkuste to znovu.');}})
+      .catch(function(){alert('Chyba připojení.');});
+    });
   });
+  window.addEventListener('scroll',function(){
+    document.querySelector('nav').classList.toggle('scrolled',window.scrollY>10);
+    if(window.innerWidth<=768){var h=document.getElementById('rp-hero');if(h)h.style.cssText='background:#707e74!important;background-image:none!important;';}
+  });
+  if(window.innerWidth<=768){var hero=document.querySelector('.rp-hero');if(hero){hero.style.backgroundImage='none';hero.style.background='var(--green)';}}
+  window.addEventListener('resize',function(){var hero=document.querySelector('.rp-hero');if(!hero)return;if(window.innerWidth<=768){hero.style.backgroundImage='none';hero.style.background='var(--green)';}else{hero.style.backgroundImage='';hero.style.background='';}});
 })();
-
-  // Nav transparent -> green on scroll
-  window.addEventListener('scroll', function() {
-    var nav = document.querySelector('nav');
-  // Mobile: ensure rp-hero has no background image
-  if (window.innerWidth <= 768) {
-    var rpHero = document.getElementById('rp-hero');
-    if (rpHero) rpHero.style.cssText = 'background: #707e74 !important; background-image: none !important;';
-  }
-    if (window.scrollY > 10) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  });
-
-  // Mobile: remove background image from rp-hero green bar
-  if (window.innerWidth <= 768) {
-    var hero = document.querySelector('.rp-hero');
-    if (hero) {
-      hero.style.backgroundImage = 'none';
-      hero.style.background = 'var(--green)';
-    }
-  }
-  window.addEventListener('resize', function() {
-    var hero = document.querySelector('.rp-hero');
-    if (!hero) return;
-    if (window.innerWidth <= 768) {
-      hero.style.backgroundImage = 'none';
-      hero.style.background = 'var(--green)';
-    } else {
-      hero.style.backgroundImage = '';
-      hero.style.background = '';
-    }
-  });
-</script></body>
+</script>
+</body>
 </html>
