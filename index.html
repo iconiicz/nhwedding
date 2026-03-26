@@ -2,10 +2,10 @@
 <html lang="cs">
 <head>
 <script>
-// Mobile hero fix - spustí se co nejdříve
+// Mobile hero fix - spustÃ­ se co nejdÅÃ­ve
 (function() {
   function fixMobileHero() {
-    // Použij matchMedia - spolehlivější než innerWidth při načtení
+    // PouÅ¾ij matchMedia - spolehlivÄjÅ¡Ã­ neÅ¾ innerWidth pÅi naÄtenÃ­
     var isMobile = window.matchMedia('(max-width: 768px)').matches;
     var hero = document.getElementById('rp-hero');
     if (!hero) return;
@@ -17,16 +17,16 @@
       hero.style.removeProperty('background');
     }
   }
-  // Spustit co nejdříve
+  // Spustit co nejdÅÃ­ve
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', fixMobileHero);
   } else {
     fixMobileHero();
   }
   window.addEventListener('load', fixMobileHero);
-  // Sleduj změny velikosti okna
+  // Sleduj zmÄny velikosti okna
   window.matchMedia('(max-width: 768px)').addEventListener('change', fixMobileHero);
-  // Spustit každých 50ms první sekundu jako pojistka
+  // Spustit kaÅ¾dÃ½ch 50ms prvnÃ­ sekundu jako pojistka
   var t = 0;
   var iv = setInterval(function() {
     fixMobileHero();
@@ -37,7 +37,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Natali & Honza — 29. 8. 2025</title>
+<title>Natali & Honza â 29. 8. 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -64,13 +64,13 @@
     overflow-x: hidden;
   }
 
-  /* ─── LAYOUT: sticky left + scrolling right ─────────────── */
+  /* âââ LAYOUT: sticky left + scrolling right âââââââââââââââ */
   .site-wrapper {
     display: flex;
     min-height: 100vh;
   }
 
-  /* LEFT PANEL — sticky, 65% */
+  /* LEFT PANEL â sticky, 65% */
   .left-panel {
     position: sticky;
     top: 0;
@@ -82,7 +82,7 @@
     z-index: 1;
   }
 
-  /* RIGHT PANEL — scrollable, 35% */
+  /* RIGHT PANEL â scrollable, 35% */
   .right-panel {
     width: 35%;
     flex-shrink: 0;
@@ -93,7 +93,7 @@
     z-index: 2;
   }
 
-  /* ─── MEDIA SLIDES ───────────────────────────────────────── */
+  /* âââ MEDIA SLIDES âââââââââââââââââââââââââââââââââââââââââ */
   .media-slide {
     position: absolute;
     inset: 0;
@@ -260,7 +260,7 @@
     letter-spacing: 0.1em;
   }
 
-  /* ─── NAV ────────────────────────────────────────────────── */
+  /* âââ NAV ââââââââââââââââââââââââââââââââââââââââââââââââââ */
   nav {
     position: fixed;
     top: 0;
@@ -378,7 +378,7 @@
 
   
 
-  /* ─── RIGHT PANEL SECTIONS ───────────────────────────────── */
+  /* âââ RIGHT PANEL SECTIONS âââââââââââââââââââââââââââââââââ */
 
   /* Hero section inside right panel */
   .rp-hero {
@@ -483,7 +483,7 @@
     margin-top: .25rem;
   }
 
-  /* ─── CONTENT SECTIONS (right panel) ────────────────────── */
+  /* âââ CONTENT SECTIONS (right panel) ââââââââââââââââââââââ */
   .rp-section {
     padding: 5rem 2.5rem;
   }
@@ -528,7 +528,7 @@
     margin-bottom: 2rem;
   }
 
-  /* ─── INFO CARDS ────────────────────────────────────────── */
+  /* âââ INFO CARDS ââââââââââââââââââââââââââââââââââââââââââ */
   .info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -561,7 +561,7 @@
     color: #6a7060;
   }
 
-  /* ─── TIMELINE ──────────────────────────────────────────── */
+  /* âââ TIMELINE ââââââââââââââââââââââââââââââââââââââââââââ */
   .timeline {
     list-style: none;
     margin-top: 2rem;
@@ -607,7 +607,7 @@
     margin-top: .2rem;
   }
 
-  /* ─── RSVP FORM ─────────────────────────────────────────── */
+  /* âââ RSVP FORM âââââââââââââââââââââââââââââââââââââââââââ */
   .rsvp-form {
     margin-top: 2rem;
     display: grid;
@@ -707,7 +707,7 @@
   }
   .rsvp-success p { color: var(--sage); font-size: .85rem; line-height: 1.7; }
 
-  /* ─── FOOTER ────────────────────────────────────────────── */
+  /* âââ FOOTER ââââââââââââââââââââââââââââââââââââââââââââââ */
   footer {
     background: var(--dark);
     text-align: center;
@@ -728,7 +728,7 @@
     color: rgba(255,255,255,.25);
   }
 
-  /* ─── ANIMATIONS ────────────────────────────────────────── */
+  /* âââ ANIMATIONS ââââââââââââââââââââââââââââââââââââââââââ */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -740,7 +740,7 @@
   }
   .reveal.visible { opacity: 1; transform: none; }
 
-  /* ─── MOBILE ────────────────────────────────────────────── */
+  /* âââ MOBILE ââââââââââââââââââââââââââââââââââââââââââââââ */
   @media (max-width: 768px) {
     .site-wrapper {
       flex-direction: column;
@@ -778,7 +778,7 @@
 
     nav { padding: .9rem 1.5rem; }
 
-    /* On mobile hide left panel slide changes — just show one */
+    /* On mobile hide left panel slide changes â just show one */
     .media-slide.active { opacity: 1; }
   }
 </style>
@@ -791,7 +791,7 @@
   <ul class="nav-links">
     <li><a href="#info">Informace</a></li>
     <li><a href="#program">Program</a></li>
-    <li><a href="#rsvp">Formulář</a></li>
+    <li><a href="#rsvp">FormulÃ¡Å</a></li>
   </ul>
 </nav>
 
@@ -806,7 +806,7 @@
       <div class="slide-bg"></div>
       <div class="slide-content" style="justify-content: flex-end; padding-bottom: 12rem;">
         <h1 class="slide-main-name">Natali &amp; Honza</h1>
-        <p class="slide-tagline">btw…budeme se brát</p>
+        <p class="slide-tagline">btwâ¦budeme se brÃ¡t</p>
       </div>
     </div>
 
@@ -832,27 +832,27 @@
   <div class="right-panel">
 
     <!-- Hero info pane -->
-    <div class="mobile-hero-photo"><div class="mobile-hero-names"><h1>Natali &amp; Honza</h1><p>BTW…budeme se brát</p></div></div>
+    <div class="mobile-hero-photo"><div class="mobile-hero-names"><h1>Natali &amp; Honza</h1><p>BTWâ¦budeme se brÃ¡t</p></div></div>
     <section class="rp-hero" id="rp-hero" data-slide="hero" style="">
       <p class="rp-hero-day">Sobota</p>
       <p class="rp-hero-date">29. srpna 2026</p>
-      <p class="rp-hero-location">Mlýn Propast</p>
+      <p class="rp-hero-location">MlÃ½n Propast</p>
       <div class="rp-divider"></div>
-      <a href="#rsvp" class="rp-cta">VYPLNIT FORMULÁŘ</a>
-      <a href="#info" class="rp-cta-sec">Zobrazit detaily ↓</a>
+      <a href="#rsvp" class="rp-cta">VYPLNIT FORMULÃÅ</a>
+      <a href="#info" class="rp-cta-sec">Zobrazit detaily â</a>
       <div class="countdown" id="countdown">
-        <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-label">Dní</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-hours">—</div><div class="cd-label">Hodin</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-min">—</div><div class="cd-label">Minut</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-sec">—</div><div class="cd-label">Sekund</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-days">â</div><div class="cd-label">DnÃ­</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-hours">â</div><div class="cd-label">Hodin</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-min">â</div><div class="cd-label">Minut</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-sec">â</div><div class="cd-label">Sekund</div></div>
       </div>
     </section>
     <!-- Mobile green info bar -->
     <div class="rp-hero-bar d-mobile">
-      <p style="font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;opacity:.6;margin-bottom:.8rem">Sobota · 29. srpna 2026</p>
-      <p style="font-size:1.1rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500">Mlýn Propast</p>
+      <p style="font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;opacity:.6;margin-bottom:.8rem">Sobota Â· 29. srpna 2026</p>
+      <p style="font-size:1.1rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500">MlÃ½n Propast</p>
       <div style="width:1px;height:2rem;background:rgba(255,255,255,.3);margin:1.2rem auto"></div>
-      <a href="#rsvp" style="display:inline-block;border:1px solid rgba(255,255,255,.6);padding:.65rem 2rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);text-decoration:none">Vyplnit formulář</a>
+      <a href="#rsvp" style="display:inline-block;border:1px solid rgba(255,255,255,.6);padding:.65rem 2rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);text-decoration:none">Vyplnit formulÃ¡Å</a>
     </div>
 
     <!-- INFO -->
@@ -861,29 +861,29 @@
         <p class="section-label">Informace</p>
         <h2 class="section-title">Kdy, kde, co <em>a jak...</em></h2>
         <div class="info-card" style="grid-column:1/-1;margin-bottom:1.5rem;">
-          <h3>Budeme se brát. ale...</h3>
-          <p>Na svatbě už budeme svoji. Jelikož nás bude oddávat Martin Mikyska, tak se musíme vzít před tím, ale dokud to neposvětí Mikýř, tak to neplatí.</p>
+          <h3>Budeme se brÃ¡t. ale...</h3>
+          <p>Na svatbÄ uÅ¾ budeme svoji. JelikoÅ¾ nÃ¡s bude oddÃ¡vat Martin Mikyska, tak se musÃ­me vzÃ­t pÅed tÃ­m, ale dokud to neposvÄtÃ­ MikÃ½Å, tak to neplatÃ­.</p>
         </div>
         <div class="info-grid">
           <div class="info-card">
-            <div class="info-card-icon">📍</div>
-            <h3>Místo konání</h3>
-            <p>Mlýn Propast<br>Přesná adresa bude zaslána potvrzeným hostům emailem.</p>
+            <div class="info-card-icon">ð</div>
+            <h3>MÃ­sto konÃ¡nÃ­</h3>
+            <p>MlÃ½n Propast<br>PÅesnÃ¡ adresa bude zaslÃ¡na potvrzenÃ½m hostÅ¯m emailem.</p>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">📅</div>
-            <h3>Datum & čas</h3>
-            <p>29. srpna 2025<br>Obřad začíná ve 14:00 hod.<br>Prosíme přijďte s předstihem.</p>
+            <div class="info-card-icon">ð</div>
+            <h3>Datum & Äas</h3>
+            <p>29. srpna 2026<br>ObÅad zaÄÃ­nÃ¡ ve 14:00 hod.<br>ProsÃ­me pÅijÄte s pÅedstihem.</p>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">👗</div>
+            <div class="info-card-icon">ð</div>
             <h3>Dress code</h3>
-            <p>Smart casual / elegantní.<br>Doporučujeme boty vhodné pro venkovní prostředí.</p>
+            <p>Smart casual / elegantnÃ­.<br>DoporuÄujeme boty vhodnÃ© pro venkovnÃ­ prostÅedÃ­.</p>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">🌿</div>
-            <h3>Poznámka</h3>
-            <p>Prosíme o potvrzení účasti do 30. června 2025 přes formulář níže.</p>
+            <div class="info-card-icon">ð¿</div>
+            <h3>PoznÃ¡mka</h3>
+            <p>ProsÃ­me o potvrzenÃ­ ÃºÄasti do 30. Äervna 2026 pÅes formulÃ¡Å nÃ­Å¾e.</p>
           </div>
         </div>
       </div>
@@ -893,28 +893,28 @@
     <section id="program" class="rp-section bg-cream" data-slide="program">
       <div class="reveal">
         <p class="section-label">Harmonogram dne</p>
-        <h2 class="section-title">Program <em>slavnostního dne</em></h2>
+        <h2 class="section-title">Program <em>slavnostnÃ­ho dne</em></h2>
         <ul class="timeline">
           <li>
             <p class="tl-time">11:30</p>
-            <p class="tl-event">Příjezd hostů</p>
+            <p class="tl-event">PÅÃ­jezd hostÅ¯</p>
           </li>
           <li>
             <p class="tl-time">12:30</p>
-            <p class="tl-event">Obřad</p>
+            <p class="tl-event">ObÅad</p>
           </li>
           <li>
             <p class="tl-time">13:30</p>
-            <p class="tl-event">Oběd + dort</p>
+            <p class="tl-event">ObÄd + dort</p>
           </li>
           <li>
             <p class="tl-time">17:30</p>
-            <p class="tl-event">Focení</p>
+            <p class="tl-event">FocenÃ­</p>
             <p class="tl-note">Kapela hraje</p>
           </li>
           <li>
             <p class="tl-time">19:30</p>
-            <p class="tl-event">První tanec</p>
+            <p class="tl-event">PrvnÃ­ tanec</p>
           </li>
           <li>
             <p class="tl-time">20:00</p>
@@ -928,15 +928,15 @@
     <!-- RSVP -->
     <section id="rsvp" class="rp-section bg-green" data-slide="rsvp">
       <div class="reveal">
-        <p class="section-label">Potvrzení účasti</p>
-        <h2 class="section-title">Přijmete naše <em>pozvání?</em></h2>
-        <p class="section-body">Prosíme potvrďte svou účast do 30. června 2025. Těšíme se na vás!</p>
+        <p class="section-label">PotvrzenÃ­ ÃºÄasti</p>
+        <h2 class="section-title">PÅijmete naÅ¡e <em>pozvÃ¡nÃ­?</em></h2>
+        <p class="section-body">ProsÃ­me potvrÄte svou ÃºÄast do 30. Äervna 2026. TÄÅ¡Ã­me se na vÃ¡s!</p>
 
         <form class="rsvp-form" id="rsvpForm" action="https://formspree.io/f/meeryvpn" method="POST">
           <div class="form-row">
             <div class="form-group">
-              <label>Jméno a příjmení *</label>
-              <input type="text" name="jmeno" name="jmeno" placeholder="Jana Nováková" required>
+              <label>JmÃ©no a pÅÃ­jmenÃ­ *</label>
+              <input type="text" name="jmeno" name="jmeno" placeholder="Jana NovÃ¡kovÃ¡" required>
             </div>
             <div class="form-group">
               <label>E-mail *</label>
@@ -945,55 +945,55 @@
           </div>
 
           <div class="form-group">
-            <label>Přijdete na svatbu? *</label>
+            <label>PÅijdete na svatbu? *</label>
             <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="attendance" value="ano" required> Ano, přijdu s radostí</label>
-              <label class="radio-opt"><input type="radio" name="attendance" value="ne"> Bohužel se nemohu zúčastnit</label>
+              <label class="radio-opt"><input type="radio" name="attendance" value="ano" required> Ano, pÅijdu s radostÃ­</label>
+              <label class="radio-opt"><input type="radio" name="attendance" value="ne"> BohuÅ¾el se nemohu zÃºÄastnit</label>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label>Počet osob (včetně vás)</label>
+              <label>PoÄet osob (vÄetnÄ vÃ¡s)</label>
               <select id="personCount" name="pocet_osob" onchange="toggleCompanion(this.value)">
                 <option value="1">1 osoba</option>
                 <option value="2">2 osoby</option>
               </select>
             </div>
             <div class="form-group">
-              <label>Stravovací preference</label>
+              <label>StravovacÃ­ preference</label>
               <select name="stravovani">
-                <option value="">Bez omezení</option>
-                <option value="vegetarian">Vegetarián/ka</option>
+                <option value="">Bez omezenÃ­</option>
+                <option value="vegetarian">VegetariÃ¡n/ka</option>
                 <option value="vegan">Vegan/ka</option>
               </select>
             </div>
           </div>
 
           <div class="form-group" id="companionField" style="display:none">
-            <label>Jméno doprovodu</label>
-            <input type="text" name="doprovod" name="doprovod" placeholder="Jméno a příjmení doprovodu">
+            <label>JmÃ©no doprovodu</label>
+            <input type="text" name="doprovod" name="doprovod" placeholder="JmÃ©no a pÅÃ­jmenÃ­ doprovodu">
           </div>
 
           <div class="form-group">
-            <label>Ubytování — zůstanete přes noc?</label>
+            <label>UbytovÃ¡nÃ­ â zÅ¯stanete pÅes noc?</label>
             <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="accommodation" value="ano"> Ano, budu potřebovat ubytování</label>
-              <label class="radio-opt"><input type="radio" name="accommodation" value="ne"> Ne, ubytování nepotřebuji</label>
+              <label class="radio-opt"><input type="radio" name="accommodation" value="ano"> Ano, budu potÅebovat ubytovÃ¡nÃ­</label>
+              <label class="radio-opt"><input type="radio" name="accommodation" value="ne"> Ne, ubytovÃ¡nÃ­ nepotÅebuji</label>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Vzkaz pro novomanžele</label>
-            <textarea name="vzkaz" name="vzkaz" placeholder="Těšíme se na vás!..."></textarea>
+            <label>Vzkaz pro novomanÅ¾ele</label>
+            <textarea name="vzkaz" name="vzkaz" placeholder="TÄÅ¡Ã­me se na vÃ¡s!..."></textarea>
           </div>
 
-          <button type="submit" class="btn-submit">Odeslat potvrzení</button>
+          <button type="submit" class="btn-submit">Odeslat potvrzenÃ­</button>
         </form>
 
         <div class="rsvp-success" id="rsvpSuccess">
-          <h3>Děkujeme! 🌿</h3>
-          <p>Vaše odpověď byla přijata.<br>Brzy vám zašleme detaily na uvedený e-mail.</p>
+          <h3>DÄkujeme! ð¿</h3>
+          <p>VaÅ¡e odpovÄÄ byla pÅijata.<br>Brzy vÃ¡m zaÅ¡leme detaily na uvedenÃ½ e-mail.</p>
         </div>
       </div>
     </section>
@@ -1001,19 +1001,19 @@
     <!-- FOOTER -->
     <footer>
       <p class="footer-names">Natali & Honza</p>
-      <p>29. srpna 2025 · Mlýn Propast</p>
+      <p>29. srpna 2026 Â· MlÃ½n Propast</p>
     </footer>
 
   </div><!-- /right-panel -->
 </div><!-- /site-wrapper -->
 
 <script>
-  // ─── Companion field toggle ──────────────────────────────
+  // âââ Companion field toggle ââââââââââââââââââââââââââââââ
   function toggleCompanion(val) {
     document.getElementById('companionField').style.display = val === '2' ? 'flex' : 'none';
   }
 
-  // ─── Countdown ───────────────────────────────────────────
+  // âââ Countdown âââââââââââââââââââââââââââââââââââââââââââ
   const wedding = new Date('2026-08-29T14:00:00');
   function updateCountdown() {
     const diff = wedding - new Date();
@@ -1033,12 +1033,12 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // ─── Nav scroll ──────────────────────────────────────────
+  // âââ Nav scroll ââââââââââââââââââââââââââââââââââââââââââ
   window.addEventListener('scroll', () => {
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ─── Scroll-driven media slide switching ─────────────────
+  // âââ Scroll-driven media slide switching âââââââââââââââââ
   const slides = {
     hero:    document.getElementById('slide-hero'),
     info:    document.getElementById('slide-info'),
@@ -1067,7 +1067,7 @@
 
   sections.forEach(s => sectionObserver.observe(s));
 
-  // ─── Reveal on scroll ────────────────────────────────────
+  // âââ Reveal on scroll ââââââââââââââââââââââââââââââââââââ
   const reveals = document.querySelectorAll('.reveal');
   const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -1076,7 +1076,7 @@
   }, { threshold: 0.1 });
   reveals.forEach(r => revealObs.observe(r));
 
-  // ─── RSVP form ───────────────────────────────────────────
+  // âââ RSVP form âââââââââââââââââââââââââââââââââââââââââââ
   document.getElementById('rsvpForm').addEventListener('submit', function(e) {
     e.preventDefault();
     this.style.display = 'none';
@@ -1105,12 +1105,12 @@
         newForm.style.display = 'none';
         var success = document.querySelector('.rsvp-success');
         if (success) success.style.display = 'block';
-        else newForm.insertAdjacentHTML('afterend', '<div style="color:white;padding:2rem;text-align:center"><h3>Děkujeme!</h3><p>Vaše odpověď byla přijata.</p></div>');
+        else newForm.insertAdjacentHTML('afterend', '<div style="color:white;padding:2rem;text-align:center"><h3>DÄkujeme!</h3><p>VaÅ¡e odpovÄÄ byla pÅijata.</p></div>');
       } else {
-        alert('Něco se pokazilo. Zkuste to prosím znovu.');
+        alert('NÄco se pokazilo. Zkuste to prosÃ­m znovu.');
       }
     }).catch(function() {
-      alert('Chyba připojení. Zkuste to prosím znovu.');
+      alert('Chyba pÅipojenÃ­. Zkuste to prosÃ­m znovu.');
     });
   });
 })();
@@ -1138,7 +1138,7 @@
           var s = document.querySelector('.rsvp-success');
           if (s) { s.style.display = 'block'; }
         } else { alert('Chyba. Zkuste to znovu.'); }
-      }).catch(function() { alert('Chyba připojení.'); });
+      }).catch(function() { alert('Chyba pÅipojenÃ­.'); });
     }, true); // capture phase - runs before other handlers
   });
 })();
