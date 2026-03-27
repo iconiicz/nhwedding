@@ -346,33 +346,35 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
 function toggleAttendance(val){var fields=document.getElementById('attendanceFields');if(fields)fields.style.display=val==='ne'?'none':'';var dividers=document.querySelectorAll('.form-divider');dividers.forEach(function(d){d.style.display=val==='ne'?'none':'';});}
 // Intro overlay
 (function(){
-  var overlay = document.getElementById('intro-overlay');
-  var video = document.getElementById('intro-video');
-  var skip = document.getElementById('intro-skip');
-  if (!overlay || !video || !skip) return;
+  // Spust ihned po DOMContentLoaded
+  function initIntro() {
+    var overlay = document.getElementById('intro-overlay');
+    var video = document.getElementById('intro-video');
+    var skip = document.getElementById('intro-skip');
+    if (!overlay || !video || !skip) return;
 
-  // Ujisti se ze overlay je viditelný na startu
-  overlay.style.display = 'flex';
-  overlay.style.opacity = '1';
+    // Silně nastav styl — přepíše cokoliv
+    overlay.setAttribute('style',
+      'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;' +
+      'background:rgba(0,0,0,0.75);display:flex;flex-direction:column;' +
+      'align-items:center;justify-content:center;gap:2rem;' +
+      'transition:opacity 1s ease;opacity:1;'
+    );
 
-  function dismiss(){
-    overlay.style.transition = 'opacity 1s ease';
-    overlay.style.opacity = '0';
-    setTimeout(function(){ overlay.style.display = 'none'; }, 1000);
+    function dismiss() {
+      overlay.style.opacity = '0';
+      setTimeout(function(){ overlay.style.display = 'none'; }, 1000);
+    }
+
+    video.addEventListener('ended', dismiss);
+    skip.addEventListener('click', dismiss);
   }
 
-  // Přidej ended event pouze pokud video reálně skončilo (duration > 0)
-  video.addEventListener('ended', function(){
-    if (video.duration > 0) dismiss();
-  });
-
-  skip.addEventListener('click', dismiss);
-
-  // Pokud video nelze přehrát, zobraz overlay i tak (ale neskrývej automaticky)
-  video.addEventListener('error', function(){
-    // Video selhalo — overlay zůstane, jen skryjeme video
-    video.style.display = 'none';
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initIntro);
+  } else {
+    initIntro();
+  }
 })();
 
 function toggleCompanion(val){document.getElementById('companionField').style.display=val==='2'?'flex':'none';}
