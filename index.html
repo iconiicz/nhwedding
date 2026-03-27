@@ -266,10 +266,11 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
           <div class="form-group">
             <label>Přijdete na svatbu? *</label>
             <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="attendance" value="ano" required> Ano, přijdu s radostí</label>
-              <label class="radio-opt"><input type="radio" name="attendance" value="ne"> Bohužel se nemohu zúčastnit</label>
+              <label class="radio-opt"><input type="radio" name="attendance" value="ano" required onchange="toggleAttendance(this.value)"> Ano, přijdu s radostí</label>
+              <label class="radio-opt"><input type="radio" name="attendance" value="ne" onchange="toggleAttendance(this.value)"> Bohužel se nemohu zúčastnit</label>
             </div>
           </div>
+          <div id="attendanceFields">
           <div class="form-group">
             <label>Počet osob (včetně vás)</label>
             <select id="personCount" name="pocet_osob" onchange="toggleCompanion(this.value)">
@@ -310,6 +311,7 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
             <label>Vzkaz pro novomanžele</label>
             <textarea name="vzkaz" placeholder="Těšíme se na Vás!"></textarea>
           </div>
+          </div><!-- /attendanceFields -->
           </div><!-- /attendanceFields -->
           <button type="submit" class="btn-submit">Odeslat potvrzení</button>
         </form>
