@@ -29,7 +29,7 @@
 :root{--olive:#717E74;--olive-mid:#717E74;--olive-lt:#a1aba5;--sage:#cdd4d0;--cream:#f5f2ec;--sand:#e8e3d8;--dark:#2b2e26;--green:#707E74;--text:#3d4035;--gold:#a8935a;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text);font-weight:400;overflow-x:hidden;}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text);font-weight:400;}
 .site-wrapper{display:flex;min-height:100vh;}
 .left-panel{position:sticky;top:0;width:65%;height:100vh;flex-shrink:0;overflow:hidden;background:var(--green);z-index:1;}
 .right-panel{width:35%;flex-shrink:0;display:flex;flex-direction:column;background:var(--cream);position:relative;z-index:2;}
@@ -377,14 +377,12 @@ function toggleAttendance(val){var fields=document.getElementById('attendanceFie
     overlay.appendChild(video);
     overlay.appendChild(skip);
 
-    // Dočasně vypni overflow na body
-    document.body.style.setProperty('overflow-x', 'visible', 'important');
     // Přidej do body (ne html) ale s overflow fix
     document.body.appendChild(overlay);
 
     function dismiss() {
       overlay.style.opacity = '0';
-      setTimeout(function(){ overlay.style.display = 'none'; document.body.style.removeProperty('overflow-x'); }, 1000);
+      setTimeout(function(){ overlay.style.display = 'none'; }, 1000);
     }
 
     video.addEventListener('ended', dismiss);
