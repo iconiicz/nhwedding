@@ -332,10 +332,7 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
   </div>
 </div>
 <script>
-function toggleAttendance(val){
-  const fields = document.getElementById('attendanceFields');
-  if(fields) fields.style.display = val === 'ne' ? 'none' : '';
-}
+function toggleAttendance(val){var fields=document.getElementById('attendanceFields');if(fields)fields.style.display=val==='ne'?'none':'';var dividers=document.querySelectorAll('.form-divider');dividers.forEach(function(d){d.style.display=val==='ne'?'none':'';});}
 function toggleCompanion(val){document.getElementById('companionField').style.display=val==='2'?'flex':'none';}
 const wedding=new Date('2026-08-29T14:00:00');
 function updateCountdown(){
