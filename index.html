@@ -349,15 +349,30 @@ function toggleAttendance(val){var fields=document.getElementById('attendanceFie
   var overlay = document.getElementById('intro-overlay');
   var video = document.getElementById('intro-video');
   var skip = document.getElementById('intro-skip');
-  if (!overlay) return;
+  if (!overlay || !video || !skip) return;
+
+  // Ujisti se ze overlay je viditelný na startu
+  overlay.style.display = 'flex';
+  overlay.style.opacity = '1';
 
   function dismiss(){
-    overlay.classList.add('fade-out');
-    setTimeout(function(){ overlay.style.display='none'; }, 1000);
+    overlay.style.transition = 'opacity 1s ease';
+    overlay.style.opacity = '0';
+    setTimeout(function(){ overlay.style.display = 'none'; }, 1000);
   }
 
-  video.addEventListener('ended', dismiss);
+  // Přidej ended event pouze pokud video reálně skončilo (duration > 0)
+  video.addEventListener('ended', function(){
+    if (video.duration > 0) dismiss();
+  });
+
   skip.addEventListener('click', dismiss);
+
+  // Pokud video nelze přehrát, zobraz overlay i tak (ale neskrývej automaticky)
+  video.addEventListener('error', function(){
+    // Video selhalo — overlay zůstane, jen skryjeme video
+    video.style.display = 'none';
+  });
 })();
 
 function toggleCompanion(val){document.getElementById('companionField').style.display=val==='2'?'flex':'none';}
