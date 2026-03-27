@@ -250,8 +250,8 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
     <section id="rsvp" class="rp-section bg-green" data-slide="rsvp">
       <div class="reveal">
         <p class="section-label">Potvrzení účasti</p>
-        <h2 class="section-title">Přijmete naše <em>pozvání?</em></h2>
-        <p class="section-body">Prosíme potvrďte svou účast do 30. června 2026. Těšíme se na vás!</p>
+        <h2 class="section-title">Když se vám to bude hodit, <em>budeme rádi...</em></h2>
+        <p class="section-body">Neděláme si srandu, fakt to potvrďte do 30. dubna, nebo je velká šance, že si budete muset přivést vlastní židli a jídlo.</p>
         <form class="rsvp-form" id="rsvpForm" action="https://formspree.io/f/meeryvpn" method="POST">
           <div class="form-row">
             <div class="form-group">
@@ -270,6 +270,14 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
               <label class="radio-opt"><input type="radio" name="attendance" value="ne"> Bohužel se nemohu zúčastnit</label>
             </div>
           </div>
+          <div class="form-group">
+            <label>Děti (do 12 let)</label>
+            <select name="deti">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
           <div class="form-row">
             <div class="form-group">
               <label>Počet osob (včetně vás)</label>
@@ -287,14 +295,6 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
               </select>
             </div>
           </div>
-          <div class="form-group">
-            <label>Děti (do 12 let)</label>
-            <select name="deti">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-            </select>
-          </div>
           <div class="form-group" id="companionField" style="display:none">
             <label>Jméno doprovodu</label>
             <input type="text" name="doprovod" placeholder="Jméno a příjmení doprovodu">
@@ -307,7 +307,7 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
             </div>
           </div>
           <div class="form-group">
-            <label>Vzkaz pro novomanelře</label>
+            <label>Vzkaz pro novomanžele</label>
             <textarea name="vzkaz" placeholder="Těšíme se na vás!..."></textarea>
           </div>
           <button type="submit" class="btn-submit">Odeslat potvrzení</button>
