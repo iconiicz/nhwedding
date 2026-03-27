@@ -156,6 +156,13 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
 </style>
 </head>
 <body>
+<div id="intro-overlay">
+  <video id="intro-video" autoplay muted playsinline>
+    <source src="STD_SVATBA_VID2.mp4" type="video/mp4">
+  </video>
+  <button id="intro-skip">Přeskočit</button>
+</div>
+
 <nav id="nav">
   <a href="#" class="nav-logo">Natali &amp; Honza</a>
   <ul class="nav-links">
@@ -337,6 +344,22 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
 </div>
 <script>
 function toggleAttendance(val){var fields=document.getElementById('attendanceFields');if(fields)fields.style.display=val==='ne'?'none':'';var dividers=document.querySelectorAll('.form-divider');dividers.forEach(function(d){d.style.display=val==='ne'?'none':'';});}
+// Intro overlay
+(function(){
+  var overlay = document.getElementById('intro-overlay');
+  var video = document.getElementById('intro-video');
+  var skip = document.getElementById('intro-skip');
+  if (!overlay) return;
+
+  function dismiss(){
+    overlay.classList.add('fade-out');
+    setTimeout(function(){ overlay.style.display='none'; }, 1000);
+  }
+
+  video.addEventListener('ended', dismiss);
+  skip.addEventListener('click', dismiss);
+})();
+
 function toggleCompanion(val){document.getElementById('companionField').style.display=val==='2'?'flex':'none';}
 const wedding=new Date('2026-08-29T14:00:00');
 function updateCountdown(){
