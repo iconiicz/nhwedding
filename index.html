@@ -344,10 +344,10 @@ function toggleAttendance(val){var fields=document.getElementById('attendanceFie
     var overlay = document.createElement('div');
     overlay.id = 'intro-overlay';
     overlay.setAttribute('style',
-      'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;' +
+      'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;' +
       'background:rgba(0,0,0,0.75);display:flex;flex-direction:column;' +
       'align-items:center;justify-content:center;gap:2rem;' +
-      'transition:opacity 1s ease;opacity:1;'
+      'transition:opacity 1s ease;opacity:1;overflow:hidden;'
     );
 
     // Vytvoř video
@@ -377,12 +377,14 @@ function toggleAttendance(val){var fields=document.getElementById('attendanceFie
     overlay.appendChild(video);
     overlay.appendChild(skip);
 
-    // Přidej přímo do <html> — vyhne se overflow:hidden na body
-    document.documentElement.appendChild(overlay);
+    // Dočasně vypni overflow na body
+    document.body.style.setProperty('overflow-x', 'visible', 'important');
+    // Přidej do body (ne html) ale s overflow fix
+    document.body.appendChild(overlay);
 
     function dismiss() {
       overlay.style.opacity = '0';
-      setTimeout(function(){ overlay.style.display = 'none'; }, 1000);
+      setTimeout(function(){ overlay.style.display = 'none'; document.body.style.removeProperty('overflow-x'); }, 1000);
     }
 
     video.addEventListener('ended', dismiss);
