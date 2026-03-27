@@ -271,19 +271,19 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
             </div>
           </div>
           <div class="form-group">
-            <label>Děti (do 12 let)</label>
-            <select name="deti">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
+            <label>Počet osob (včetně vás)</label>
+            <select id="personCount" name="pocet_osob" onchange="toggleCompanion(this.value)">
+              <option value="1">1 osoba</option>
+              <option value="2">2 osoby</option>
             </select>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label>Počet osob (včetně vás)</label>
-              <select id="personCount" name="pocet_osob" onchange="toggleCompanion(this.value)">
-                <option value="1">1 osoba</option>
-                <option value="2">2 osoby</option>
+              <label>Děti (do 12 let)</label>
+              <select name="deti">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
               </select>
             </div>
             <div class="form-group">
@@ -310,6 +310,7 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
             <label>Vzkaz pro novomanžele</label>
             <textarea name="vzkaz" placeholder="Těšíme se na Vás!"></textarea>
           </div>
+          </div><!-- /attendanceFields -->
           <button type="submit" class="btn-submit">Odeslat potvrzení</button>
         </form>
         <div class="rsvp-success" id="rsvpSuccess">
@@ -325,6 +326,10 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
   </div>
 </div>
 <script>
+function toggleAttendance(val){
+  const fields = document.getElementById('attendanceFields');
+  if(fields) fields.style.display = val === 'ne' ? 'none' : '';
+}
 function toggleCompanion(val){document.getElementById('companionField').style.display=val==='2'?'flex':'none';}
 const wedding=new Date('2026-08-29T14:00:00');
 function updateCountdown(){
