@@ -377,6 +377,20 @@ function toggleAttendance(val){var fields=document.getElementById('attendanceFie
     overlay.appendChild(video);
     overlay.appendChild(skip);
 
+    // Explicitně nastav muted a spusť přehrávání
+    video.muted = true;
+    video.volume = 0;
+    var playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(function() {
+        // Autoplay blocked — zkus znovu po interakci
+        document.addEventListener('click', function playOnClick() {
+          video.play();
+          document.removeEventListener('click', playOnClick);
+        }, { once: true });
+      });
+    }
+
     // Přidej do body (ne html) ale s overflow fix
     document.body.appendChild(overlay);
 
