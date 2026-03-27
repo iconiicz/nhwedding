@@ -323,6 +323,10 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
           <h3>Děkujeme a těšíme se!</h3>
           <p>Kdybyste měli jakýkoliv dotaz, tak nám klidně napište.</p>
         </div>
+        <div class="rsvp-success" id="rsvpSuccessNo">
+          <h3>Mrzí nás to, ale respektujeme.</h3>
+          <p>Kdyby se situace změnila, tak děj vědět. Rádi tě uvidíme.</p>
+        </div>
       </div>
     </section>
     <footer>
@@ -362,7 +366,15 @@ reveals.forEach(r=>revealObs.observe(r));
     form.addEventListener('submit',function(e){
       e.preventDefault();
       fetch('https://formspree.io/f/meeryvpn',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-      .then(function(r){if(r.ok){form.style.display='none';var s=document.querySelector('.rsvp-success');if(s)s.style.display='block';}else{alert('Chyba. Zkuste to znovu.');}})
+      .then(function(r){if(r.ok){
+          form.style.display='none';
+          var att=form.querySelector('input[name="attendance"]:checked');
+          var attVal=att?att.value:'ano';
+          var sYes=document.getElementById('rsvpSuccess');
+          var sNo=document.getElementById('rsvpSuccessNo');
+          if(attVal==='ne'){if(sNo)sNo.style.display='block';}
+          else{if(sYes)sYes.style.display='block';}
+        }else{alert('Chyba. Zkuste to znovu.');}})
       .catch(function(){alert('Chyba připojení.');});
     });
   });
