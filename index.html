@@ -113,7 +113,7 @@ nav.scrolled{background:rgba(112,126,116,.50);backdrop-filter:blur(8px);}
 .tl-time{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--olive-mid);margin-bottom:.2rem;}
 .tl-event{font-family:'Bodoni Moda',serif;font-size:1.1rem;color:var(--dark);letter-spacing:0.03em;}
 .tl-note{font-size:.78rem;font-weight:300;color:#6a7060;margin-top:.2rem;}
-.rsvp-form{margin-top:2rem;display:grid;gap:1.2rem;}
+.rsvp-form{margin-top:2rem;display:grid;gap:2rem;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
 @media(max-width:560px){.form-row{grid-template-columns:1fr;}}
 .form-group{display:flex;flex-direction:column;gap:.45rem;}
@@ -130,6 +130,7 @@ nav.scrolled{background:rgba(112,126,116,.50);backdrop-filter:blur(8px);}
 .radio-opt:has(input:checked){border-color:#fff;background:rgba(255,255,255,.16);}
 .btn-submit{margin-top:.4rem;padding:.9rem 2.4rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.55);color:#fff;font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;cursor:pointer;transition:background .25s,border-color .25s;align-self:flex-start;}
 .btn-submit:hover{background:rgba(255,255,255,.25);border-color:#fff;}
+.form-divider{width:100%;height:1px;background:rgba(255,255,255,0.2);margin:0.5rem 0;}
 .rsvp-success{display:none;text-align:center;padding:2.5rem 1.5rem;border:1px solid var(--olive-lt);margin-top:1.5rem;}
 .rsvp-success h3{font-family:'Bodoni Moda',serif;font-size:1.8rem;font-weight:400;color:var(--cream);margin-bottom:.7rem;letter-spacing:0.04em;}
 .rsvp-success p{color:var(--sage);font-size:.85rem;line-height:1.7;}
@@ -270,6 +271,7 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
               <label class="radio-opt"><input type="radio" name="attendance" value="ne" onchange="toggleAttendance(this.value)"> Bohužel se nemohu zúčastnit</label>
             </div>
           </div>
+          <div class="form-divider"></div>
           <div id="attendanceFields">
           <div class="form-group">
             <label>Počet osob (včetně vás)</label>
@@ -308,6 +310,7 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
             </div>
           </div>
           </div><!-- /attendanceFields -->
+          <div class="form-divider"></div>
           <div class="form-group">
             <label>Vzkaz pro novomanžele</label>
             <textarea name="vzkaz" placeholder="Těšíme se na Vás!"></textarea>
