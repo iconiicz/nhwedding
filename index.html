@@ -156,13 +156,6 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
 </style>
 </head>
 <body>
-<div id="intro-overlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;background:rgba(0,0,0,0.75);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity 1s ease;">
-  <video id="intro-video" autoplay muted playsinline style="max-width:90vw;max-height:75vh;object-fit:contain;display:block;box-shadow:0 8px 40px rgba(0,0,0,0.6);">
-    <source src="STD_SVATBA_VID2.mp4" type="video/mp4">
-  </video>
-  <button id="intro-skip" style="padding:.6rem 2rem;border:1px solid rgba(255,255,255,0.4);background:transparent;color:rgba(255,255,255,0.7);font-family:'Montserrat',sans-serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;cursor:pointer;">Přeskočit</button>
-</div>
-
 <nav id="nav">
   <a href="#" class="nav-logo">Natali &amp; Honza</a>
   <ul class="nav-links">
@@ -344,31 +337,52 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
 </div>
 <script>
 function toggleAttendance(val){var fields=document.getElementById('attendanceFields');if(fields)fields.style.display=val==='ne'?'none':'';var dividers=document.querySelectorAll('.form-divider');dividers.forEach(function(d){d.style.display=val==='ne'?'none':'';});}
-// Intro overlay
+// Intro overlay — dynamicky vytvořen a přidán do documentElement
 (function(){
-  // Spust ihned po DOMContentLoaded
   function initIntro() {
-    // Dočasně odstraň overflow hidden z body aby fixed overlay fungoval
-    document.body.style.overflowX = 'visible';
-    var overlay = document.getElementById('intro-overlay');
-    var video = document.getElementById('intro-video');
-    var skip = document.getElementById('intro-skip');
-    if (!overlay || !video || !skip) return;
-
-    // Silně nastav styl — přepíše cokoliv
+    // Vytvoř overlay
+    var overlay = document.createElement('div');
+    overlay.id = 'intro-overlay';
     overlay.setAttribute('style',
-      'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;' +
+      'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;' +
       'background:rgba(0,0,0,0.75);display:flex;flex-direction:column;' +
       'align-items:center;justify-content:center;gap:2rem;' +
       'transition:opacity 1s ease;opacity:1;'
     );
 
+    // Vytvoř video
+    var video = document.createElement('video');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('style',
+      'max-width:90%;max-height:70vh;object-fit:contain;display:block;' +
+      'box-shadow:0 8px 40px rgba(0,0,0,0.6);'
+    );
+    var source = document.createElement('source');
+    source.src = 'STD_SVATBA_VID2.mp4';
+    source.type = 'video/mp4';
+    video.appendChild(source);
+
+    // Vytvoř tlačítko
+    var skip = document.createElement('button');
+    skip.textContent = 'Přeskočit';
+    skip.setAttribute('style',
+      'padding:.6rem 2rem;border:1px solid rgba(255,255,255,0.35);' +
+      'background:transparent;color:rgba(255,255,255,0.65);' +
+      'font-family:Montserrat,sans-serif;font-size:.6rem;letter-spacing:.3em;' +
+      'text-transform:uppercase;cursor:pointer;'
+    );
+
+    overlay.appendChild(video);
+    overlay.appendChild(skip);
+
+    // Přidej přímo do <html> — vyhne se overflow:hidden na body
+    document.documentElement.appendChild(overlay);
+
     function dismiss() {
       overlay.style.opacity = '0';
-      setTimeout(function(){
-        overlay.style.display = 'none';
-        document.body.style.overflowX = 'hidden';
-      }, 1000);
+      setTimeout(function(){ overlay.style.display = 'none'; }, 1000);
     }
 
     video.addEventListener('ended', dismiss);
