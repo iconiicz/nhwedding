@@ -51,9 +51,6 @@ fieldset{border:none;}
 .opt input{position:absolute;left:1.15rem;top:1.35rem;accent-color:var(--green);width:15px;height:15px;cursor:pointer;}
 .opt:has(input:checked){border-color:var(--green);border-left-color:var(--green);background:#fbfaf7;box-shadow:0 1px 8px rgba(112,126,116,.1);}
 .opt-text{display:block;font-size:.86rem;font-weight:300;line-height:1.65;color:var(--text);}
-.opt-tag{display:block;width:fit-content;margin-bottom:.5rem;padding:.2rem .55rem;font-size:.55rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;border-radius:2px;}
-.tag-veg{background:var(--green);color:#fff;}
-.tag-meat{background:var(--sand);color:var(--olive);}
 .opt input:focus-visible{outline:2px solid var(--green);outline-offset:2px;}
 
 /* ---------- Doprovod ---------- */
@@ -132,13 +129,11 @@ footer a:hover{color:rgba(255,255,255,.7);}
         <div class="options">
           <label class="opt">
             <input type="radio" name="predkrm" value="Paštika z kachních jater" required>
-            <span class="opt-tag tag-meat">Maso</span>
             <span class="opt-text">Paštika z kachních jater s koňakem a tymiánem, ovocné chutney, kváskový chléb</span>
           </label>
           <label class="opt">
             <input type="radio" name="predkrm" value="Pečená řepa s kozím sýrem (VEG)">
-            <span class="opt-tag tag-veg">Vegetariánské</span>
-            <span class="opt-text">Marinovaná pečená řepa s kozím sýrem, dresink z medu a vinného octa, ořechy, žitný chléb</span>
+            <span class="opt-text">Marinovaná pečená řepa s kozím sýrem, dresink z medu a vinného octa, ořechy, žitný chléb (VEG)</span>
           </label>
         </div>
       </div>
@@ -148,13 +143,11 @@ footer a:hover{color:rgba(255,255,255,.7);}
         <div class="options">
           <label class="opt">
             <input type="radio" name="polevka" value="Vývar z hovězí oháňky" required>
-            <span class="opt-tag tag-meat">Maso</span>
             <span class="opt-text">Tažený vývar z hovězí oháňky s játrovými knedlíčky, kořenovou zeleninou a nudlemi</span>
           </label>
           <label class="opt">
             <input type="radio" name="polevka" value="Tomatová polévka (VEG)">
-            <span class="opt-tag tag-veg">Vegetariánské</span>
-            <span class="opt-text">Tomatová polévka s bazalkou a parmazánem</span>
+            <span class="opt-text">Tomatová polévka s bazalkou a parmazánem (VEG)</span>
           </label>
         </div>
       </div>
@@ -183,13 +176,11 @@ footer a:hover{color:rgba(255,255,255,.7);}
           <div class="options">
             <label class="opt">
               <input type="radio" name="doprovod_predkrm" value="Paštika z kachních jater">
-              <span class="opt-tag tag-meat">Maso</span>
               <span class="opt-text">Paštika z kachních jater s koňakem a tymiánem, ovocné chutney, kváskový chléb</span>
             </label>
             <label class="opt">
               <input type="radio" name="doprovod_predkrm" value="Pečená řepa s kozím sýrem (VEG)">
-              <span class="opt-tag tag-veg">Vegetariánské</span>
-              <span class="opt-text">Marinovaná pečená řepa s kozím sýrem, dresink z medu a vinného octa, ořechy, žitný chléb</span>
+              <span class="opt-text">Marinovaná pečená řepa s kozím sýrem, dresink z medu a vinného octa, ořechy, žitný chléb (VEG)</span>
             </label>
           </div>
         </div>
@@ -199,13 +190,11 @@ footer a:hover{color:rgba(255,255,255,.7);}
           <div class="options">
             <label class="opt">
               <input type="radio" name="doprovod_polevka" value="Vývar z hovězí oháňky">
-              <span class="opt-tag tag-meat">Maso</span>
               <span class="opt-text">Tažený vývar z hovězí oháňky s játrovými knedlíčky, kořenovou zeleninou a nudlemi</span>
             </label>
             <label class="opt">
               <input type="radio" name="doprovod_polevka" value="Tomatová polévka (VEG)">
-              <span class="opt-tag tag-veg">Vegetariánské</span>
-              <span class="opt-text">Tomatová polévka s bazalkou a parmazánem</span>
+              <span class="opt-text">Tomatová polévka s bazalkou a parmazánem (VEG)</span>
             </label>
           </div>
         </div>
@@ -344,9 +333,15 @@ footer a:hover{color:rgba(255,255,255,.7);}
     btn.disabled = true;
     btn.textContent = 'Odesílám…';
 
+    // Prázdná pole do mailu neposíláme — ať je zpráva přehledná
+    var payload = new FormData(form);
+    Array.prototype.forEach.call(Array.from(payload.keys()), function(k){
+      if (String(payload.get(k)).trim() === '') payload.delete(k);
+    });
+
     fetch(form.action, {
       method: 'POST',
-      body: new FormData(form),
+      body: payload,
       headers: {'Accept': 'application/json'}
     })
     .then(function(r){
