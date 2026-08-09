@@ -2,9 +2,10 @@
  * Zápis výběru jídla z thecon.cz/jidlo do master tabulky hostů.
  *
  * Nasazení (jednorázově):
- *   1. V tabulce: Rozšíření → Apps Script
- *   2. Vložit tento kód, uložit
- *   3. Nasadit → Nové nasazení → typ "Webová aplikace"
+ *   1. Vložit tento kód do Apps Scriptu, uložit
+ *   2. Nahoře vybrat funkci "test" a dát Spustit — ověří přístup k tabulce
+ *      a vyžádá si oprávnění. Musí vypsat počet hostů.
+ *   3. Implementovat → Nové nasazení → typ "Webová aplikace"
  *        Spustit jako: Já
  *        Kdo má přístup: Kdokoli
  *   4. Zkopírovat URL webové aplikace a předat ji do jidlo/index.html
@@ -13,6 +14,9 @@
  * jinak běží pořád stará verze.
  */
 
+// Tabulku otevíráme podle ID, ne přes getActive() — díky tomu je jedno,
+// jestli je skript navázaný na tabulku, nebo je to samostatný projekt.
+var SPREADSHEET_ID = '1NTbHAcz9_QeUmkxDOvuYsiH6JTRa4D9jFySBMehBbvs';
 var SHEET_NAME = 'Master – hosté';
 var HEADER_ROW = 4;      // řádek s názvy sloupců
 var COL_ID = 1;          // A = #
@@ -26,7 +30,7 @@ function doPost(e) {
 
   try {
     var payload = JSON.parse(e.postData.contents);
-    var sheet = SpreadsheetApp.getActive().getSheetByName(SHEET_NAME);
+    var sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
     if (!sheet) throw new Error('List "' + SHEET_NAME + '" v tabulce není');
 
     // Mapa id (#) → číslo řádku
@@ -70,6 +74,17 @@ function doPost(e) {
 
 function doGet() {
   return odpoved({ ok: true, info: 'Endpoint pro výběr jídla běží.' });
+}
+
+/** Spusť ručně v editoru — ověří, že skript vidí tabulku a má oprávnění. */
+function test() {
+  var sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
+  if (!sheet) throw new Error('List "' + SHEET_NAME + '" v tabulce není');
+  var pocet = sheet.getLastRow() - HEADER_ROW;
+  var hlavicka = sheet.getRange(HEADER_ROW, COL_PREDKRM, 1, 3).getValues()[0];
+  Logger.log('Tabulka: ' + sheet.getParent().getName());
+  Logger.log('Řádků s hosty: ' + pocet);
+  Logger.log('Sloupce R–T: ' + hlavicka.join(' | '));
 }
 
 function odpoved(obj) {
