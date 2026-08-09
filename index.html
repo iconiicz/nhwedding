@@ -39,7 +39,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--tex
 .slide-hero .slide-bg{background-image:url('1.webp');background-size:cover;background-position:center;}
 .slide-info .slide-bg{background-image:url('2.webp');background-size:cover;background-position:center;}
 .slide-program .slide-bg{background-image:url('3.webp');background-size:cover;background-position:center;}
-.slide-rsvp .slide-bg{background-image:url('4.webp');background-size:cover;background-position:center;}
+.slide-jidlo .slide-bg{background-image:url('4.webp');background-size:cover;background-position:center;}
 .slide-content{position:relative;z-index:2;text-align:center;padding:3rem;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%;}
 .slide-ornament{font-family:'Bodoni Moda',serif;color:rgba(255,255,255,0.12);font-size:clamp(6rem,14vw,14rem);line-height:1;position:absolute;bottom:2rem;right:2rem;font-weight:400;letter-spacing:-0.05em;user-select:none;}
 .slide-main-name{font-family:'Bodoni Moda',serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:400;color:var(--cream);line-height:1.05;letter-spacing:0.02em;font-variant:small-caps;}
@@ -69,10 +69,10 @@ nav.scrolled{background:rgba(112,126,116,.50);backdrop-filter:blur(8px);}
   .rp-hero::after{display:none!important;}
   .rp-section{padding-top:0!important;padding-left:0!important;padding-right:0!important;display:flex;flex-direction:column;}
   .rp-section .reveal{padding:2.5rem 2rem;}
-  .rp-section[data-slide="info"]::before,.rp-section[data-slide="program"]::before,.rp-section[data-slide="rsvp"]::before{content:'';display:block;width:100%;height:65vw;min-height:220px;background-size:cover;background-position:center;flex-shrink:0;}
+  .rp-section[data-slide="info"]::before,.rp-section[data-slide="program"]::before,.rp-section[data-slide="jidlo"]::before{content:'';display:block;width:100%;height:65vw;min-height:220px;background-size:cover;background-position:center;flex-shrink:0;}
   .rp-section[data-slide="info"]::before{background-image:url('2.webp');}
   .rp-section[data-slide="program"]::before{background-image:url('3.webp');}
-  .rp-section[data-slide="rsvp"]::before{background-image:url('4.webp');}
+  .rp-section[data-slide="jidlo"]::before{background-image:url('4.webp');}
 }
 .mobile-hero-photo{display:none;}
 @media(max-width:560px){.nav-links{display:none;}}
@@ -113,28 +113,13 @@ nav.scrolled{background:rgba(112,126,116,.50);backdrop-filter:blur(8px);}
 .tl-time{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--olive-mid);margin-bottom:.2rem;}
 .tl-event{font-family:'Bodoni Moda',serif;font-size:1.1rem;color:var(--dark);letter-spacing:0.03em;}
 .tl-note{font-size:.78rem;font-weight:300;color:#6a7060;margin-top:.2rem;}
-.rsvp-form{margin-top:2rem;display:grid;gap:2rem;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
-@media(max-width:560px){.form-row{grid-template-columns:1fr;}}
-.form-group{display:flex;flex-direction:column;gap:.6rem;}
-.form-group label{font-size:.62rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:.3rem;}
-.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;padding:.8rem .9rem;font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:300;outline:none;transition:border-color .2s,background .2s;width:100%;}
-.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.38);}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.18);}
-.form-group select option{background:var(--green);color:#fff;}
-.form-group textarea{resize:vertical;min-height:80px;}
-.radio-group{display:flex;flex-direction:column;gap:.6rem;margin-top:.2rem;}
-.radio-opt{display:flex;align-items:center;gap:.6rem;cursor:pointer;font-size:.78rem;letter-spacing:.06em;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.28);padding:.65rem 1rem;transition:border-color .2s,background .2s;}
-.radio-opt:hover{border-color:rgba(255,255,255,.65);background:rgba(255,255,255,.08);}
-.radio-opt input[type="radio"]{accent-color:#fff;width:13px;height:13px;flex-shrink:0;cursor:pointer;}
-.radio-opt:has(input:checked){border-color:#fff;background:rgba(255,255,255,.16);}
-.btn-submit{margin-top:.4rem;padding:.9rem 2.4rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.55);color:#fff;font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;cursor:pointer;transition:background .25s,border-color .25s;width:100%;box-sizing:border-box;display:block;}
-.btn-submit:hover{background:rgba(255,255,255,.25);border-color:#fff;}
-.form-divider{width:100%;height:1px;background:rgba(255,255,255,0.2);margin:0.5rem 0;}
-#attendanceFields{display:grid;gap:2rem;}
-.rsvp-success{display:none;text-align:center;padding:2.5rem 1.5rem;border:1px solid var(--olive-lt);margin-top:1.5rem;}
-.rsvp-success h3{font-family:'Bodoni Moda',serif;font-size:1.8rem;font-weight:400;color:var(--cream);margin-bottom:.7rem;letter-spacing:0.04em;}
-.rsvp-success p{color:var(--sage);font-size:.85rem;line-height:1.7;}
+.menu-courses{display:grid;gap:.9rem;margin:2rem 0 2.4rem;}
+.menu-course{border:1px solid rgba(255,255,255,.22);border-left:2px solid rgba(255,255,255,.45);padding:1.1rem 1.3rem;}
+.menu-course h3{font-family:'Bodoni Moda',serif;font-size:1.15rem;font-weight:400;color:#fff;letter-spacing:.03em;margin-bottom:.35rem;}
+.menu-course p{font-size:.8rem;font-weight:300;line-height:1.7;color:rgba(255,255,255,.7);}
+.menu-deadline{margin-bottom:1.6rem;font-size:.62rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.btn-menu{display:block;width:100%;padding:1.05rem 2rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.55);color:#fff;font-size:.66rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .25s,border-color .25s;}
+.btn-menu:hover{background:rgba(255,255,255,.25);border-color:#fff;}
 footer{background:var(--dark);text-align:center;padding:2.5rem 1.5rem;}
 .footer-names{font-family:'Bodoni Moda',serif;font-size:1.5rem;font-weight:400;font-style:italic;color:var(--olive-lt);margin-bottom:.4rem;letter-spacing:0.04em;}
 footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
@@ -147,7 +132,6 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
   .right-panel{width:100%;}
   .rp-hero{min-height:auto;padding:3rem 1.8rem;}
   .info-grid{grid-template-columns:1fr;}
-  .form-row{grid-template-columns:1fr;}
   .rp-section{padding:3.5rem 1.8rem;}
   .slide-main-name{font-size:clamp(2.5rem,10vw,4rem);}
   .slide-ornament{font-size:5rem;}
@@ -161,7 +145,7 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
   <ul class="nav-links">
     <li><a href="#info">Informace</a></li>
     <li><a href="#program">Program</a></li>
-    <li><a href="#rsvp">Formulář</a></li>
+    <li><a href="#jidlo">Výběr jídla</a></li>
   </ul>
 </nav>
 <div class="site-wrapper">
@@ -177,7 +161,7 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
       <div class="slide-bg"></div>
     </div>
     <div class="media-slide slide-program" id="slide-program"><div class="slide-bg"></div></div>
-    <div class="media-slide slide-rsvp" id="slide-rsvp"><div class="slide-bg"></div></div>
+    <div class="media-slide slide-jidlo" id="slide-jidlo"><div class="slide-bg"></div></div>
   </div>
   <div class="right-panel">
     <div class="mobile-hero-photo"><div class="mobile-hero-names"><h1>Natali &amp; Honza</h1><p>BTW…budeme se brát</p></div></div>
@@ -186,7 +170,7 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
       <p class="rp-hero-date">29. srpna 2026</p>
       <p class="rp-hero-location">Mlýn Propast</p>
       <div class="rp-divider"></div>
-      <a href="#rsvp" class="rp-cta">VYPLNIT FORMULÁŘ</a>
+      <a href="jidlo/" class="rp-cta">VYBRAT JÍDLO</a>
       <a href="#info" class="rp-cta-sec">Zobrazit detaily ↓</a>
       <div class="countdown" id="countdown">
         <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-label">Dní</div></div>
@@ -199,7 +183,7 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
       <p style="font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;opacity:.6;margin-bottom:.8rem">Sobota · 29. srpna 2026</p>
       <p style="font-size:1.1rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500">Mlýn Propast</p>
       <div style="width:1px;height:2rem;background:rgba(255,255,255,.3);margin:1.2rem auto"></div>
-      <a href="#rsvp" style="display:inline-block;border:1px solid rgba(255,255,255,.6);padding:.65rem 2rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);text-decoration:none">Vyplnit formulář</a>
+      <a href="jidlo/" style="display:inline-block;border:1px solid rgba(255,255,255,.6);padding:.65rem 2rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);text-decoration:none">Vybrat jídlo</a>
     </div>
     <section id="info" class="rp-section bg-sand" data-slide="info">
       <div class="reveal">
@@ -227,8 +211,8 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
           </div>
           <div class="info-card">
             <div class="info-card-icon">🌿</div>
-            <h3>Poznámka</h3>
-            <p>Bude fajn, když nám potvrdíte účast do 30. dubna. Když to nestihnete, tak se nějak domluvíme, ale nedostanete dort, abyste si to pamatovali.</p>
+            <h3>Výběr jídla</h3>
+            <p>Ještě od vás potřebujeme vědět, co si dáte za předkrm a polévku. Vyplňte to prosím <a href="jidlo/" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">tady</a>, ideálně do 16. srpna.</p>
           </div>
         </div>
       </div>
@@ -249,84 +233,23 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
         </ul>
       </div>
     </section>
-    <section id="rsvp" class="rp-section bg-green" data-slide="rsvp">
+    <section id="jidlo" class="rp-section bg-green" data-slide="jidlo">
       <div class="reveal">
-        <p class="section-label">Potvrzení účasti</p>
-        <h2 class="section-title">Když se vám to bude hodit, <em>budeme rádi...</em></h2>
-        <p class="section-body">Budeme rádi, ale fakt to zkuste vyplnit do 30. dubna. Jinak hrozí, že si budete muset přinést vlastní židli a jídlo.</p>
-        <form class="rsvp-form" id="rsvpForm" action="https://formspree.io/f/meeryvpn" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Jméno a příjmení *</label>
-              <input type="text" name="jmeno" placeholder="Jana Nováková" required>
-            </div>
-            <div class="form-group">
-              <label>E-mail *</label>
-              <input type="email" name="email" placeholder="jana@email.cz" required>
-            </div>
+        <p class="section-label">Svatební menu</p>
+        <h2 class="section-title">Vyberte si předkrm <em>a polévku</em></h2>
+        <p class="section-body">Ke stolu vám donesou to, co si vyberete — u obojího je masová i vegetariánská varianta. Zbytek dne obstará raut, kde si každý natankuje po svém.</p>
+        <div class="menu-courses">
+          <div class="menu-course">
+            <h3>Předkrm</h3>
+            <p>Paštika z kachních jater · nebo · pečená řepa s kozím sýrem</p>
           </div>
-          <div class="form-group">
-            <label>Přijdete na svatbu? *</label>
-            <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="attendance" value="ano" required onchange="toggleAttendance(this.value)"> Ano, přijdu s radostí</label>
-              <label class="radio-opt"><input type="radio" name="attendance" value="ne" onchange="toggleAttendance(this.value)"> Bohužel se nemohu zúčastnit</label>
-            </div>
+          <div class="menu-course">
+            <h3>Polévka</h3>
+            <p>Vývar z hovězí oháňky · nebo · tomatová polévka s bazalkou</p>
           </div>
-          <div class="form-divider"></div>
-          <div id="attendanceFields">
-          <div class="form-group">
-            <label>Počet osob (včetně vás)</label>
-            <select id="personCount" name="pocet_osob" onchange="toggleCompanion(this.value)">
-              <option value="1">1 osoba</option>
-              <option value="2">2 osoby</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Děti (do 12 let)</label>
-              <select name="deti">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Stravovací preference</label>
-              <select name="stravovani">
-                <option value="">Bez omezení</option>
-                <option value="vegetarian">Vegetarián/ka</option>
-                <option value="vegan">Vegan/ka</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group" id="companionField" style="display:none">
-            <label>Jméno doprovodu</label>
-            <input type="text" name="doprovod" placeholder="Jméno a příjmení doprovodu">
-          </div>
-          <div class="form-group">
-            <label>Ubytování — zůstanete přes noc?</label>
-            <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="accommodation" value="ano"> Ano, budu potřebovat ubytování</label>
-              <label class="radio-opt"><input type="radio" name="accommodation" value="ne"> Ne, ubytování nepotřebuji</label>
-            </div>
-          </div>
-          </div><!-- /attendanceFields -->
-          <div class="form-divider"></div>
-          <div class="form-group">
-            <label>Vzkaz pro novomanžele</label>
-            <textarea name="vzkaz" placeholder="Těšíme se na Vás!"></textarea>
-          </div>
-          </div><!-- /attendanceFields -->
-          <button type="submit" class="btn-submit">Odeslat potvrzení</button>
-        </form>
-        <div class="rsvp-success" id="rsvpSuccess">
-          <h3>Děkujeme a těšíme se!</h3>
-          <p>Kdybyste měli jakýkoliv dotaz, tak nám klidně napište.</p>
         </div>
-        <div class="rsvp-success" id="rsvpSuccessNo">
-          <h3>Mrzí nás to, ale respektujeme.</h3>
-          <p>Kdyby se situace změnila, tak děj vědět. Rádi tě uvidíme.</p>
-        </div>
+        <p class="menu-deadline">Prosíme do 16. srpna</p>
+        <a href="jidlo/" class="btn-menu">Vybrat jídlo</a>
       </div>
     </section>
     <footer>
@@ -336,7 +259,6 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
   </div>
 </div>
 <script>
-function toggleAttendance(val){var fields=document.getElementById('attendanceFields');if(fields)fields.style.display=val==='ne'?'none':'';var dividers=document.querySelectorAll('.form-divider');dividers.forEach(function(d){d.style.display=val==='ne'?'none':'';});}
 // Intro overlay — dynamicky vytvořen a přidán do documentElement
 (function(){
   function initIntro() {
@@ -410,7 +332,6 @@ function toggleAttendance(val){var fields=document.getElementById('attendanceFie
   }
 })();
 
-function toggleCompanion(val){document.getElementById('companionField').style.display=val==='2'?'flex':'none';}
 const wedding=new Date('2026-08-29T14:00:00');
 function updateCountdown(){
   const diff=wedding-new Date();
@@ -423,7 +344,7 @@ function updateCountdown(){
 }
 updateCountdown();setInterval(updateCountdown,1000);
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
-const slides={hero:document.getElementById('slide-hero'),info:document.getElementById('slide-info'),program:document.getElementById('slide-program'),rsvp:document.getElementById('slide-rsvp')};
+const slides={hero:document.getElementById('slide-hero'),info:document.getElementById('slide-info'),program:document.getElementById('slide-program'),jidlo:document.getElementById('slide-jidlo')};
 const sections=document.querySelectorAll('[data-slide]');
 function setSlide(id){Object.values(slides).forEach(s=>s.classList.remove('active'));if(slides[id])slides[id].classList.add('active');}
 const sectionObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)setSlide(e.target.dataset.slide);});},{threshold:0.35,rootMargin:'0px 0px -10% 0px'});
@@ -434,22 +355,6 @@ reveals.forEach(r=>revealObs.observe(r));
 (function(){
   window.addEventListener('load',function(){
     if(window.innerWidth<=768){var rpHero=document.getElementById('rp-hero');if(rpHero)rpHero.style.cssText='background:#707e74!important;background-image:none!important;';}
-    var form=document.getElementById('rsvpForm');
-    if(!form)return;
-    form.addEventListener('submit',function(e){
-      e.preventDefault();
-      fetch('https://formspree.io/f/meeryvpn',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-      .then(function(r){if(r.ok){
-          form.style.display='none';
-          var att=form.querySelector('input[name="attendance"]:checked');
-          var attVal=att?att.value:'ano';
-          var sYes=document.getElementById('rsvpSuccess');
-          var sNo=document.getElementById('rsvpSuccessNo');
-          if(attVal==='ne'){if(sNo)sNo.style.display='block';}
-          else{if(sYes)sYes.style.display='block';}
-        }else{alert('Chyba. Zkuste to znovu.');}})
-      .catch(function(){alert('Chyba připojení.');});
-    });
   });
   window.addEventListener('scroll',function(){
     document.querySelector('nav').classList.toggle('scrolled',window.scrollY>10);

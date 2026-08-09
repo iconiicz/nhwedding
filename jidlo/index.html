@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Výběr jídla — Natali &amp; Honza</title>
+<meta name="description" content="Vyberte si předkrm a polévku na svatbu Natali a Honzy, 29. srpna 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--olive:#717E74;--olive-lt:#a1aba5;--sage:#cdd4d0;--cream:#f5f2ec;--sand:#e8e3d8;--dark:#2b2e26;--green:#707E74;--text:#3d4035;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text);font-weight:400;-webkit-font-smoothing:antialiased;}
+
+/* ---------- Hlavička ---------- */
+.head{background:var(--green);text-align:center;padding:4rem 1.8rem 3.5rem;}
+.head-names{font-family:'Bodoni Moda',serif;font-size:clamp(2rem,7vw,3rem);font-weight:400;color:var(--cream);line-height:1.1;letter-spacing:.02em;font-variant:small-caps;}
+.head-meta{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.9rem;}
+.head-rule{width:1px;height:34px;background:rgba(255,255,255,.2);margin:2rem auto 1.8rem;}
+.head-label{font-size:.62rem;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.9rem;}
+.head-title{font-family:'Bodoni Moda',serif;font-size:clamp(1.7rem,5vw,2.4rem);font-weight:400;color:#fff;line-height:1.2;letter-spacing:.02em;}
+.head-title em{font-style:italic;color:var(--sage);}
+.head-body{font-size:.85rem;font-weight:300;line-height:1.85;color:rgba(255,255,255,.75);margin:1.3rem auto 0;max-width:34rem;}
+.deadline{display:inline-block;margin-top:1.6rem;padding:.6rem 1.4rem;border:1px solid rgba(255,255,255,.35);border-radius:100px;font-size:.62rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--cream);}
+
+/* ---------- Formulář ---------- */
+.wrap{max-width:44rem;margin:0 auto;padding:3.5rem 1.8rem 4rem;}
+fieldset{border:none;}
+.block{margin-bottom:3rem;}
+.block-head{display:flex;align-items:baseline;gap:.9rem;margin-bottom:1.6rem;padding-bottom:.9rem;border-bottom:1px solid var(--sand);}
+.block-num{font-family:'Bodoni Moda',serif;font-size:1.5rem;color:var(--olive-lt);line-height:1;}
+.block-title{font-family:'Bodoni Moda',serif;font-size:1.35rem;font-weight:400;color:var(--dark);letter-spacing:.02em;}
+.block-note{font-size:.78rem;font-weight:300;line-height:1.7;color:#6a7060;margin:-.6rem 0 1.6rem;}
+
+.field{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.4rem;}
+.field label{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--olive);}
+.field input[type=text],.field input[type=email],.field textarea{background:#fff;border:1px solid var(--sand);color:var(--text);padding:.85rem .95rem;font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:300;outline:none;transition:border-color .2s;width:100%;border-radius:2px;}
+.field input::placeholder,.field textarea::placeholder{color:#b3b7ab;}
+.field input:focus,.field textarea:focus{border-color:var(--olive);}
+.field textarea{resize:vertical;min-height:90px;line-height:1.6;}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+@media(max-width:600px){.row{grid-template-columns:1fr;gap:0;}}
+
+/* ---------- Karty s jídlem ---------- */
+.course{margin-bottom:2rem;}
+.course-label{font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--olive);margin-bottom:.85rem;}
+.options{display:grid;gap:.8rem;}
+.opt{position:relative;display:block;background:#fff;border:1px solid var(--sand);border-left:3px solid var(--sand);padding:1.15rem 1.2rem 1.15rem 3.1rem;cursor:pointer;transition:border-color .2s,background .2s,box-shadow .2s;border-radius:2px;}
+.opt:hover{border-color:var(--olive-lt);border-left-color:var(--olive-lt);}
+.opt input{position:absolute;left:1.15rem;top:1.35rem;accent-color:var(--green);width:15px;height:15px;cursor:pointer;}
+.opt:has(input:checked){border-color:var(--green);border-left-color:var(--green);background:#fbfaf7;box-shadow:0 1px 8px rgba(112,126,116,.1);}
+.opt-text{display:block;font-size:.86rem;font-weight:300;line-height:1.65;color:var(--text);}
+.opt-tag{display:block;width:fit-content;margin-bottom:.5rem;padding:.2rem .55rem;font-size:.55rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;border-radius:2px;}
+.tag-veg{background:var(--green);color:#fff;}
+.tag-meat{background:var(--sand);color:var(--olive);}
+.opt input:focus-visible{outline:2px solid var(--green);outline-offset:2px;}
+
+/* ---------- Doprovod ---------- */
+.toggle{display:flex;align-items:center;gap:.75rem;background:var(--sand);padding:1.05rem 1.2rem;cursor:pointer;border-radius:2px;transition:background .2s;}
+.toggle:hover{background:#e0dacd;}
+.toggle input{accent-color:var(--green);width:16px;height:16px;flex-shrink:0;cursor:pointer;}
+.toggle span{font-size:.84rem;font-weight:400;letter-spacing:.02em;color:var(--dark);}
+#companionBlock{display:none;margin-top:2rem;padding-left:1.2rem;border-left:1px solid var(--sand);}
+#companionBlock.open{display:block;}
+
+/* ---------- Odeslání ---------- */
+.submit{width:100%;margin-top:.5rem;padding:1.05rem 2rem;background:var(--green);border:1px solid var(--green);color:#fff;font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;cursor:pointer;transition:background .25s,opacity .25s;border-radius:2px;}
+.submit:hover{background:#5f6c63;}
+.submit:disabled{opacity:.5;cursor:default;}
+.form-error{display:none;margin-top:1rem;padding:.9rem 1.1rem;background:#f4e6e2;border-left:3px solid #b5654f;font-size:.8rem;font-weight:300;line-height:1.6;color:#7d4534;}
+.form-error.show{display:block;}
+
+.done{display:none;text-align:center;padding:4rem 1.8rem;}
+.done.show{display:block;}
+.done-mark{font-size:2.5rem;line-height:1;margin-bottom:1.4rem;}
+.done h2{font-family:'Bodoni Moda',serif;font-size:clamp(1.6rem,4vw,2.1rem);font-weight:400;color:var(--dark);margin-bottom:.9rem;letter-spacing:.02em;}
+.done p{font-size:.88rem;font-weight:300;line-height:1.85;color:#6a7060;max-width:28rem;margin:0 auto;}
+.done-recap{margin-top:2rem;padding:1.6rem 1.4rem;background:var(--sand);text-align:left;border-radius:2px;}
+.done-recap dt{font-size:.58rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--olive);margin-bottom:.3rem;}
+.done-recap dd{font-size:.84rem;font-weight:300;line-height:1.6;color:var(--text);margin-bottom:1.1rem;}
+.done-recap dd:last-child{margin-bottom:0;}
+
+footer{background:var(--dark);text-align:center;padding:2.5rem 1.5rem;}
+.footer-names{font-family:'Bodoni Moda',serif;font-size:1.4rem;font-weight:400;font-style:italic;color:var(--olive-lt);margin-bottom:.4rem;letter-spacing:.04em;}
+footer p{font-size:.66rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
+footer a{color:rgba(255,255,255,.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px;}
+footer a:hover{color:rgba(255,255,255,.7);}
+.footer-back{margin-top:1.4rem;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;}
+</style>
+</head>
+<body>
+
+<header class="head">
+  <h1 class="head-names">Natali &amp; Honza</h1>
+  <p class="head-meta">29. srpna 2026 · Mlýn Propast</p>
+  <div class="head-rule"></div>
+  <p class="head-label">Svatební menu</p>
+  <h2 class="head-title">Vyberte si <em>předkrm a polévku</em></h2>
+  <p class="head-body">Ke stolu vám donesou to, co si tady vyberete. Zbytek dne obstará raut, kde si každý natankuje po svém.</p>
+  <p class="deadline">Prosíme do 16. srpna</p>
+</header>
+
+<div class="wrap" id="formWrap">
+  <form id="menuForm" action="https://formspree.io/f/PLACEHOLDER" method="POST" novalidate>
+
+    <fieldset class="block">
+      <div class="block-head">
+        <span class="block-num">01</span>
+        <h3 class="block-title">Kdo jste</h3>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="jmeno">Jméno a příjmení *</label>
+          <input type="text" id="jmeno" name="jmeno" placeholder="Jana Nováková" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" placeholder="jana@email.cz" required autocomplete="email">
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="block">
+      <div class="block-head">
+        <span class="block-num">02</span>
+        <h3 class="block-title">Vaše volba</h3>
+      </div>
+
+      <div class="course">
+        <p class="course-label">Předkrm *</p>
+        <div class="options">
+          <label class="opt">
+            <input type="radio" name="predkrm" value="Paštika z kachních jater" required>
+            <span class="opt-tag tag-meat">Maso</span>
+            <span class="opt-text">Paštika z kachních jater s koňakem a tymiánem, ovocné chutney, kváskový chléb</span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="predkrm" value="Pečená řepa s kozím sýrem (VEG)">
+            <span class="opt-tag tag-veg">Vegetariánské</span>
+            <span class="opt-text">Marinovaná pečená řepa s kozím sýrem, dresink z medu a vinného octa, ořechy, žitný chléb</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="course">
+        <p class="course-label">Polévka *</p>
+        <div class="options">
+          <label class="opt">
+            <input type="radio" name="polevka" value="Vývar z hovězí oháňky" required>
+            <span class="opt-tag tag-meat">Maso</span>
+            <span class="opt-text">Tažený vývar z hovězí oháňky s játrovými knedlíčky, kořenovou zeleninou a nudlemi</span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="polevka" value="Tomatová polévka (VEG)">
+            <span class="opt-tag tag-veg">Vegetariánské</span>
+            <span class="opt-text">Tomatová polévka s bazalkou a parmazánem</span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="block">
+      <div class="block-head">
+        <span class="block-num">03</span>
+        <h3 class="block-title">Doprovod</h3>
+      </div>
+      <p class="block-note">Jestli vyplňujete i za někoho dalšího, zaškrtněte a vyberte i za něj. Jinak tenhle krok přeskočte.</p>
+
+      <label class="toggle">
+        <input type="checkbox" id="hasCompanion">
+        <span>Vyplňuji i za doprovod</span>
+      </label>
+
+      <div id="companionBlock">
+        <div class="field">
+          <label for="doprovod_jmeno">Jméno a příjmení doprovodu *</label>
+          <input type="text" id="doprovod_jmeno" name="doprovod_jmeno" placeholder="Petr Novák" autocomplete="off">
+        </div>
+
+        <div class="course">
+          <p class="course-label">Předkrm pro doprovod *</p>
+          <div class="options">
+            <label class="opt">
+              <input type="radio" name="doprovod_predkrm" value="Paštika z kachních jater">
+              <span class="opt-tag tag-meat">Maso</span>
+              <span class="opt-text">Paštika z kachních jater s koňakem a tymiánem, ovocné chutney, kváskový chléb</span>
+            </label>
+            <label class="opt">
+              <input type="radio" name="doprovod_predkrm" value="Pečená řepa s kozím sýrem (VEG)">
+              <span class="opt-tag tag-veg">Vegetariánské</span>
+              <span class="opt-text">Marinovaná pečená řepa s kozím sýrem, dresink z medu a vinného octa, ořechy, žitný chléb</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="course">
+          <p class="course-label">Polévka pro doprovod *</p>
+          <div class="options">
+            <label class="opt">
+              <input type="radio" name="doprovod_polevka" value="Vývar z hovězí oháňky">
+              <span class="opt-tag tag-meat">Maso</span>
+              <span class="opt-text">Tažený vývar z hovězí oháňky s játrovými knedlíčky, kořenovou zeleninou a nudlemi</span>
+            </label>
+            <label class="opt">
+              <input type="radio" name="doprovod_polevka" value="Tomatová polévka (VEG)">
+              <span class="opt-tag tag-veg">Vegetariánské</span>
+              <span class="opt-text">Tomatová polévka s bazalkou a parmazánem</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="block">
+      <div class="block-head">
+        <span class="block-num">04</span>
+        <h3 class="block-title">Ještě něco?</h3>
+      </div>
+      <p class="block-note">Alergie, bezlepková nebo veganská strava, cokoliv dalšího — napište to sem. Vegetariánské varianty obsahují sýr, takže pokud jíte veganskou stravu, dejte nám vědět.</p>
+      <div class="field">
+        <label for="poznamka">Poznámka</label>
+        <textarea id="poznamka" name="poznamka" placeholder="Např. alergie na ořechy, bezlepková dieta…"></textarea>
+      </div>
+    </fieldset>
+
+    <input type="hidden" name="_subject" id="subjectField" value="Výběr jídla — svatba">
+
+    <button type="submit" class="submit" id="submitBtn">Odeslat výběr</button>
+    <p class="form-error" id="formError"></p>
+  </form>
+</div>
+
+<div class="done" id="done">
+  <div class="done-mark">🌿</div>
+  <h2>Máme to, děkujeme!</h2>
+  <p>Výběr je u nás. Kdybyste si to na poslední chvíli rozmysleli nebo něco nesedělo, napište nám.</p>
+  <dl class="done-recap" id="doneRecap"></dl>
+</div>
+
+<footer>
+  <p class="footer-names">Natali &amp; Honza</p>
+  <p>29. srpna 2026 · Mlýn Propast</p>
+  <p class="footer-back"><a href="/">Zpět na web svatby</a></p>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('menuForm');
+  var wrap = document.getElementById('formWrap');
+  var done = document.getElementById('done');
+  var recap = document.getElementById('doneRecap');
+  var errBox = document.getElementById('formError');
+  var btn = document.getElementById('submitBtn');
+  var toggle = document.getElementById('hasCompanion');
+  var block = document.getElementById('companionBlock');
+
+  var companionInputs = block.querySelectorAll('input');
+
+  function syncCompanion(){
+    var on = toggle.checked;
+    block.classList.toggle('open', on);
+    companionInputs.forEach(function(el){
+      if (el.type === 'radio' || el.type === 'text') el.required = on;
+      if (!on) {
+        if (el.type === 'radio') el.checked = false;
+        if (el.type === 'text') el.value = '';
+      }
+    });
+  }
+  toggle.addEventListener('change', syncCompanion);
+  syncCompanion();
+
+  function showError(msg){
+    errBox.textContent = msg;
+    errBox.classList.add('show');
+  }
+
+  function firstInvalid(){
+    var order = ['jmeno','email','predkrm','polevka'];
+    if (toggle.checked) order = order.concat(['doprovod_jmeno','doprovod_predkrm','doprovod_polevka']);
+    for (var i = 0; i < order.length; i++) {
+      var el = form.elements[order[i]];
+      var valid = el.length ? Array.prototype.some.call(el, function(r){ return r.checked; })
+                            : (el.value.trim() !== '' && el.checkValidity());
+      if (!valid) return order[i];
+    }
+    return null;
+  }
+
+  var LABELS = {
+    jmeno: 'vyplňte prosím jméno a příjmení',
+    email: 'vyplňte prosím platný e-mail',
+    predkrm: 'vyberte prosím předkrm',
+    polevka: 'vyberte prosím polévku',
+    doprovod_jmeno: 'vyplňte prosím jméno doprovodu',
+    doprovod_predkrm: 'vyberte prosím předkrm pro doprovod',
+    doprovod_polevka: 'vyberte prosím polévku pro doprovod'
+  };
+
+  function pick(name){
+    var el = form.elements[name];
+    if (!el) return '';
+    if (el.length) {
+      var checked = Array.prototype.filter.call(el, function(r){ return r.checked; })[0];
+      return checked ? checked.parentNode.querySelector('.opt-text').textContent.trim() : '';
+    }
+    return el.value.trim();
+  }
+
+  function buildRecap(){
+    var rows = [
+      [pick('jmeno'), pick('predkrm'), pick('polevka')]
+    ];
+    if (toggle.checked) rows.push([pick('doprovod_jmeno'), pick('doprovod_predkrm'), pick('doprovod_polevka')]);
+
+    recap.innerHTML = rows.map(function(r){
+      return '<dt>' + escapeHtml(r[0]) + '</dt><dd>' + escapeHtml(r[1]) + '<br>' + escapeHtml(r[2]) + '</dd>';
+    }).join('');
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errBox.classList.remove('show');
+
+    var bad = firstInvalid();
+    if (bad) {
+      showError('Ještě to není celé — ' + LABELS[bad] + '.');
+      var el = form.elements[bad];
+      var target = el.length ? el[0] : el;
+      target.focus({preventScroll:true});
+      target.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+
+    document.getElementById('subjectField').value = 'Výběr jídla — ' + pick('jmeno');
+
+    btn.disabled = true;
+    btn.textContent = 'Odesílám…';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: {'Accept': 'application/json'}
+    })
+    .then(function(r){
+      if (!r.ok) throw new Error('bad response');
+      buildRecap();
+      wrap.style.display = 'none';
+      done.classList.add('show');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    })
+    .catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'Odeslat výběr';
+      showError('Nepodařilo se odeslat — zkuste to prosím znovu, nebo nám napište zprávu.');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
