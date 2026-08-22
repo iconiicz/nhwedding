@@ -23,6 +23,7 @@ var COL_ID = 1;          // A = #
 var COL_PREDKRM = 18;    // R
 var COL_POLEVKA = 19;    // S
 var COL_VYPLNENO = 20;   // T
+var COL_STUL     = 9;    // I — zasedací pořádek
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -91,4 +92,43 @@ function odpoved(obj) {
   return ContentService
     .createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * Jednorázový zápis zasedacího pořádku do sloupce I (Stůl).
+ * Spusť ručně v editoru: nahoře vyber "zapisStoly" a dej Spustit.
+ * Je idempotentní — dá se pustit opakovaně, jen přepíše stejné hodnoty.
+ */
+function zapisStoly() {
+  // id hosta (sloupec A) -> číslo stolu
+  var STOLY = {
+    1:7,  2:7,  3:7,  4:7,  5:9,  6:1,  7:1,  8:2,  9:2,  10:1,
+    11:1, 12:5, 13:6, 14:6, 15:6, 16:6, 17:2, 18:2, 19:5, 20:5,
+    21:9, 22:9, 23:10, 24:3, 25:3, 26:8, 27:8, 28:8, 29:4, 30:4,
+    31:5, 32:5, 33:8, 34:8, 35:10, 36:10, 37:10, 38:3, 39:3, 40:4,
+    41:4, 42:9, 43:6
+  };
+
+  var sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
+  if (!sheet) throw new Error('List "' + SHEET_NAME + '" v tabulce není');
+
+  var pocetRadku = sheet.getLastRow() - HEADER_ROW;
+  var ids = sheet.getRange(HEADER_ROW + 1, COL_ID, pocetRadku, 1).getValues();
+  var stavajici = sheet.getRange(HEADER_ROW + 1, COL_STUL, pocetRadku, 1).getValues();
+
+  var zapsano = 0, bezStolu = [];
+  for (var i = 0; i < ids.length; i++) {
+    var id = String(ids[i][0]).trim();
+    if (id === '' || id === 'null') continue;
+    if (STOLY.hasOwnProperty(id)) {
+      stavajici[i][0] = STOLY[id];
+      zapsano++;
+    } else {
+      bezStolu.push(id);
+    }
+  }
+
+  sheet.getRange(HEADER_ROW + 1, COL_STUL, pocetRadku, 1).setValues(stavajici);
+  Logger.log('Zapsáno stolů: ' + zapsano);
+  if (bezStolu.length) Logger.log('Bez přiřazeného stolu (id): ' + bezStolu.join(', '));
 }
