@@ -97,38 +97,60 @@ function odpoved(obj) {
 /**
  * Jednorázový zápis zasedacího pořádku do sloupce I (Stůl).
  * Spusť ručně v editoru: nahoře vyber "zapisStoly" a dej Spustit.
- * Je idempotentní — dá se pustit opakovaně, jen přepíše stejné hodnoty.
+ * Je idempotentní — dá se pustit opakovaně.
+ *
+ * Páruje podle JMÉNA ve sloupci B, ne podle čísla ve sloupci A.
+ * Čísla se totiž posunula, když do tabulky přibyli novomanželé,
+ * a posunou se zas, až se bude vkládat nebo mazat řádek.
  */
 function zapisStoly() {
-  // id hosta (sloupec A) -> číslo stolu
   var STOLY = {
-    1:7,  2:7,  3:7,  4:7,  5:9,  6:1,  7:1,  8:2,  9:2,  10:1,
-    11:1, 12:5, 13:6, 14:6, 15:6, 16:6, 17:2, 18:2, 19:5, 20:5,
-    21:9, 22:9, 23:10, 24:3, 25:3, 26:8, 27:8, 28:8, 29:4, 30:4,
-    31:5, 32:5, 33:8, 34:8, 35:10, 36:10, 37:10, 38:3, 39:3, 40:4,
-    41:4, 42:9, 43:6
+    'kristyna fizkova':7, 'hana almer':7, 'lubomir almer':7, 'alena pavlouskova':7,
+    'pavel pavlousek':9, 'monika mlickova':1, 'ales mlicka':1,
+    'tobias mlicka':2, 'natali mlickova':2,
+    'zdenek kuffel':1, 'renatka kuffelova':1, 'marie urvalkova':5,
+    'dimitra papadopoulu':6, 'vojtech advokat tancos':6, 'ela zichova':6, 'matej habla':6,
+    'jarmila lastovicova':2, 'petr lastovica':2,
+    'monika kuncarova':5, 'sarlota kuncarova':5,
+    'adela tuckova':9, 'tomas musil':9, 'lucie kozakova':10,
+    'marcela conova':3, 'david con':3,
+    'jakub kozak':8, 'veronika novotna':8, 'vojta kozak':8,
+    'nikola havlickova':4, 'martin mikyska':4,
+    'martin kuncar':5, 'nikolas kuncar':5,
+    'sarka kozakova':8, 'milan kozak':8,
+    'andrea stejfova':10, 'marek con':10, 'regina horackova':10,
+    'vilem franek':3, 'marketa frankova':3,
+    'isabela frankova':4, 'mia frankova':4,
+    'tomas brzobohaty':9, 'matej karger':6,
+    'honza con':'Novomanželé', 'natali con':'Novomanželé'
   };
+
+  // "Tobias Mlíčka (dítě) - 7" -> "tobias mlicka"
+  function klic(jmeno) {
+    return String(jmeno)
+      .replace(/\(.*?\)/g, ' ')      // závorky pryč
+      .replace(/[-–—]\s*\d+\s*$/, '') // koncové " - 7"
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // diakritika pryč
+      .toLowerCase().replace(/\s+/g, ' ').trim();
+  }
 
   var sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
   if (!sheet) throw new Error('List "' + SHEET_NAME + '" v tabulce není');
 
-  var pocetRadku = sheet.getLastRow() - HEADER_ROW;
-  var ids = sheet.getRange(HEADER_ROW + 1, COL_ID, pocetRadku, 1).getValues();
-  var stavajici = sheet.getRange(HEADER_ROW + 1, COL_STUL, pocetRadku, 1).getValues();
+  var pocet = sheet.getLastRow() - HEADER_ROW;
+  var jmena = sheet.getRange(HEADER_ROW + 1, 2, pocet, 1).getValues();
+  var stoly = sheet.getRange(HEADER_ROW + 1, COL_STUL, pocet, 1).getValues();
 
-  var zapsano = 0, bezStolu = [];
-  for (var i = 0; i < ids.length; i++) {
-    var id = String(ids[i][0]).trim();
-    if (id === '' || id === 'null') continue;
-    if (STOLY.hasOwnProperty(id)) {
-      stavajici[i][0] = STOLY[id];
-      zapsano++;
-    } else {
-      bezStolu.push(id);
-    }
+  var zapsano = 0, nenalezeni = [];
+  for (var i = 0; i < jmena.length; i++) {
+    var j = String(jmena[i][0]).trim();
+    if (!j) continue;
+    var k = klic(j);
+    if (STOLY.hasOwnProperty(k)) { stoly[i][0] = STOLY[k]; zapsano++; }
+    else nenalezeni.push(j);
   }
 
-  sheet.getRange(HEADER_ROW + 1, COL_STUL, pocetRadku, 1).setValues(stavajici);
-  Logger.log('Zapsáno stolů: ' + zapsano);
-  if (bezStolu.length) Logger.log('Bez přiřazeného stolu (id): ' + bezStolu.join(', '));
+  sheet.getRange(HEADER_ROW + 1, COL_STUL, pocet, 1).setValues(stoly);
+  Logger.log('Zapsáno stolů: ' + zapsano + ' z ' + Object.keys(STOLY).length + ' očekávaných');
+  if (nenalezeni.length) Logger.log('V seznamu stolů chybí: ' + nenalezeni.join(', '));
 }
