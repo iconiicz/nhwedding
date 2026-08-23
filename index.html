@@ -483,8 +483,8 @@ function vykresli(id){
     '<div class="karta-radek"><span>Polévka</span><strong>' + escapuj(JIDLA[h[5]]) + '</strong></div>' +
     '<p class="karta-pozn">' + (pozn ? '<em>' + escapuj(pozn) + '</em><br>' : '') +
       'U stolu ' + stul + ' sedíte s: ' + escapuj(sousede.join(', ')) + '.</p>' +
-    '<a class="karta-bingo" href="bingo/">Vaše bingo karta' +
-      '<small>Máte vlastní, žádné dvě nejsou stejné. Škrtejte, co během dne uvidíte.</small>' +
+    '<a class="karta-bingo" href="bingo/" target="_blank" rel="noopener">Svatební bingo' +
+      '<small>Škrtejte, co během dne uvidíte. Karta si vás pamatuje.</small>' +
     '</a>' +
     '</div>';
   kartaBox.innerHTML = html;
