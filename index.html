@@ -446,6 +446,9 @@ var JIDLA = {
   V: 'Vývar z hovězí oháňky',
   T: 'Tomatová polévka s bazalkou (VEG)'
 };
+/* Stoly sražené k sobě — fyzicky jedna tabule, dvě čísla. */
+var SOUSEDNI = {9:7, 7:9, 10:8, 8:10, 2:1, 1:2, 4:3, 3:4};
+
 var MLYN = 'Mlýn, pokoj ', NOV1 = 'Novostavba, 1. patro — ', NOV2 = 'Novostavba, 2. patro — ', OCH = 'Ochoz, 3. patro — ';
 
 /* [id, jméno, stůl, pokoj, předkrm, polévka, poznámka] */
@@ -514,9 +517,14 @@ function vykresli(id){
   if (!h) { kartaBox.innerHTML = ''; return; }
 
   var stul = h[2], pokoj = h[3], pozn = h[6];
-  var sousede = HOSTE.filter(function(x){ return x[2] === stul && x[0] !== h[0]; })
-                     .map(function(x){ return x[1]; })
-                     .sort(function(a,b){ return a.localeCompare(b,'cs'); });
+  function jmenaUStolu(cislo, krome){
+    return HOSTE.filter(function(x){ return x[2] === cislo && x[0] !== krome; })
+                .map(function(x){ return x[1]; })
+                .sort(function(a,b){ return a.localeCompare(b,'cs'); });
+  }
+  var sousede = jmenaUStolu(stul, h[0]);
+  var vedle = SOUSEDNI[stul];
+  var sousedeVedle = vedle ? jmenaUStolu(vedle, h[0]) : [];
 
   var html = '<div class="karta">' +
     '<p class="karta-jmeno">' + escapuj(h[1]) + '</p>' +
@@ -525,7 +533,11 @@ function vykresli(id){
     '<div class="karta-radek"><span>Předkrm</span><strong>' + escapuj(JIDLA[h[4]]) + '</strong></div>' +
     '<div class="karta-radek"><span>Polévka</span><strong>' + escapuj(JIDLA[h[5]]) + '</strong></div>' +
     '<p class="karta-pozn">' + (pozn ? '<em>' + escapuj(pozn) + '</em><br>' : '') +
-      'U stolu ' + stul + ' sedíte s: ' + escapuj(sousede.join(', ')) + '.</p>' +
+      'U stolu ' + stul + ' sedíte s: ' + escapuj(sousede.join(', ')) + '.' +
+      (sousedeVedle.length
+        ? '<br><br>Stoly ' + stul + ' a ' + vedle + ' stojí sražené vedle sebe, takže hned u vás sedí i: ' + escapuj(sousedeVedle.join(', ')) + '.'
+        : '') +
+      '</p>' +
     '<a class="karta-bingo" href="bingo/" target="_blank" rel="noopener">Svatební bingo' +
       '<small>Škrtejte, co během dne uvidíte. Karta si vás pamatuje.</small>' +
     '</a>' +
