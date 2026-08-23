@@ -107,6 +107,9 @@ nav.scrolled{background:rgba(112,126,116,.50);backdrop-filter:blur(8px);}
 .karta-radek strong{font-weight:400;color:#fff;text-align:right;}
 .karta-pozn{margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid rgba(255,255,255,.18);font-size:.78rem;font-weight:300;line-height:1.75;color:rgba(255,255,255,.7);}
 .karta-pozn em{font-style:normal;color:rgba(255,255,255,.95);}
+.karta-bingo{display:block;margin-top:1.2rem;padding:.95rem 1rem;border:1px solid rgba(255,255,255,.45);color:#fff;font-size:.62rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .25s,border-color .25s;}
+.karta-bingo:hover{background:rgba(255,255,255,.16);border-color:#fff;}
+.karta-bingo small{display:block;margin-top:.45rem;font-size:.66rem;font-weight:300;letter-spacing:.02em;text-transform:none;color:rgba(255,255,255,.6);}
 
 .hero-fakta{display:flex;gap:1.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.4rem;}
 .hero-fakta div{text-align:center;}
@@ -480,6 +483,9 @@ function vykresli(id){
     '<div class="karta-radek"><span>Polévka</span><strong>' + escapuj(JIDLA[h[5]]) + '</strong></div>' +
     '<p class="karta-pozn">' + (pozn ? '<em>' + escapuj(pozn) + '</em><br>' : '') +
       'U stolu ' + stul + ' sedíte s: ' + escapuj(sousede.join(', ')) + '.</p>' +
+    '<a class="karta-bingo" href="bingo/">Vaše bingo karta' +
+      '<small>Máte vlastní, žádné dvě nejsou stejné. Škrtejte, co během dne uvidíte.</small>' +
+    '</a>' +
     '</div>';
   kartaBox.innerHTML = html;
 }
