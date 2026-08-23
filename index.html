@@ -89,8 +89,9 @@ nav.scrolled{background:rgba(112,126,116,.50);backdrop-filter:blur(8px);}
 .kroky p{font-size:.8rem;font-weight:300;line-height:1.6;color:#6a7060;}
 .kroky b{font-weight:500;color:var(--dark);}
 .kroky .cislo{display:inline-block;min-width:1.3rem;font-family:'Bodoni Moda',serif;color:var(--olive);}
-#wedibox-embed{margin-top:1rem;max-width:100%;overflow-x:auto;}
-@media(max-width:768px){#wedibox-embed{margin:0 1.8rem 3rem;}.kroky{margin:0 1.8rem;}}
+.btn-fotky{display:block;margin-top:1.2rem;padding:1.15rem 2rem;background:var(--olive);border:1px solid var(--olive);color:#fff;font-size:.68rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .25s;}
+.btn-fotky:hover{background:var(--dark);border-color:var(--dark);}
+@media(max-width:768px){.btn-fotky{margin:1.2rem 1.8rem 3rem;}.kroky{margin:0 1.8rem;}}
 .hledani{margin:2rem 0 0;}
 .hledani label{display:block;font-size:.62rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.7rem;}
 .hledani select{width:100%;padding:1rem 1.1rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.4);color:#fff;font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:300;-webkit-appearance:none;appearance:none;border-radius:0;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%23ffffff' d='M6 8 0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.1rem center;background-size:10px;}
@@ -217,12 +218,11 @@ footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
         <p class="section-body">Foťte, co hrdlo ráčí — a všechno, co v sobotu nacvakáte, hoďte sem. Stačí kliknout, vybrat fotky a je to. Žádná appka, žádné přihlašování, nic se cestou nezhorší.<br><br><strong style="font-weight:500;color:var(--dark);">Jen jedna prosba: během obřadu telefony dolů.</strong> Máme tam fotografa i kameramany, kteří to zvládnou líp než my všichni dohromady — a nám udělá radost vidět v první řadě vaše obličeje místo displejů. Hned po obřadu si to vynahradíte.</p>
       </div>
       <div class="kroky">
-        <p><span class="cislo">1.</span> Klepněte na <b>Browse Files</b> v rámečku níž.</p>
-        <p><span class="cislo">2.</span> Vyberte fotky z telefonu — klidně všechny naráz.</p>
+        <p><span class="cislo">1.</span> Klepněte na tlačítko níž — otevře se stránka pro nahrání.</p>
+        <p><span class="cislo">2.</span> Klepněte na <b>Share Your Photos</b> a vyberte fotky z telefonu, klidně všechny naráz.</p>
         <p><span class="cislo">3.</span> Počkejte, až doběhne nahrávání. Hotovo, nic dalšího se nepotvrzuje.</p>
       </div>
-      <!-- Wedibox Photo Collection -->
-      <div id="wedibox-embed" data-event="74663c54-e310-4d59-86b6-e5cc811519ac"></div>
+      <a class="btn-fotky" href="https://www.wedibox.com/w/photo-collection/recDxm97eFDLPZF7" target="_blank" rel="noopener">Nahrát fotky</a>
     </section>
 
     <section id="program" class="rp-section bg-cream" data-slide="program">
@@ -392,55 +392,6 @@ var pozorovatelOdhaleni = new IntersectionObserver(function(zaznamy){
   });
 }, {threshold:0.1});
 document.querySelectorAll('.reveal').forEach(function(r){ pozorovatelOdhaleni.observe(r); });
-
-/* ---------- Wedibox: načíst až bude potřeba ----------
-   Iframe widgetu se táhne ~4 s a držel by událost load celé stránky
-   (zbytek webu je hotový za ~0,4 s). Načteme ho proto později.
-   Tři spouštěče, každý sám o sobě stačí — widget se musí objevit vždy:
-     1) IntersectionObserver, když se sekce blíží do zorného pole
-     2) první scroll, kdyby IO nebyl k dispozici nebo selhal
-     3) časovač po načtení stránky jako poslední pojistka */
-(function(){
-  var kontejner = document.getElementById('wedibox-embed');
-  if (!kontejner) return;
-  var hotovo = false;
-
-  function nacti(){
-    if (hotovo) return;
-    hotovo = true;
-    window.removeEventListener('scroll', priScrollu);
-    var sc = document.createElement('script');
-    sc.src = 'https://embed.wedibox.com/widget.js';
-    sc.async = true;
-    document.body.appendChild(sc);
-  }
-
-  function priScrollu(){
-    var sekce = document.getElementById('fotky');
-    if (!sekce) { nacti(); return; }
-    if (sekce.getBoundingClientRect().top < window.innerHeight + 300) nacti();
-  }
-
-  // 1) pozorujeme sekci, ne prázdný kontejner (ten má nulovou výšku)
-  if ('IntersectionObserver' in window) {
-    try {
-      var cil = document.getElementById('fotky') || kontejner;
-      var pozorovatel = new IntersectionObserver(function(zaznamy){
-        for (var i = 0; i < zaznamy.length; i++) {
-          if (zaznamy[i].isIntersecting) { nacti(); pozorovatel.disconnect(); return; }
-        }
-      }, {rootMargin: '300px 0px'});
-      pozorovatel.observe(cil);
-    } catch (e) { /* spadneme na záložní cesty níž */ }
-  }
-
-  // 2) záloha na scrollu
-  window.addEventListener('scroll', priScrollu, {passive: true});
-  priScrollu();
-
-  // 3) pojistka: i host, který nescrolluje, widget nakonec dostane
-  window.addEventListener('load', function(){ setTimeout(nacti, 4000); });
-})();
 
 /* ---------- osobní karta hosta ---------- */
 var JIDLA = {
