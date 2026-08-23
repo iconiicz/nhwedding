@@ -25,7 +25,6 @@ h1{font-family:'Bodoni Moda',serif;font-size:clamp(3rem,17vw,5rem);font-weight:4
 .vyber select{width:100%;padding:.85rem 1rem;background:rgba(255,255,255,.1);border:1px solid var(--lem);color:var(--krem);font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:300;-webkit-appearance:none;appearance:none;border-radius:0;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%23f0ede4' d='M6 8 0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-size:10px;text-align:center;}
 .vyber select:focus{outline:none;border-color:var(--krem);}
 .vyber select option{background:#5c6b5c;color:var(--krem);}
-.kdo{margin-top:.8rem;font-family:'Bodoni Moda',serif;font-size:1.15rem;font-style:italic;letter-spacing:.03em;color:rgba(240,237,228,.9);text-align:center;min-height:1.3rem;}
 /* mřížka */
 #karta{display:none;}
 .mrizka{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--lem);border-left:1px solid var(--lem);}
@@ -61,7 +60,6 @@ footer a{color:rgba(240,237,228,.65);text-decoration:underline;text-underline-of
   <div class="vyber">
     <label for="host">Kdo jste</label>
     <select id="host"><option value="">— vyberte své jméno —</option></select>
-    <p class="kdo" id="kdo"></p>
   </div>
 
   <div id="karta">
@@ -126,7 +124,6 @@ var vyber = document.getElementById('host'),
     kartaBox = document.getElementById('karta'),
     stavEl = document.getElementById('stav'),
     bingoEl = document.getElementById('bingo'),
-    kdoEl = document.getElementById('kdo'),
     resetBtn = document.getElementById('reset');
 var aktivni = null, policka = [], skrtnuta = [];
 
@@ -175,16 +172,13 @@ function postavMrizku(){
 function zobraz(id){
   aktivni = id;
   skrtnuta = nacti(id);
-  var jmeno = '';
-  HOSTE.forEach(function(h){ if (String(h[0]) === String(id)) jmeno = h[1]; });
-  kdoEl.textContent = jmeno ? 'Karta patří ' + jmeno : '';
   postavMrizku();
   kartaBox.style.display = 'block';
   prekresli();
 }
 
 vyber.addEventListener('change', function(){
-  if (!this.value) { kartaBox.style.display = 'none'; kdoEl.textContent = ''; aktivni = null; return; }
+  if (!this.value) { kartaBox.style.display = 'none'; aktivni = null; return; }
   try { localStorage.setItem('nh-host', this.value); } catch(e) {}
   zobraz(this.value);
 });
