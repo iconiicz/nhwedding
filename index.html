@@ -3,392 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Natali &amp; Honza — 29. 8. 2026</title>
-<meta name="description" content="Všechno, co potřebujete vědět ke svatbě Natali a Honzy — 29. srpna 2026, Mlýn Propast.">
+<title>Natali &amp; Honza Cón — 29. 8. 2026</title>
+<meta name="description" content="Děkujeme, že jste u toho byli. A pošlete nám fotky, které jste nafotili.">
+<meta property="og:title" content="Natali &amp; Honza Cón">
+<meta property="og:description" content="btw…už jsme se vzali. Děkujeme, že jste u toho byli.">
+<meta property="og:image" content="https://thecon.cz/prvni-tanec.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--olive:#717E74;--olive-mid:#717E74;--olive-lt:#a1aba5;--sage:#cdd4d0;--cream:#f5f2ec;--sand:#e8e3d8;--dark:#2b2e26;--green:#707E74;--text:#3d4035;--gold:#a8935a;}
+:root{--olive:#717E74;--olive-lt:#a1aba5;--sage:#cdd4d0;--cream:#f5f2ec;--sand:#e8e3d8;--dark:#2b2e26;--text:#3d4035;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text);font-weight:400;}
-.site-wrapper{display:flex;min-height:100vh;}
-.left-panel{position:sticky;top:0;width:65%;height:100vh;flex-shrink:0;overflow:hidden;background:var(--green);z-index:1;}
-.right-panel{width:35%;flex-shrink:0;display:flex;flex-direction:column;background:var(--cream);position:relative;z-index:2;}
-.media-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;display:flex;align-items:center;justify-content:center;}
-.media-slide.active{opacity:1;}
-.media-slide .slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
-.slide-hero .slide-bg{background-image:url('1.webp');}
-.slide-misto .slide-bg{background-image:url('4.webp');}
-.slide-fotky .slide-bg{background-image:url('2.webp');}
-.slide-kdykde .slide-bg{background-image:url('3.webp');}
-.slide-program .slide-bg{background-image:url('3.webp');}
-.slide-menu .slide-bg{background-image:url('4.webp');}
-.slide-prakticke .slide-bg{background-image:url('2.webp');}
-.slide-dar .slide-bg{background-image:url('1.webp');}
-.slide-content{position:relative;z-index:2;text-align:center;padding:3rem;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%;}
-.slide-main-name{font-family:'Bodoni Moda',serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:400;color:var(--cream);line-height:1.05;letter-spacing:0.02em;font-variant:small-caps;}
-.slide-tagline{margin-top:1rem;font-size:0.72rem;letter-spacing:0.28em;color:rgba(255,255,255,0.55);text-transform:uppercase;font-style:italic;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;padding:0.55rem 1.4rem;display:flex;justify-content:space-between;align-items:center;transition:background .3s;}
-nav.scrolled{background:rgba(112,126,116,.50);backdrop-filter:blur(8px);}
-.nav-logo{font-family:'Bodoni Moda',serif;font-size:1.2rem;font-weight:400;color:var(--cream);text-decoration:none;letter-spacing:0.06em;}
-.nav-links{display:flex;gap:1.6rem;list-style:none;}
-.nav-links a{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--olive-lt);text-decoration:none;transition:color .2s;}
-.nav-links a:hover{color:var(--cream);}
-.mobile-hero-photo{display:none;}
 
-.rp-hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2.5rem 3rem;background:var(--green);}
-.rp-hero-day{font-family:'Bodoni Moda',serif;font-size:clamp(1rem,2vw,1.2rem);font-style:italic;color:rgba(255,255,255,.65);letter-spacing:.06em;}
-.rp-hero-date{font-family:'Bodoni Moda',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;color:var(--cream);line-height:1.15;margin-bottom:.4rem;letter-spacing:0.03em;}
-.rp-hero-location{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:2.4rem;}
-.rp-divider{width:1px;height:36px;background:rgba(255,255,255,.18);margin:0 auto 2.4rem;}
-.rp-cta{display:inline-block;padding:.8rem 2rem;border:1px solid rgba(255,255,255,.42);color:var(--cream);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;text-decoration:none;border-radius:100px;transition:background .25s,border-color .25s;margin-bottom:1.4rem;}
-.rp-cta:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.7);}
-.rp-cta-sec{display:block;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
-.rp-cta-sec:hover{color:var(--cream);}
-.countdown{display:flex;gap:1.4rem;margin-top:2.4rem;}
-.cd-unit{text-align:center;}
-.cd-num{font-family:'Bodoni Moda',serif;font-size:2rem;font-weight:400;color:var(--cream);line-height:1;letter-spacing:0.05em;}
-.cd-label{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.25rem;}
-.rp-section{padding:5rem 2.5rem;}
-.rp-section.bg-sand{background:var(--sand);}
-.rp-section.bg-cream{background:var(--cream);}
-.rp-section.bg-green{background:var(--green);}
-.section-label{font-size:.62rem;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:var(--olive-mid);margin-bottom:1rem;}
-.rp-section.bg-green .section-label{color:rgba(255,255,255,.55);}
-.rp-section.bg-green .section-title{color:#fff;}
-.rp-section.bg-green .section-body{color:rgba(255,255,255,.75);}
-.section-title{font-family:'Bodoni Moda',serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:400;color:var(--dark);line-height:1.15;margin-bottom:1.6rem;letter-spacing:0.02em;}
-.section-title em{font-style:italic;color:var(--olive);}
-.rp-section.bg-green .section-title em{color:var(--sage);}
-.section-body{font-size:.88rem;font-weight:300;line-height:1.9;letter-spacing:.02em;color:#5a5f50;margin-bottom:2rem;}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem;}
-.info-card{background:var(--cream);padding:1.8rem 1.4rem;border-top:2px solid var(--olive-lt);}
-.info-card-icon{font-size:1.3rem;margin-bottom:.8rem;}
-.info-card h3{font-family:'Bodoni Moda',serif;font-size:1.2rem;font-weight:400;color:var(--dark);margin-bottom:.5rem;letter-spacing:0.02em;}
-.info-card p{font-size:.8rem;font-weight:300;line-height:1.75;color:#6a7060;}
-.info-card a{color:inherit;text-decoration:underline;text-underline-offset:3px;}
-.info-card.wide{grid-column:1/-1;}
-.timeline{list-style:none;margin-top:2rem;position:relative;padding-left:2rem;}
-.timeline::before{content:'';position:absolute;left:0;top:.5rem;bottom:.5rem;width:1px;background:var(--olive-lt);}
-.timeline li{position:relative;padding:0 0 1.9rem 1.6rem;}
-.timeline li:last-child{padding-bottom:0;}
-.timeline li::before{content:'';position:absolute;left:-4px;top:.45rem;width:9px;height:9px;border-radius:50%;background:var(--olive);}
-.tl-time{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--olive-mid);margin-bottom:.2rem;}
-.tl-event{font-family:'Bodoni Moda',serif;font-size:1.1rem;color:var(--dark);letter-spacing:0.03em;}
-.tl-note{font-size:.78rem;font-weight:300;color:#6a7060;margin-top:.2rem;}
-.menu-courses{display:grid;gap:.9rem;margin:2rem 0 1.6rem;}
-.menu-course{border:1px solid rgba(255,255,255,.22);border-left:2px solid rgba(255,255,255,.45);padding:1.1rem 1.3rem;}
-.menu-course h3{font-family:'Bodoni Moda',serif;font-size:1.15rem;font-weight:400;color:#fff;letter-spacing:.03em;margin-bottom:.35rem;}
-.menu-course p{font-size:.8rem;font-weight:300;line-height:1.7;color:rgba(255,255,255,.7);}
-.menu-note{font-size:.8rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,.6);margin-bottom:1.6rem;}
-.menu-note a{color:#fff;text-decoration:underline;text-underline-offset:3px;}
-/* --- osobní karta hosta --- */
-.kroky{display:grid;gap:.55rem;margin-top:2rem;padding:1.2rem 1.3rem;background:var(--cream);border-left:2px solid var(--olive-lt);}
-.kroky p{font-size:.8rem;font-weight:300;line-height:1.6;color:#6a7060;}
-.kroky b{font-weight:500;color:var(--dark);}
-.kroky .cislo{display:inline-block;min-width:1.3rem;font-family:'Bodoni Moda',serif;color:var(--olive);}
-#wedibox-embed{margin-top:1rem;max-width:100%;overflow-x:auto;}
-@media(max-width:768px){#wedibox-embed{margin:0 1.8rem 3rem;}.kroky{margin:0 1.8rem;}}
-.hledani{margin:2rem 0 0;}
-.hledani label{display:block;font-size:.62rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.7rem;}
-.hledani select{width:100%;padding:1rem 1.1rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.4);color:#fff;font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:300;-webkit-appearance:none;appearance:none;border-radius:0;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%23ffffff' d='M6 8 0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.1rem center;background-size:10px;}
-.hledani select:focus{outline:none;border-color:#fff;}
-.hledani select option{background:#4a5450;color:#fff;}
-.karta{margin-top:1.6rem;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);padding:1.6rem 1.4rem;}
-.karta-jmeno{font-family:'Bodoni Moda',serif;font-size:1.45rem;color:#fff;letter-spacing:.02em;margin-bottom:1.2rem;}
-.karta-stul{display:flex;align-items:baseline;gap:.8rem;padding-bottom:1.1rem;margin-bottom:1.1rem;border-bottom:1px solid rgba(255,255,255,.18);}
-.karta-stul .cislo{font-family:'Bodoni Moda',serif;font-size:3.2rem;line-height:.9;color:#fff;}
-.karta-stul .popis{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55);}
-.karta-radek{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;font-size:.82rem;font-weight:300;}
-.karta-radek span{color:rgba(255,255,255,.5);white-space:nowrap;}
-.karta-radek strong{font-weight:400;color:#fff;text-align:right;}
-.karta-pozn{margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid rgba(255,255,255,.18);font-size:.78rem;font-weight:300;line-height:1.75;color:rgba(255,255,255,.7);}
-.karta-pozn em{font-style:normal;color:rgba(255,255,255,.95);}
-.karta-bingo{display:block;margin-top:1.2rem;padding:.95rem 1rem;border:1px solid rgba(255,255,255,.45);color:#fff;font-size:.62rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .25s,border-color .25s;}
-.karta-bingo:hover{background:rgba(255,255,255,.16);border-color:#fff;}
-.karta-bingo small{display:block;margin-top:.45rem;font-size:.66rem;font-weight:300;letter-spacing:.02em;text-transform:none;color:rgba(255,255,255,.6);}
+/* ---------- úvodní fotka ---------- */
+.hero{position:relative;width:100%;min-height:100svh;display:flex;align-items:flex-end;justify-content:center;
+  background-image:url('prvni-tanec.jpg');background-size:cover;background-position:center 42%;}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,14,20,.28) 0%,rgba(10,14,20,0) 32%,rgba(10,14,20,.62) 82%,rgba(10,14,20,.8) 100%);}
+.hero-obsah{position:relative;z-index:2;text-align:center;padding:0 1.4rem 4.5rem;}
+.hero h1{font-family:'Bodoni Moda',serif;font-size:clamp(2.2rem,7.5vw,4.6rem);font-weight:400;color:#fff;line-height:1.06;letter-spacing:.02em;text-shadow:0 2px 24px rgba(0,0,0,.45);}
+.hero .tagline{margin-top:1rem;font-size:clamp(.6rem,2.4vw,.76rem);letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.82);font-style:italic;text-shadow:0 2px 14px rgba(0,0,0,.5);}
+.hero .datum{margin-top:1.6rem;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.6);}
+.sipka{position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.55);font-size:1.1rem;text-decoration:none;animation:plyn 2.6s ease-in-out infinite;}
+@keyframes plyn{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
 
-.hero-fakta{display:flex;gap:1.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.4rem;}
-.hero-fakta div{text-align:center;}
-.hero-fakta span{display:block;font-size:.55rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.3rem;}
-.hero-fakta strong{display:block;font-family:'Bodoni Moda',serif;font-size:1rem;font-weight:400;color:var(--cream);letter-spacing:.03em;}
-.menu-nebo{display:block;margin:.5rem 0;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.38);}
-@media(max-width:768px){.hero-fakta{gap:1.4rem;}}
-footer{background:var(--dark);text-align:center;padding:2.5rem 1.5rem;}
-.footer-names{font-family:'Bodoni Moda',serif;font-size:1.5rem;font-weight:400;font-style:italic;color:var(--olive-lt);margin-bottom:.4rem;letter-spacing:0.04em;}
-footer p{font-size:.68rem;letter-spacing:.2em;color:rgba(255,255,255,.25);}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
-.reveal.visible{opacity:1;transform:none;}
+/* ---------- obsahové sekce ---------- */
+.sekce{padding:5.5rem 1.6rem;}
+.sekce.sand{background:var(--sand);}
+.sekce.zelena{background:var(--olive);}
+.uvnitr{max-width:640px;margin:0 auto;}
+.stitek{font-size:.62rem;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:var(--olive);margin-bottom:1rem;text-align:center;}
+.sekce.zelena .stitek{color:rgba(255,255,255,.6);}
+.nadpis{font-family:'Bodoni Moda',serif;font-size:clamp(2rem,6vw,2.9rem);font-weight:400;color:var(--dark);line-height:1.15;margin-bottom:1.8rem;text-align:center;letter-spacing:.02em;}
+.nadpis em{font-style:italic;color:var(--olive);}
+.sekce.zelena .nadpis{color:#fff;}
+.sekce.zelena .nadpis em{color:var(--sage);}
+.text{font-size:.95rem;font-weight:300;line-height:1.95;color:#5a5f50;text-align:center;}
+.text + .text{margin-top:1.3rem;}
+.sekce.zelena .text{color:rgba(255,255,255,.8);}
+.podpis{margin-top:2.6rem;text-align:center;font-family:'Bodoni Moda',serif;font-size:1.5rem;font-style:italic;color:var(--olive);letter-spacing:.03em;}
+
+/* ---------- galerie ---------- */
+.kroky{display:grid;gap:.55rem;margin:2rem 0 1rem;padding:1.2rem 1.3rem;background:rgba(255,255,255,.1);border-left:2px solid rgba(255,255,255,.45);}
+.kroky p{font-size:.8rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,.8);}
+.kroky b{font-weight:500;color:#fff;}
+.kroky .cislo{display:inline-block;min-width:1.3rem;font-family:'Bodoni Moda',serif;color:rgba(255,255,255,.65);}
+#wedibox-embed{margin-top:1rem;max-width:100%;}
+.btn-galerie{display:block;margin-top:1.4rem;padding:1.15rem 2rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.55);color:#fff;font-size:.68rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .25s,border-color .25s;}
+.btn-galerie:hover{background:rgba(255,255,255,.26);border-color:#fff;}
+.btn-galerie small{display:block;margin-top:.5rem;font-size:.66rem;font-weight:300;letter-spacing:.02em;text-transform:none;color:rgba(255,255,255,.65);}
+
+footer{background:var(--dark);text-align:center;padding:3rem 1.5rem;}
+.footer-jmena{font-family:'Bodoni Moda',serif;font-size:1.5rem;font-weight:400;font-style:italic;color:var(--olive-lt);margin-bottom:.4rem;letter-spacing:.04em;}
+footer p{font-size:.66rem;letter-spacing:.2em;color:rgba(255,255,255,.28);}
+
+.odhal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease;}
+.odhal.videt{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){.odhal{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}.sipka{animation:none;}}
 @media(max-width:768px){
-  nav{display:none;}
-  .left-panel{display:none;}
-  .right-panel{width:100%;}
-  .mobile-hero-photo{display:block;position:relative;width:100%;height:100vw;background:url('1.webp') center top/cover no-repeat;overflow:hidden;}
-  .mobile-hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.05) 40%,rgba(0,0,0,0.6) 100%);}
-  .mobile-hero-names{position:absolute;bottom:2.5rem;left:0;right:0;text-align:center;z-index:2;}
-  .mobile-hero-names h1{font-family:'Bodoni Moda',serif;font-size:clamp(2.8rem,11vw,4.5rem);font-weight:400;color:#fff;line-height:1;margin:0 0 0.6rem;}
-  .mobile-hero-names p{font-size:0.58rem;letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,255,255,0.65);}
-  .rp-hero{min-height:auto;padding:2.5rem 1.8rem;}
-  .rp-section{padding:0!important;display:flex;flex-direction:column;}
-  .rp-section .reveal{padding:3rem 1.8rem;}
-  .rp-section[data-slide]::before{content:'';display:block;width:100%;height:60vw;min-height:200px;background-size:cover;background-position:center;flex-shrink:0;}
-  .rp-section[data-slide="kdykde"]::before{background-image:url('2.webp');}
-  .rp-section[data-slide="program"]::before{background-image:url('3.webp');}
-  .rp-section[data-slide="menu"]::before{background-image:url('4.webp');}
-  .rp-section[data-slide="misto"]::before,.rp-section[data-slide="fotky"]::before,.rp-section[data-slide="prakticke"]::before,.rp-section[data-slide="dar"]::before{display:none;}
-  .info-grid{grid-template-columns:1fr;}
+  .hero{background-image:url('prvni-tanec-m.jpg');background-position:center 40%;}
+  .sekce{padding:4rem 1.5rem;}
 }
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
 </style>
 </head>
 <body>
-<nav id="nav">
-  <a href="#" class="nav-logo">Natali &amp; Honza</a>
-  <ul class="nav-links">
-    <li><a href="#misto">Vaše místo</a></li>
-    <li><a href="#fotky">Fotky</a></li>
-    <li><a href="#program">Program</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#prakticke">Praktické</a></li>
-    <li><a href="#kdykde">Kdy a kde</a></li>
-  </ul>
-</nav>
-<div class="site-wrapper">
-  <div class="left-panel">
-    <div class="media-slide slide-hero active" id="slide-hero">
-      <div class="slide-bg"></div>
-      <div class="slide-content" style="justify-content:flex-end;padding-bottom:12rem;">
-        <h1 class="slide-main-name">Natali &amp; Honza</h1>
-        <p class="slide-tagline">btw…budeme se brát</p>
-      </div>
+
+<header class="hero">
+  <div class="hero-obsah">
+    <h1>Natali &amp; Honza Cón</h1>
+    <p class="tagline">btw…už jsme se vzali</p>
+    <p class="datum">29. srpna 2026 · Mlýn Propast</p>
+  </div>
+  <a href="#dekujeme" class="sipka" aria-label="Dolů">↓</a>
+</header>
+
+<section class="sekce sand" id="dekujeme">
+  <div class="uvnitr odhal">
+    <p class="stitek">Poděkování</p>
+    <h2 class="nadpis">Děkujeme, že jste <em>u toho byli</em></h2>
+    <p class="text">Vyšlo to přesně tak, jak jsme doufali — a to hlavně proto, že jste přijeli. Za každý panák, za každou slzu, za to, že jste tančili do rána a vydrželi to s námi až do nedělní snídaně.</p>
+    <p class="text">Byl to nejhezčí den, jaký jsme spolu zatím zažili. Díky, že jste ho udělali takovým.</p>
+    <p class="podpis">Natali &amp; Honza</p>
+  </div>
+</section>
+
+<section class="sekce zelena" id="galerie">
+  <div class="uvnitr odhal">
+    <p class="stitek">Galerie</p>
+    <h2 class="nadpis">Co jste <em>nafotili</em></h2>
+    <p class="text">Tady se sbíhá všechno, co jste ten den nacvakali. Koukněte se, jak to viděli ostatní — a jestli máte v telefonu ještě něco, co tu chybí, přidejte to.</p>
+    <div class="kroky">
+      <p><span class="cislo">1.</span> Klepněte na <b>Browse Files</b> v rámečku níž.</p>
+      <p><span class="cislo">2.</span> Vyberte fotky nebo videa — klidně všechno naráz.</p>
+      <p><span class="cislo">3.</span> Počkejte, až doběhne nahrávání. Hotovo.</p>
     </div>
-    <div class="media-slide slide-misto" id="slide-misto"><div class="slide-bg"></div></div>
-    <div class="media-slide slide-fotky" id="slide-fotky"><div class="slide-bg"></div></div>
-    <div class="media-slide slide-kdykde" id="slide-kdykde"><div class="slide-bg"></div></div>
-    <div class="media-slide slide-program" id="slide-program"><div class="slide-bg"></div></div>
-    <div class="media-slide slide-menu" id="slide-menu"><div class="slide-bg"></div></div>
-    <div class="media-slide slide-prakticke" id="slide-prakticke"><div class="slide-bg"></div></div>
-    <div class="media-slide slide-dar" id="slide-dar"><div class="slide-bg"></div></div>
+    <!-- Wedibox Photo Collection -->
+    <div id="wedibox-embed" data-event="74663c54-e310-4d59-86b6-e5cc811519ac"></div>
+    <a class="btn-galerie" href="https://www.wedibox.com/w/photo-collection/recDxm97eFDLPZF7" target="_blank" rel="noopener">Zobrazit celou galerii
+      <small>Všechny fotky na jedné stránce, i jako promítačka.</small>
+    </a>
   </div>
-  <div class="right-panel">
-    <div class="mobile-hero-photo"><div class="mobile-hero-names"><h1>Natali &amp; Honza</h1><p>BTW…budeme se brát</p></div></div>
+</section>
 
-    <section class="rp-hero" id="rp-hero" data-slide="hero">
-      <p class="rp-hero-day">Sobota</p>
-      <p class="rp-hero-date">29. srpna 2026</p>
-      <p class="rp-hero-location"><a href="https://maps.app.goo.gl/3zpPrb45fYcbxLLU7" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:4px;">Mlýn Propast · Stříbrná Skalice</a></p>
-      <div class="rp-divider"></div>
-      <div class="hero-fakta">
-        <div><span>Příjezd</span><strong>10:00 – 11:30</strong></div>
-        <div><span>Obřad</span><strong>12:30</strong></div>
-      </div>
-      <a href="#misto" class="rp-cta">Najít své místo</a>
-      <a href="#program" class="rp-cta-sec">Všechny informace ↓</a>
-      <div class="countdown" id="countdown">
-        <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-label">Dní</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-hours">—</div><div class="cd-label">Hodin</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-min">—</div><div class="cd-label">Minut</div></div>
-        <div class="cd-unit"><div class="cd-num" id="cd-sec">—</div><div class="cd-label">Sekund</div></div>
-      </div>
-    </section>
+<footer>
+  <p class="footer-jmena">Natali &amp; Honza Cón</p>
+  <p>29. srpna 2026 · Mlýn Propast</p>
+</footer>
 
-    <section id="misto" class="rp-section bg-green" data-slide="misto">
-      <div class="reveal">
-        <p class="section-label">Vaše místo</p>
-        <h2 class="section-title">Najděte se <em>v seznamu</em></h2>
-        <p class="section-body">Vyberte své jméno a uvidíte, u kterého stolu sedíte, kde spíte a co jste si vybrali k jídlu. Stránka si vás zapamatuje, takže příště naskočí rovnou.</p>
-        <div class="hledani">
-          <label for="host">Vaše jméno</label>
-          <select id="host">
-            <option value="">— vyberte se ze seznamu —</option>
-          </select>
-        </div>
-        <div id="karta"></div>
-      </div>
-    </section>
-
-    <section id="fotky" class="rp-section bg-sand" data-slide="fotky">
-      <div class="reveal">
-        <p class="section-label">Fotky</p>
-        <h2 class="section-title">Nahrajte nám, co jste <em>nafotili</em></h2>
-        <p class="section-body">Foťte, co hrdlo ráčí — a všechno, co v sobotu nacvakáte, hoďte sem. Stačí kliknout, vybrat fotky a je to. Žádná appka, žádné přihlašování, nic se cestou nezhorší.<br><br><strong style="font-weight:500;color:var(--dark);">Jen jedna prosba: během obřadu telefony dolů.</strong> Máme tam fotografa i kameramany, kteří to zvládnou líp než my všichni dohromady — a nám udělá radost vidět v první řadě vaše obličeje místo displejů. Hned po obřadu si to vynahradíte.</p>
-      </div>
-      <div class="kroky">
-        <p><span class="cislo">1.</span> Klepněte na <b>Browse Files</b> v rámečku níž.</p>
-        <p><span class="cislo">2.</span> Vyberte fotky z telefonu — klidně všechny naráz.</p>
-        <p><span class="cislo">3.</span> Počkejte, až doběhne nahrávání. Hotovo, nic dalšího se nepotvrzuje.</p>
-      </div>
-      <!-- Wedibox Photo Collection -->
-      <div id="wedibox-embed" data-event="74663c54-e310-4d59-86b6-e5cc811519ac"></div>
-    </section>
-
-    <section id="program" class="rp-section bg-cream" data-slide="program">
-      <div class="reveal">
-        <p class="section-label">Harmonogram dne</p>
-        <h2 class="section-title">Co se bude <em>dít?</em></h2>
-        <p class="section-body">Hrubý nástřel, ať víte, do čeho jdete. Časy se můžou o kus posunout — a pár věcí jsme schválně nechali jako překvapení.</p>
-        <ul class="timeline">
-          <li><p class="tl-time">10:00 – 11:30</p><p class="tl-event">Příjezd a ubytování</p></li>
-          <li><p class="tl-time">11:30</p><p class="tl-event">Welcome drink</p><p class="tl-note">Na nádvoří, s něčím malým k zakousnutí. Tady to oficiálně začíná.</p></li>
-          <li><p class="tl-time">12:30</p><p class="tl-event">Obřad</p><p class="tl-note">Oddá nás kamarád Martin Mikyska. Legálně to sice nemůže — jestli už jsme právně svoji, nebo to doženeme až potom, nechte být překvapení.</p></li>
-          <li><p class="tl-time">Po obřadu</p><p class="tl-event">Focení</p><p class="tl-note">Společná fotka se všemi hosty — počítejte s ní.</p></li>
-          <li><p class="tl-time">13:30</p><p class="tl-event">Svatební oběd</p></li>
-          <li><p class="tl-time">Odpoledne</p><p class="tl-event">Volná zábava</p><p class="tl-note">Sweet bar, hry, dětský koutek. Prostor jen tak být.</p></li>
-          <li><p class="tl-time">Cca 18:30</p><p class="tl-event">Gril</p></li>
-          <li><p class="tl-time">Večer</p><p class="tl-event">První tanec a party</p><p class="tl-note">Pak už se to veze až do rána.</p></li>
-          <li><p class="tl-time">Neděle</p><p class="tl-event">Snídaně a odjezdy</p><p class="tl-note">Rozjezd do 13:00, každý po vlastní ose.</p></li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="menu" class="rp-section bg-green" data-slide="menu">
-      <div class="reveal">
-        <p class="section-label">Menu</p>
-        <h2 class="section-title">Co se bude <em>jíst</em></h2>
-        <p class="section-body">U předkrmu a polévky dostanete tu variantu, kterou jste si vybrali — najdete ji <a href="#misto" style="color:#fff;text-decoration:underline;text-underline-offset:3px;">u svého jména</a>. Zbytek dne je na vás.</p>
-        <div class="menu-courses">
-          <div class="menu-course">
-            <h3>Předkrm</h3>
-            <p>Paštika z kachních jater s koňakem a tymiánem, ovocné chutney, kváskový chléb
-            <span class="menu-nebo">nebo</span>
-            Marinovaná pečená řepa s kozím sýrem, dresink z medu a vinného octa, ořechy, žitný chléb (VEG)</p>
-          </div>
-          <div class="menu-course">
-            <h3>Polévka</h3>
-            <p>Tažený vývar z hovězí oháňky s játrovými knedlíčky, kořenovou zeleninou a nudlem
-            <span class="menu-nebo">nebo</span>
-            Tomatová polévka s bazalkou a parmazánem (VEG)</p>
-          </div>
-          <div class="menu-course">
-            <h3>Raut</h3>
-            <p>All you can eat.</p>
-          </div>
-          <div class="menu-course">
-            <h3>Gril</h3>
-            <p>Od cca 18:30 se otevře gril plný masových i nemasových dobrot.</p>
-          </div>
-          <div class="menu-course">
-            <h3>Noční sváča</h3>
-            <p>Pro nejvěrnější z věrných bude v noci připraven tatarák, hovězí guláš s chlebem a domácí bramboráčky.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="prakticke" class="rp-section bg-sand" data-slide="prakticke">
-      <div class="reveal">
-        <p class="section-label">Praktické</p>
-        <h2 class="section-title">Ať vás nic <em>nezaskočí</em></h2>
-        <div class="info-grid">
-          <div class="info-card">
-            <div class="info-card-icon">🚗</div>
-            <h3>Parkování</h3>
-            <p>Parkuje se přímo v areálu, po levé straně hned za bránou. Auto tam v klidu přenocuje.</p>
-          </div>
-          <div class="info-card">
-            <div class="info-card-icon">🧳</div>
-            <h3>Co si vzít</h3>
-            <p>Povlečení i ručníky jsou na pokojích, nic si nevozte. Bazén ani vířivka na místě nejsou, plavky můžete nechat doma.</p>
-          </div>
-          <div class="info-card" style="background:#707E74;">
-            <div class="info-card-icon">👗</div>
-            <h3 style="color:#fff;">Dress code</h3>
-            <p style="color:rgba(255,255,255,0.85);">Laděno do tmavě zelené a béžové — stejné barvy, jaké vidíte tady na webu.</p>
-          </div>
-          <div class="info-card">
-            <div class="info-card-icon">🧸</div>
-            <h3>Děti</h3>
-            <p>Bude pro ně připravený dětský koutek a pár aktivit, aby se odpoledne neztratily nudou.</p>
-          </div>
-          <div class="info-card wide">
-            <div class="info-card-icon">🤝</div>
-            <h3>Kdyby něco</h3>
-            <p>Po celou dobu tam s námi bude koordinátorka — potkáte ji hned při příjezdu a vyřeší s vámi cokoliv praktického. Nás dva klidně taky, ale nejspíš nás budou zrovna fotit.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="kdykde" class="rp-section bg-cream" data-slide="kdykde">
-      <div class="reveal">
-        <p class="section-label">Kdy a kde</p>
-        <h2 class="section-title">Místo <em>a čas</em></h2>
-        <div class="info-grid">
-          <div class="info-card">
-            <div class="info-card-icon">📍</div>
-            <h3>Mlýn Propast</h3>
-            <p><a href="https://maps.app.goo.gl/3zpPrb45fYcbxLLU7" target="_blank" rel="noopener">Hradec 3, 281 63, Stříbrná Skalice</a> — otevře se v mapách.</p>
-          </div>
-          <div class="info-card">
-            <div class="info-card-icon">📅</div>
-            <h3>Příjezd 10:00 – 11:30</h3>
-            <p>Dorazte v klidu kdykoliv v tomhle okně — je to prostor na to se ubytovat, převléknout a rozkoukat. V 11:30 je welcome drink a tím to oficiálně začíná.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="dar" class="rp-section bg-green" data-slide="dar">
-      <div class="reveal">
-        <p class="section-label">Často se ptáte</p>
-        <h2 class="section-title">Svatební <em>dar</em></h2>
-        <p class="section-body">Nejradši ze všeho budeme, když prostě dorazíte a zůstanete do rána. To myslíme vážně — seznam darů nemáme a nechystáme.<br><br>Kdyby vám ale nedalo přijít s prázdnou, nejlíp poslouží obálka. Máme rozjetých pár plánů a ta se v nich neztratí. A jestli jste spíš typ na osobní věci — cokoliv vlastnoručního nebo vymyšleného na tělo nás potěší úplně stejně.</p>
-      </div>
-    </section>
-
-    <footer>
-      <p class="footer-names">Natali &amp; Honza</p>
-      <p>29. srpna 2026 · Mlýn Propast</p>
-    </footer>
-  </div>
-</div>
 <script>
-/* ---------- odpočet ---------- */
-var svatba = new Date('2026-08-29T12:30:00');
-function tik(){
-  var diff = svatba - new Date();
-  var box = document.getElementById('countdown');
-  if (diff <= 0) { box.innerHTML = ''; return; }
-  var d = Math.floor(diff/86400000), h = Math.floor((diff%86400000)/3600000),
-      m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
-  document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
-  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-  document.getElementById('cd-min').textContent   = String(m).padStart(2,'0');
-  document.getElementById('cd-sec').textContent   = String(s).padStart(2,'0');
-}
-tik(); setInterval(tik, 1000);
-
-/* ---------- navigace a fotky vlevo ---------- */
-window.addEventListener('scroll', function(){
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-});
-var slidy = {};
-['hero','misto','fotky','program','menu','prakticke','kdykde','dar'].forEach(function(k){
-  slidy[k] = document.getElementById('slide-' + k);
-});
-function nastavSlide(id){
-  Object.keys(slidy).forEach(function(k){ if (slidy[k]) slidy[k].classList.remove('active'); });
-  if (slidy[id]) slidy[id].classList.add('active');
-}
-var pozorovatelSekci = new IntersectionObserver(function(zaznamy){
-  zaznamy.forEach(function(z){ if (z.isIntersecting) nastavSlide(z.target.dataset.slide); });
-}, {threshold:0.35, rootMargin:'0px 0px -10% 0px'});
-document.querySelectorAll('[data-slide]').forEach(function(s){ pozorovatelSekci.observe(s); });
-
-var pozorovatelOdhaleni = new IntersectionObserver(function(zaznamy){
-  zaznamy.forEach(function(z){
-    if (z.isIntersecting) { z.target.classList.add('visible'); pozorovatelOdhaleni.unobserve(z.target); }
+/* postupné odhalení sekcí */
+(function(){
+  var prvky = document.querySelectorAll('.odhal');
+  if (!('IntersectionObserver' in window)) {
+    prvky.forEach(function(p){ p.classList.add('videt'); });
+    return;
+  }
+  var pozorovatel = new IntersectionObserver(function(zaznamy){
+    zaznamy.forEach(function(z){
+      if (z.isIntersecting) { z.target.classList.add('videt'); pozorovatel.unobserve(z.target); }
+    });
+  }, {threshold: 0.12});
+  prvky.forEach(function(p){ pozorovatel.observe(p); });
+  // pojistka, kdyby pozorovatel neodpálil
+  window.addEventListener('load', function(){
+    setTimeout(function(){ prvky.forEach(function(p){ p.classList.add('videt'); }); }, 2500);
   });
-}, {threshold:0.1});
-document.querySelectorAll('.reveal').forEach(function(r){ pozorovatelOdhaleni.observe(r); });
+})();
 
-
-/* ---------- Wedibox: načíst až bude potřeba ----------
-   Iframe widgetu se táhne ~4 s a držel by událost load celé stránky
-   (zbytek webu je hotový za ~0,4 s). Tři nezávislé spouštěče, aby se
-   widget objevil vždycky: pozorovatel sekce, záložní scroll a časovač. */
+/* ---------- Wedibox: načíst až se k němu doscrolluje ----------
+   Iframe se táhne několik vteřin a držel by událost load celé stránky.
+   Tři nezávislé spouštěče, aby se galerie objevila vždycky. */
 (function(){
   var kontejner = document.getElementById('wedibox-embed');
   if (!kontejner) return;
@@ -403,145 +148,26 @@ document.querySelectorAll('.reveal').forEach(function(r){ pozorovatelOdhaleni.ob
     sc.async = true;
     document.body.appendChild(sc);
   }
-
   function priScrollu(){
-    var sekce = document.getElementById('fotky');
+    var sekce = document.getElementById('galerie');
     if (!sekce) { nacti(); return; }
     if (sekce.getBoundingClientRect().top < window.innerHeight + 300) nacti();
   }
 
   if ('IntersectionObserver' in window) {
     try {
-      var cil = document.getElementById('fotky') || kontejner;   // prázdný kontejner má nulovou výšku
       var pozorovatel = new IntersectionObserver(function(zaznamy){
         for (var i = 0; i < zaznamy.length; i++) {
           if (zaznamy[i].isIntersecting) { nacti(); pozorovatel.disconnect(); return; }
         }
       }, {rootMargin: '300px 0px'});
-      pozorovatel.observe(cil);
-    } catch (e) { /* spadneme na záložní cesty níž */ }
+      pozorovatel.observe(document.getElementById('galerie') || kontejner);
+    } catch (e) {}
   }
-
   window.addEventListener('scroll', priScrollu, {passive: true});
   priScrollu();
   window.addEventListener('load', function(){ setTimeout(nacti, 4000); });
 })();
-
-/* ---------- osobní karta hosta ---------- */
-var JIDLA = {
-  P: 'Paštika z kachních jater',
-  R: 'Pečená řepa s kozím sýrem (VEG)',
-  V: 'Vývar z hovězí oháňky',
-  T: 'Tomatová polévka s bazalkou (VEG)'
-};
-/* Stoly sražené k sobě — fyzicky jedna tabule, dvě čísla. */
-var SOUSEDNI = {9:7, 7:9, 10:8, 8:10, 2:1, 1:2, 4:3, 3:4};
-
-var MLYN = 'Mlýn, pokoj ', NOV1 = 'Novostavba, 1. patro — ', NOV2 = 'Novostavba, 2. patro — ', OCH = 'Ochoz, 3. patro — ';
-
-/* [id, jméno, stůl, pokoj, předkrm, polévka, poznámka] */
-var HOSTE = [
-  [1,'Kristýna Fizková',7,NOV2+'pokoj P8','R','T',''],
-  [2,'Hana Almer',7,NOV2+'pokoj P10','P','V',''],
-  [3,'Lubomír Almer',7,NOV2+'pokoj P10','P','V',''],
-  [4,'Alena Pavlousková',7,NOV2+'pokoj P9','P','V',''],
-  [5,'Pavel Pavlousek',9,NOV2+'pokoj P9','P','V',''],
-  [6,'Monika Mlíčková',1,MLYN+'M-3','P','V',''],
-  [7,'Aleš Mlíčka',1,MLYN+'M-3','P','V',''],
-  [8,'Tobias Mlíčka',2,MLYN+'M-3','P','V',''],
-  [9,'Natali Mlíčková',2,MLYN+'M-3','P','V',''],
-  [10,'Zdeněk Küffel',1,NOV1+'pokoj P2 (bezbariérový)','P','V',''],
-  [11,'Renatka Küffelová',1,NOV1+'pokoj P2 (bezbariérový)','P','V',''],
-  [12,'Marie Urvalková',5,OCH+'pokoj 3','P','V',''],
-  [13,'Dimitra Papadopoulu',6,NOV2+'pokoj P7','R','V',''],
-  [14,'Vojtěch Tancoš',6,NOV2+'pokoj P7','P','V',''],
-  [15,'Ela Zichová',6,NOV2+'pokoj P13','R','T',''],
-  [16,'Matěj Habla',6,NOV2+'pokoj P13','P','T',''],
-  [17,'Jarmila Laštovicová',2,OCH+'pokoj 2','P','V',''],
-  [18,'Petr Laštovica',2,OCH+'pokoj 2','R','V',''],
-  [19,'Monika Kunčarová',5,OCH+'pokoj 5','R','T',''],
-  [20,'Šarlota Kunčarová',5,OCH+'pokoj 5','R','V','Sedíš v čele stolu.'],
-  [21,'Adéla Tučková',9,NOV2+'pokoj P12','P','V',''],
-  [22,'Tomáš Musil',9,NOV2+'pokoj P12','P','V',''],
-  [23,'Lucie Kozáková',10,MLYN+'M-2','P','V',''],
-  [24,'Marcela Cónová',3,NOV1+'pokoj P4 (bezbariérový)','R','T',''],
-  [25,'David Cón',3,NOV1+'pokoj P4 (bezbariérový)','P','T',''],
-  [26,'Jakub Kozák',8,'','P','V',''],
-  [27,'Veronika Novotná',8,'','R','T',''],
-  [28,'Vojta Kozák',8,'','P','V','U stolu budeš u rodičů.'],
-  [29,'Nikola Havlíčková',4,NOV2+'pokoj P6','R','V',''],
-  [30,'Martin Mikyska',4,NOV2+'pokoj P6','P','V',''],
-  [31,'Martin Kunčar',5,OCH+'pokoj 6','R','V',''],
-  [32,'Nikolas Kunčar',5,OCH+'pokoj 6','P','V',''],
-  [33,'Šárka Kozáková',8,NOV2+'pokoj P14','R','T',''],
-  [34,'Milan Kozák',8,NOV2+'pokoj P14','P','V',''],
-  [35,'Andrea Stejfová',10,NOV1+'pokoj P4b (bezbariérový)','R','V',''],
-  [36,'Marek Cón',10,NOV1+'pokoj P3 (bezbariérový)','P','V',''],
-  [37,'Regina Horáčková',10,NOV1+'pokoj P3 (bezbariérový)','R','V',''],
-  [38,'Vilém Franěk',3,MLYN+'M-4','R','V',''],
-  [39,'Markéta Fraňková',3,MLYN+'M-4','R','T',''],
-  [40,'Isabela Fraňková',4,MLYN+'M-4','R','T',''],
-  [41,'Mia Fraňková',4,MLYN+'M-4','R','V',''],
-  [42,'Tomáš Brzobohatý',9,OCH+'pokoj 1','P','V',''],
-  [43,'Matěj Karger',6,OCH+'pokoj 1','P','T','Sedíš v čele stolu.']
-];
-
-var vyber = document.getElementById('host');
-var kartaBox = document.getElementById('karta');
-
-HOSTE.slice().sort(function(a,b){ return a[1].localeCompare(b[1],'cs'); }).forEach(function(h){
-  var o = document.createElement('option');
-  o.value = h[0]; o.textContent = h[1];
-  vyber.appendChild(o);
-});
-
-function escapuj(t){
-  return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-function vykresli(id){
-  var h = null;
-  HOSTE.forEach(function(x){ if (String(x[0]) === String(id)) h = x; });
-  if (!h) { kartaBox.innerHTML = ''; return; }
-
-  var stul = h[2], pokoj = h[3], pozn = h[6];
-  function jmenaUStolu(cislo, krome){
-    return HOSTE.filter(function(x){ return x[2] === cislo && x[0] !== krome; })
-                .map(function(x){ return x[1]; })
-                .sort(function(a,b){ return a.localeCompare(b,'cs'); });
-  }
-  var sousede = jmenaUStolu(stul, h[0]);
-  var vedle = SOUSEDNI[stul];
-  var sousedeVedle = vedle ? jmenaUStolu(vedle, h[0]) : [];
-
-  var html = '<div class="karta">' +
-    '<p class="karta-jmeno">' + escapuj(h[1]) + '</p>' +
-    '<div class="karta-stul"><span class="cislo">' + stul + '</span><span class="popis">Váš stůl</span></div>' +
-    '<div class="karta-radek"><span>Pokoj</span><strong>' + escapuj(pokoj || 'Bez ubytování — nespíte na místě') + '</strong></div>' +
-    '<div class="karta-radek"><span>Předkrm</span><strong>' + escapuj(JIDLA[h[4]]) + '</strong></div>' +
-    '<div class="karta-radek"><span>Polévka</span><strong>' + escapuj(JIDLA[h[5]]) + '</strong></div>' +
-    '<p class="karta-pozn">' + (pozn ? '<em>' + escapuj(pozn) + '</em><br>' : '') +
-      'U stolu ' + stul + ' sedíte s: ' + escapuj(sousede.join(', ')) + '.' +
-      (sousedeVedle.length
-        ? '<br><br>Stoly ' + stul + ' a ' + vedle + ' stojí sražené vedle sebe, takže hned u vás sedí i: ' + escapuj(sousedeVedle.join(', ')) + '.'
-        : '') +
-      '</p>' +
-    '<a class="karta-bingo" href="bingo/" target="_blank" rel="noopener">Svatební bingo' +
-      '<small>Škrtejte, co během dne uvidíte. Karta si vás pamatuje.</small>' +
-    '</a>' +
-    '</div>';
-  kartaBox.innerHTML = html;
-}
-
-vyber.addEventListener('change', function(){
-  vykresli(this.value);
-  try { if (this.value) localStorage.setItem('nh-host', this.value); else localStorage.removeItem('nh-host'); } catch(e) {}
-});
-
-try {
-  var ulozeny = localStorage.getItem('nh-host');
-  if (ulozeny) { vyber.value = ulozeny; vykresli(ulozeny); }
-} catch(e) {}
 </script>
 </body>
 </html>
