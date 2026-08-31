@@ -50,6 +50,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--tex
 .kroky b{font-weight:500;color:#fff;}
 .kroky .cislo{display:inline-block;min-width:1.3rem;font-family:'Bodoni Moda',serif;color:rgba(255,255,255,.65);}
 #wedibox-embed{margin-top:1rem;max-width:100%;}
+.podsekce{font-size:.6rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.6);text-align:center;margin-bottom:.9rem;}
+.podsekce-nadpis{font-family:'Bodoni Moda',serif;font-size:1.5rem;font-weight:400;color:#fff;text-align:center;margin-bottom:.9rem;letter-spacing:.02em;}
+.delic{height:1px;background:rgba(255,255,255,.22);margin:3.4rem 0;}
 .btn-galerie{display:block;margin-top:1.4rem;padding:1.15rem 2rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.55);color:#fff;font-size:.68rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .25s,border-color .25s;}
 .btn-galerie:hover{background:rgba(255,255,255,.26);border-color:#fff;}
 .btn-galerie small{display:block;margin-top:.5rem;font-size:.66rem;font-weight:300;letter-spacing:.02em;text-transform:none;color:rgba(255,255,255,.65);}
@@ -91,7 +94,19 @@ footer p{font-size:.66rem;letter-spacing:.2em;color:rgba(255,255,255,.28);}
 <section class="sekce zelena" id="galerie">
   <div class="uvnitr odhal">
     <p class="stitek">Galerie</p>
-    <h2 class="nadpis">Co jste <em>nafotili</em></h2>
+    <h2 class="nadpis">Jak to <em>vypadalo</em></h2>
+
+    <p class="podsekce">Od fotografa</p>
+    <p class="podsekce-nadpis">Štěpán Černý</p>
+    <p class="text">Výběr z toho, co ten den nafotil — i s jeho povídáním o tom, jak to viděl zpoza foťáku.</p>
+    <a class="btn-galerie" href="https://blackart.cz/galerie/honza-natali" target="_blank" rel="noopener">Otevřít fotogalerii
+      <small>blackart.cz</small>
+    </a>
+
+    <div class="delic"></div>
+
+    <p class="podsekce">Od vás</p>
+    <p class="podsekce-nadpis">Co jste nafotili vy</p>
     <p class="text">Tady se sbíhá všechno, co jste ten den nacvakali. Koukněte se, jak to viděli ostatní — a jestli máte v telefonu ještě něco, co tu chybí, přidejte to.</p>
     <div class="kroky">
       <p><span class="cislo">1.</span> Klepněte na <b>Browse Files</b> v rámečku níž.</p>
@@ -101,7 +116,7 @@ footer p{font-size:.66rem;letter-spacing:.2em;color:rgba(255,255,255,.28);}
     <!-- Wedibox Photo Collection -->
     <div id="wedibox-embed" data-event="74663c54-e310-4d59-86b6-e5cc811519ac"></div>
     <a class="btn-galerie" href="https://www.wedibox.com/w/photo-collection/recDxm97eFDLPZF7" target="_blank" rel="noopener">Zobrazit celou galerii
-      <small>Všechny fotky na jedné stránce, i jako promítačka.</small>
+      <small>Všechny vaše fotky na jedné stránce, i jako promítačka.</small>
     </a>
   </div>
 </section>
