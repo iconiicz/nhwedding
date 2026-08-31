@@ -4,25 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galerie — Natali &amp; Honza Cón</title>
-<meta name="robots" content="noindex">
-<link rel="canonical" href="https://www.wedibox.com/w/photo-collection/recDxm97eFDLPZF7">
-<meta http-equiv="refresh" content="0; url=https://www.wedibox.com/w/photo-collection/recDxm97eFDLPZF7">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;1,400&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+<meta name="description" content="Fotky ze svatby Natali a Honzy — od fotografa i od vás.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-body{margin:0;min-height:100svh;display:flex;align-items:center;justify-content:center;
-  background:#717E74;color:#f5f2ec;font-family:'Montserrat',sans-serif;text-align:center;padding:2rem;}
-h1{font-family:'Bodoni Moda',serif;font-size:1.8rem;font-weight:400;font-style:italic;letter-spacing:.03em;}
-p{margin-top:.9rem;font-size:.8rem;font-weight:300;color:rgba(245,242,236,.75);}
-a{display:inline-block;margin-top:1.8rem;padding:.9rem 2rem;border:1px solid rgba(245,242,236,.5);
-  color:#f5f2ec;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;}
-a:hover{background:rgba(255,255,255,.14);border-color:#f5f2ec;}
+:root{--olive:#717E74;--cream:#f5f2ec;--sage:#cdd4d0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{min-height:100svh;display:flex;align-items:center;justify-content:center;
+  background:var(--olive);color:var(--cream);font-family:'Montserrat',sans-serif;padding:2.5rem 1.4rem;}
+.obal{max-width:440px;width:100%;text-align:center;}
+.stitek{font-size:.6rem;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:rgba(245,242,236,.55);}
+h1{font-family:'Bodoni Moda',serif;font-size:clamp(1.9rem,8vw,2.5rem);font-weight:400;line-height:1.15;margin:.8rem 0 .5rem;letter-spacing:.02em;}
+h1 em{font-style:italic;color:var(--sage);}
+.datum{font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(245,242,236,.5);}
+.cara{width:1px;height:38px;background:rgba(245,242,236,.28);margin:2rem auto;}
+.volba{display:block;padding:1.5rem 1.4rem;margin-bottom:1rem;border:1px solid rgba(245,242,236,.45);
+  color:var(--cream);text-decoration:none;transition:background .25s,border-color .25s;}
+.volba:hover{background:rgba(255,255,255,.14);border-color:var(--cream);}
+.volba .kdo{font-size:.58rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,242,236,.6);}
+.volba .co{font-family:'Bodoni Moda',serif;font-size:1.35rem;margin:.5rem 0 .45rem;letter-spacing:.02em;}
+.volba .popis{font-size:.74rem;font-weight:300;line-height:1.6;color:rgba(245,242,236,.7);}
+.volba .heslo{display:inline-block;margin-top:.6rem;color:rgba(245,242,236,.55);}
+.volba .heslo b{font-weight:500;color:var(--cream);}
+.zpet{display:inline-block;margin-top:1.6rem;font-size:.64rem;letter-spacing:.2em;color:rgba(245,242,236,.6);text-decoration:underline;text-underline-offset:4px;}
+.zpet:hover{color:var(--cream);}
 </style>
 </head>
 <body>
-  <div>
-    <h1>Natali &amp; Honza Cón</h1>
-    <p>Otevíráme galerii…</p>
-    <a href="https://www.wedibox.com/w/photo-collection/recDxm97eFDLPZF7">Otevřít ručně</a>
+  <div class="obal">
+    <p class="stitek">Galerie</p>
+    <h1>Natali &amp; Honza <em>Cón</em></h1>
+    <p class="datum">29. srpna 2026 · Mlýn Propast</p>
+    <div class="cara"></div>
+
+    <a class="volba" href="https://blackart.cz/galerie/honza-natali" target="_blank" rel="noopener">
+      <p class="kdo">Od fotografa</p>
+      <p class="co">Štěpán Černý</p>
+      <p class="popis">Výběr z toho, co ten den nafotil — i s povídáním, jak to viděl zpoza foťáku.<br><span class="heslo">Kompletní sada je pod tlačítkem „Všechny fotografie", heslo <b>Loki</b>.</span></p>
+    </a>
+
+    <a class="volba" href="https://www.wedibox.com/w/photo-collection/recDxm97eFDLPZF7" target="_blank" rel="noopener">
+      <p class="kdo">Od vás</p>
+      <p class="co">Vaše fotky</p>
+      <p class="popis">Všechno, co jste ten den nacvakali vy. Můžete si i pustit promítačku.</p>
+    </a>
+
+    <a class="zpet" href="../">Zpět na web svatby</a>
   </div>
 </body>
 </html>
